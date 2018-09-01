@@ -1,0 +1,166 @@
+ \documentclass[11pt, twoside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{charter}
+
+
+\usepackage[]{geometry}
+
+\usepackage{
+	amsmath,
+  	amssymb,
+  	amsthm,
+  	%bm,              		% boldsymbol
+  	bookmark,        		% replaces (and loads) hyperref
+	%chngcntr,		% for counterwithin
+	enumerate,
+	fancyhdr,			% better headers
+	float,				% forced image placement
+  	mathrsfs,        		% mathscr
+  	mathtools,       		% allows prescript
+  	microtype,       		% improved looks
+	multicol,
+	nicefrac,
+	relsize,
+  	tikz-cd,         		% better commutative diagrams
+  	thmtools,        		% custom end to example environment
+	thm-restate,
+	%totcount,		% define counters
+	%wrapfig,
+	xcolor,
+  	mat830 		% custom style file
+}
+
+
+\definecolor{SUOrange}{RGB}{212,69,0}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.10}
+\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing,patterns}
+\tikzset{snake it/.style={-stealth,
+decoration={snake, 
+    amplitude = .4mm,
+    segment length = 2mm,
+    post length=0.9mm},decorate}}
+\pgfqkeys{/tikz/commutative diagrams}{
+  Maps to/.style={
+    /tikz/commutative diagrams/Rightarrow,
+    /tikz/commutative diagrams/maps to},
+  Maps from/.style={
+    /tikz/commutative diagrams/Leftarrow,
+    /utils/exec=\pgfsetarrowsend{cm |}}
+}
+
+\usetikzlibrary{hobby}
+
+
+\usepackage[
+	hyperref = true,      	% links to online documents
+  	backend  = bibtex,    % use bibtex instead of biber
+  	sorting  = nyt,       	% sorts by (name, year, title)
+  	style  = alphabetic 	% citations look like [Har77]
+]{biblatex}
+\addbibresource{rings_mods.bib}
+
+\usepackage[all]{xy}
+\hypersetup{
+	colorlinks = true,
+  	linkcolor  = violet,
+  	urlcolor   = cyan
+}
+\PassOptionsToPackage{hyphens}{url}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\fancyhead[CE]{}
+\fancyhead[CO]{}
+\fancyhead[RE]{\thepage}
+\fancyhead[LO]{\thepage}
+
+
+
+
+
+
+\usepackage{dynkin-diagrams}
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+
+
+\pagestyle{empty}
+\begin{flushright}
+\begin{tabular}{ll}
+\raisebox{-.5\height}{\includegraphics[scale=0.25]{syracuse_seal.jpg}} & {\color{SUOrange}\Huge Syracuse University } \\
+\end{tabular}
+\end{flushright}
+\vspace{2in}
+
+{\color{SUOrange} \Huge \noindent MAT 830: \\[0.2cm] The McKay Correspondence \\[0.2cm] 
+\rule{0.65\textwidth}{0.05cm} \\[0.2cm]}
+
+{\color{SUOrange} \large \noindent Professor: Dr. Graham Leuschke \\ Notes By: Caleb McWhorter }
+
+\vfill
+\begin{center} {\huge \color{SUOrange} Fall 2018} \end{center}
+
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\pagestyle{fancy}
+\setcounter{section}{-1}
+\setcounter{page}{1}
+
+
+
+\input{sections/first/first.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

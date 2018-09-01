@@ -1,0 +1,93 @@
+% !TEX root = mat830_mckay.tex
+\newcommand{\mc}{M\textsuperscript{c}Kay }
+% Symbols
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+
+
+
+
+
+
+
+% Math Operators
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\stab}{stab}
+
+
+
+% Commands
+\newcommand{\xqed}{\hfill \lower-0.3ex\hbox{$\triangleleft$}}
+\newcounter{problem}
+\newcommand{\prob}{
+	\stepcounter{problem}%
+	\noindent\textbf{Problem \theproblem: }
+}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand*{\defeq}{\stackrel{\text{def}}{=}}
+\newcommand{\pf}{\noindent\emph{Proof. }}
+
+
+
+
+% Environments
+
+% Colors
+\definecolor{pur}{RGB}{200,110,50}
+\definecolor{greeo}{RGB}{210,130,80}
+\definecolor{cof}{RGB}{219,144,71}
+
+\definecolor{greet}{RGB}{235,150,75}
+
+
+% Tikz
+
+
+
+%https://tex.stackexchange.com/questions/6388/how-to-scale-a-tikzpicture-to-textwidth
+%\makeatletter
+%\newsavebox{\measure@tikzpicture}
+%\NewEnviron{scaletikzpicturetowidth}[1]{%
+%  \def\tikz@width{#1}%
+%  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+%  \BODY
+%  \end{lrbox}%
+%  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+%  \edef\tikzscale{\pgfmathresult}%
+%  \BODY
+%}
+%\makeatother
+
+
+
+
+% Theorems, Definitions, etc.
+\numberwithin{equation}{section}
+
+\theoremstyle{theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}[section]
+\newtheorem{nex}{Non-Example}[section]
+\newtheorem*{dfn}{Definition}
+\newtheorem*{conject}{Conjecture}
+
+%\theoemstyle{remark}
+\newtheorem*{rem}{Remark}
+
+
+
+
+

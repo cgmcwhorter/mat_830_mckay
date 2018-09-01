@@ -1,0 +1,557 @@
+% !TEX root = ../../mat830_mckay.tex
+\newpage
+\section{Introduction}
+
+
+% Disclaimer and pronunciation of \mc
+The \mc Correspondence is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. 
+
+
+The organizational scheme for the \mc Correspondence is the Coxeter-Dynkin diagrams. 
+
+% Indent & Make `nice'
+V.I.~Arnold 1976: ``The problem is to find a common origin of the A-D-E Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification. 
+%
+
+The Coxeter-Dynkin ADE diagrams classify objects in each of the areas above, plus subadditive functions, root systems, Weyl groups, String Theory, Cluster Algebras, etc.. An example theorem from October demonstrating the \mc Correspondence is the following
+
+
+\begin{thm}
+Let $G$ be a small finite subgroup of $\SL_2(\C)$, acting linearly on $S= \C[x,y]$. Denote by $R=S^G$ the ring of invariants. Then there is a one-to-one correspondence between the following:
+	\begin{itemize}
+	\item Irreducible representations of G
+	\item Indecomposable reflexive $R$-modules
+	\item Irreducible Components of the exceptional fiber of minimal resolution of singularities of $\spec R$.
+	\end{itemize}
+These correspondences extend to isomorphisms between 
+	\begin{itemize}
+	\item the \mc Correspondence of $G$
+	\item the Auslander-Reiten quiver of $R$
+	\item the dual desingularization graph of $\spec R$. 
+	\end{itemize}
+\end{thm}
+
+
+
+% Platonic Solids
+\section{Platonic Solids and Finite Groups of Matrices}
+
+% Insert platonic solids Tikz
+%\[
+%\begin{tikzpicture}[thick,scale=7]
+%\coordinate (A1) at (0,0);
+%\coordinate (A2) at (0.6,0.2);
+%\coordinate (A3) at (1,0);
+%\coordinate (A4) at (0.4,-0.2);
+%\coordinate (B1) at (0.5,0.5);
+%\coordinate (B2) at (0.5,-0.5);
+%
+%\begin{scope}[thick,dashed,,opacity=0.6]
+%\draw (A1) -- (A2) -- (A3);
+%\draw (B1) -- (A2) -- (B2);
+%\end{scope}
+%\draw[fill=cof,opacity=0.6] (A1) -- (A4) -- (B1);
+%\draw[fill=pur,opacity=0.6] (A1) -- (A4) -- (B2);
+%\draw[fill=greeo,opacity=0.6] (A3) -- (A4) -- (B1);
+%\draw[fill=greet,opacity=0.6] (A3) -- (A4) -- (B2);
+%\draw (B1) -- (A1) -- (B2) -- (A3) --cycle;
+%\end{tikzpicture}
+%\]
+
+
+% Tetrahedron
+        \[
+        \begin{tikzpicture}[thick,scale=2]
+        \coordinate (V1) at (1.20821,-0.196544,0.0400412);
+        \coordinate (V2) at (-0.557836,-0.981811,-0.474199);
+        \coordinate (V3) at (-0.231484,0.978507,-0.699241);
+        \coordinate (V4) at (-0.418887,0.199849,1.1334);
+        
+        \draw (V4) -- (V2);
+        \draw (V1) -- (V3);
+        
+        \draw[dashed] (V1) -- (V4);
+        
+        \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V3); %r
+        \draw[fill=cof,opacity=0.6] (V2) -- (V3) -- (V4); %l
+        
+        \end{tikzpicture}
+        \]
+
+
+
+% Cube (Hexahedron)
+        \[
+        \begin{tikzpicture}[thick,scale=1.25]
+        \coordinate (V1) at (1,1,1);
+        \coordinate (V2) at (1,1,-1);
+        \coordinate (V3) at (1,-1,1);
+        \coordinate (V4) at (1,-1,-1);
+        \coordinate (V5) at (-1,1,1);
+        \coordinate (V6) at (-1,1,-1);
+        \coordinate (V7) at (-1,-1,1);
+        \coordinate (V8) at (-1,-1,-1);
+        
+        \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V4) -- (V3) -- (V1);
+        \draw[fill=cof,opacity=0.6] (V1) -- (V5) -- (V7) -- (V3) -- (V1);
+        \draw[fill=greeo,opacity=0.6] (V1) -- (V5) -- (V6) -- (V2) -- (V1);
+        
+        \draw[dashed] (V4) -- (V8);
+        \draw[dashed] (V6) -- (V8);
+        \draw[dashed] (V7) -- (V8);
+        \end{tikzpicture}
+        \]
+
+
+
+% Octahedron
+        \[
+        \begin{tikzpicture}[thick,scale=2]
+        \coordinate (V1) at (1,0,0);
+        \coordinate (V2) at (-1,0,0);
+        \coordinate (V3) at (0,1,0);
+        \coordinate (V4) at (0,-1,0);
+        \coordinate (V5) at (0,0,1);
+        \coordinate (V6) at (0,0,-1);
+        
+        \draw[dashed] (V1) -- (V6);
+        \draw[dashed] (V2) -- (V6);
+        \draw[dashed] (V3) -- (V6);
+        \draw[dashed] (V4) -- (V6);
+        
+        \draw[fill=pur,opacity=0.6]  (V2) -- (V3) -- (V5) -- (V2);
+        \draw[fill=greeo,opacity=0.6]  (V2) -- (V4) -- (V5) -- (V2);
+        \draw[fill=greet,opacity=0.6]  (V1) -- (V3) -- (V5) -- (V1);
+        \draw[fill=cof,opacity=0.6]  (V1) -- (V4) -- (V5) -- (V1);
+        
+        \end{tikzpicture}
+        \]
+
+
+
+
+% Dodecahedron
+\[
+\begin{tikzpicture}[thick]
+\coordinate (V1) at (-0.75203,0.823405,1.32531);
+\coordinate (V2) at (0.354768,0.295358,-1.6694);
+\coordinate (V3) at (-0.354768,-0.295358,1.6694);
+\coordinate (V4) at (0.75203,-0.823405,-1.32531);
+\coordinate (V5) at (1.21738,0.73614,0.987963);
+\coordinate (V6) at (1.64014,0.534445,-0.155907);
+\coordinate (V7) at (-1.64014,-0.534445,0.155907);
+\coordinate (V8) at (-1.21738,-0.73614,-0.987963);
+\coordinate (V9) at (0.0257094,1.70714,-0.291514);
+\coordinate (V10) at (1.06576,-1.22183,0.609329);
+\coordinate (V11) at (-1.06576,1.22183,-0.609329);
+\coordinate (V12) at (-0.0257094,-1.70714,0.291514);
+\coordinate (V13) at (0.219608,1.46091,0.90416);
+\coordinate (V14) at (0.903649,1.13456,-0.946673);
+\coordinate (V15) at (0.862396,-0.349294,1.46091);
+\coordinate (V16) at (1.54644,-0.675646,-0.38992);
+\coordinate (V17) at (-1.54644,0.675646,0.38992);
+\coordinate (V18) at (-0.862396,0.349294,-1.46091);
+\coordinate (V19) at (-0.903649,-1.13456,0.946673);
+\coordinate (V20) at (-0.219608,-1.46091,-0.90416);
+
+\end{tikzpicture}
+\]
+
+% v1: 3,17,13
+% v2: 4, 18, 14
+% v3: 1, 19, 15
+% v4: 2, 20, 16
+% v5: 6, 15, 13
+% v6: 5, 16, 14
+% v7: 8, 19,17
+% v8: 7, 20,18
+% v9: 11, 14, 13
+% v10: 12, 16, 15
+% v11: 9,18,17
+% v12: 10,20,19
+% v13: 9,5,1
+% v14: 9,6,2
+% v15: 10,5,3
+% v16: 10,6,4
+% v17: 11,7,1
+% v18: 11,8,2
+% v19: 12,7,3
+% v20: 12,8,4
+
+
+
+
+% Icosahedron
+%\[
+%\begin{tikzpicture}[thick]
+%\coordinate (V1) at (-0.862045,1.62766,0.474995);
+%
+%\coordinate (V2) at (-0.178005,1.30131,-1.37584);
+%
+%\coordinate (V3) at (0.178005,-1.30131,1.37584);
+%
+%\coordinate (V4) at (0.862045,-1.62766,-0.474995);
+%
+%\coordinate (V5) at (0.329623,0.656657,1.75447);
+%
+%\coordinate (V6) at (1.43642,0.12861,-1.24023);
+%
+%\coordinate (V7) at (-1.43642,-0.12861,1.24023);
+%
+%\coordinate (V8) at (-0.329623,-0.656657,-1.75447);
+%
+%\coordinate (V9) at (1.10736,1.5404,0.137651);
+%
+%\coordinate (V10) at (1.75015,-0.269811,0.694404);
+%
+%\coordinate (V11) at (-1.75015,0.269811,-0.694404);
+%
+%\coordinate (V12) at (-1.10736,-1.5404,-0.137651);
+%
+%
+%%\draw (V1) -- (V11) -- (V7) -- (V1);
+%%\draw (V1) -- (V9) -- (V5) -- (V1);
+%%\draw (V1) -- (V7) -- (V5) -- (V1);
+%
+%\draw (V6) -- (V8) -- (V2) -- (V6);
+%\draw (V6) -- (V8) -- (V4) -- (V6);
+%\draw (V6) -- (V4) -- (V10) -- (V6);
+%\draw (V6) -- (V10) -- (V9) -- (V6);
+%\draw (V6) -- (V9) -- (V2) -- (V6);
+%\draw (V8) -- (V4) -- (V3) -- (V8);
+%\draw (V8) -- (V12) -- (V11) -- (V8);
+%\end{tikzpicture}
+%\]
+
+%v1: 11,9,7,5,2
+% v2: 11,9,8,6,1
+% v3: 12,10,7,5,4
+% v4: 12,10,8,6,3
+% v5: 10,9,3,1,7
+% v6: 10,9,4,2,8
+% v7: 12,11,3,1,5
+% v8: 12,11,4,2,6
+% v9: 6,5,2,1,10
+% v10: 6,5,4,3,9
+% v11: 8,7,2,1,12
+% v12: 8,7,4,3,11
+
+
+
+Platonic solids are defined by the property that the faces are congruent and convex. These five solids above are the only possible five solids satisfying these properties. 
+
+
+\begin{prop}
+The solids above are the only possible Platonic solids.
+\end{prop}
+
+\pf Suppose a solid has faces with $p$ sides, and $q$ meet at each vertex. We write this as a pair $\{p,q\}$, called the Sch\"afli symbol. The external angles of each face add to $2\pi$ radians. The internal angles are then $\pi - \frac{2\pi}{p}$. So around each vertex, we have
+	\[
+	q \left( \pi - \dfrac{2\pi}{p}\right)< 2\pi.
+	\]
+If this were $2\pi$, the solid would be flat, i.e. a tiling of the plane. If the angle were $>2\pi$, the angle would be concave if and only if $\dfrac{2}{p} + \dfrac{2}{q}>1$. The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,5\}$. We can also use Euler's Formula $V-E+F=1$ to work out $V,E, F$. 
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{ccccc}
+	$\{p,q\}$ & Name & $F$ & $E$ & $V$ \\ \hline
+	$\{p,2\}$ & dihedron & 2 & $q$ & $q$ \\
+	$\{2,q\}$ & hosohedron & $p$ & $p$ & 2 \\
+	$\{3,3\}$ & tetrahedron & 4 & 6 & 4 \\
+	$\{3,4\}$ & octahedron & 8 & 12 & 6 \\
+	$\{4,3\}$ & cube & 6 & 12 & 8 \\
+	$\{3,5\}$ & icosahedron & 20 & 30 & 12 \\
+	$\{5,3\}$ & dodecahedron & 12 & 30 & 20
+	\end{tabular}
+	\end{table} \\
+% add column with picture
+% tetra self dual
+% Otherwise dual pairs draw arrows between rows
+\qed \\
+
+
+Notice that the above proof is merely a `uniqueness proof' but does \emph{not} show existence of these solids. We shall prove existence by classifying their (rotational) symmetry groups. Observe that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
+	\begin{itemize}
+	\item the rotational symmetries of a dihedron of hosohedron is $D_{2k}$.	
+	\item tetrahedral group $\mathbf{T}$ of 12 rotational symmetries of a tetrahedron. 
+	\item the octahedral group, $\mathbb{O}$, has 24 rotational symmetries of the octahedron.
+	\item the icoahedral group $\mathcal{I}$ of 60 rotational symmetries of the icosahedron/dodecahedron
+	\end{itemize}
+
+Furthermore, these will all be familiar groups. % for tetrahedron $A_4$, c.f. Dummit Foote exercise.
+% Draw a cube point in center of each face. Connect them all to get interior octahedron O S_$ I A_5
+% Correct grammar of itemize above
+
+
+\begin{thm}
+Along with the degenerate case of the cyclic group $C_k$ for any $k \geq 1$ corresponding to rotation of $\R^3$ by $\dfrac{2\pi}{k}$, these are all of the finite groups of rotations of $\R^3$. 
+\end{thm}
+
+
+\subsection{Matrix Groups}
+
+
+To classify the finite groups of rotational symmetries, recall the following definitions
+
+\begin{dfn}[Orthogonal Group]
+The orthogonal group, $O(n)$, is the set of all invertible orthogonal matrices, i.e. $O(n):= \{ A \in \GL_n(\R) \colon AA^T= I_n\}$.
+\end{dfn}
+
+A routine exercise verifies that the orthogonal group is equivalent to $\{ A \colon |Ax|=|x| \text{ for all }x \in \R^n\} = \{A \colon Ax \cdot Ay = x \cdot y, \text{ for all }x,y \in \R^n\}= \{ A \colon \text{ rows of }A\text{ form orthonormal basis for }\R^n\}= \{ A \colon \text{ columns of }A\text{ form orthonormal basis for }\R^n\}=\{ \text{ set of linear isometries of }\R^n\}$. Generally, if $\langle \cdot\;,\; \cdot \rangle$ is a symmetric bilinear form, then you can define the orthogonal group of the form $\langle \cdot\;,\; \cdot \rangle$ to be $\{ A \in \GL(\R) \colon \langle Ax \;,\; Ay \rangle=\langle x\;,\; y \rangle, \text{ for all }x,y \in \R\}$. 
+
+Recall also that $AA^T=I_n$ so that $\det(AA^T)=1$, $\det(A)^2=1$ and then $\det A = \pm 1$. 
+
+\begin{dfn}[Special Orthogonal Group]
+The special orthogonal group, $\SO(n)$, is the subgroup of $O(n)$ of matrices having determinant 1, i.e. $\SO(n):= \{ A \in \GL_n(\R) \colon AA^T=I_n, \det A=1\}$. 
+\end{dfn}
+
+\begin{ex}
+The case of $n=1$ is dull. The case of $n=2$
+	\[
+	\begin{split}
+	A&=
+	\begin{pmatrix}
+	a & b \\
+	c & d
+	\end{pmatrix} \in O(n) \Rightarrow \text{ columns ar orthogonal} \\
+	\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} b \\ d \end{pmatrix}=0
+	\end{split}
+	\]
+But we know that $\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} c \\ -a \end{pmatrix}=0$ so $\begin{pmatrix} b \\ d \end{pmatrix}$ must be a multiple of $\begin{pmatrix} c \\ -a \end{pmatrix}$. But these are also unit vectors so the multiplier is $\pm 1$. So either 
+	\[
+	A=
+	\begin{pmatrix}
+	a & b \\
+	c & d
+	\end{pmatrix} \text{ or }
+	\begin{pmatrix}
+	a & c \\
+	c & -a
+	\end{pmatrix}
+	\]
+Also, $a^2+c^2=1$, so we can find an angle $\theta \in [0,2\pi)$ so that $a= \cos \theta$ and $c= \sin \theta$. But then 
+	\[
+	A=
+	\begin{pmatrix}
+	\cos \theta & -\sin \theta \\
+	\sin \theta & \cos \theta
+	\end{pmatrix} \text{ or }
+	\begin{pmatrix}
+	\cos \theta & \sin \theta \\
+	\sin \theta & -\cos \theta
+	\end{pmatrix}
+	\]
+However, the left is in $\SO(2)$ and the other has determinant $-1$. Note that $A$ is rotation by $\theta$ counterclockwise and the second matrix is reflection across the line at angle $\theta/2$.
+\end{ex}
+
+
+\begin{thm}
+The finite subgroups of linear isometries of the plane are cyclic or dihedral. 
+\end{thm}
+
+\pf (Sketch) If $G \subseteq \SO(2)$ is a finite group, then $G$ consists only of rotations by the work in the example. One can easily check that $G$ is generated by the rotation with smallest positive angle. If $G \subseteq O(2) \setminus \SO(2)$, then $G$ must contain a reflection $B$, and $G \cap \SO(2)= \langle A \rangle$ will be cyclic. One easily verifies that $G= \{I,A, \ldots, A^{n-1}, B, BA, \ldots, BA^{n-1}\}$. \qed \\
+
+
+\begin{cor}
+$\SO(2)$ consists of the rotations of $\R^2$. 
+\end{cor}
+
+
+\begin{dfn}[Rotation of $\R^n$]
+A rotation of $\R^n$ is a linear map $\phi$ on $\R^n$ so that $\phi$ fixes a line through the origin, and $\phi \big|_{\ell^\perp}$ is a rotation of the subspace orthogonal to $\ell$. 
+\end{dfn}
+
+% Make into two bullet points 
+% Need n>2?
+
+Note that $\SO(3)=\{\text{ rotations of }\R^3\}$ but $\SO(n)$ strictly contains the rotations of $\R^4$ for $n \geq 4$.
+
+
+
+
+
+
+
+% LECTURE 2
+
+\begin{dfn}[Rotation]
+Recall a linear operator $T: \R^3 \to \R^3$ is called a rotation if
+	\begin{itemize}
+	\item $T$ fixes a unit vector $p$, called a \emph{pole}.
+	\item The restriction of $T$ to $(\text{span}(p))^\perp \cong \R^2$ is a rotation of $\R^2$.
+	\end{itemize}
+
+\end{dfn}
+
+
+\begin{thm}[Euler's Theorem]
+	\[
+	\SO(3)= \{\text{rotation of }\R^3\}
+	\]
+In particular, the composition of two rotations of $\R^3$ is another rotation.
+\end{thm}
+
+\pf Suppose $T$ is a rotation, we can find a basis for $\R^3$ of the form $\{p,x_1,x_2\}$, where $p$ a pole for $T$ and $x_1$, $x_2$ is a basis for $\R^2= (\text{span}(p))^\perp$. With respect to this basis, 
+	\[
+	[T]= \begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & \cos \theta & -\sin \theta \\
+	0 & \sin \theta & \cos \theta
+	\end{pmatrix} \in \SO(3).
+	\]
+Now let $A \in \SO(3)$. We need find a pole for $A$, i.e. $A$ fixes a nonzero vector. But then $A$ must have 1 as an eigenvector. Using the fact that $\det A=1$, we have
+	\[
+	\begin{split}
+	\det(A-I)&= \det(A)\det(A-I) \\
+	&=\det(A^T)\det(A-I) \\
+	&= \det(A^TA-A^T) \\
+	&=\det(I-A^T) \\
+	&=\det(I-A) \\
+	&= \det(-(A-I)) \\
+	&= (-1)^3 \det(A-I) \\
+	&= - \det(A-I).
+	\end{split}
+	\]
+Therefore, $\det(A-I)=0$. But then $A$ has a unit eigenvector, say $p$. The restriction of $A$ to $(\text{span}(p))^\perp$ still preserves the dot product, and so is a rotation by the $\SO(2)$ case. \qed \\
+
+
+\begin{thm}
+The finite subgroups of $\SO(3)$ are cyclic, dihedral, or the group of rotational symmetries of a tetrahedron, an octahedron, or an icosahedron. 
+\end{thm}
+
+\pf Let $G \subseteq \SO(3)$ be finite with $|G|=N>1$. Set $P=\{p \in \R^3 \colon p \text{ pole of some }1\neq g \in G\}= \{ p \in \R^3 \colon |p|=1, gp=g \text{ for some }g\neq 1\}$. We claim that $G$ acts on $P$, i.e. if $p \in P$, $g \in G$, then $gp \in P$. If $p$ is a pole of $h \in G$, then $(ghg^{-1})(gp)=gp$ since $h$ fixes $p$. But then $gp$ is a pole of $ghg^{-1}$. Observe each $1 \neq g \in G$ has two poles, so $|P|<\infty$. For $p \in P$, let $G_p:= \stab_p=\{g \in G \colon p \text{ pole of }g\} \cup \{1_G\}$. 
+
+Now $G_p$ is the set of all rotations with pole $p$, and $G_p$ is cyclic by the $n=2$ case. Furthermore, $G_p$ is generated by the smallest nonzero rotation. Let $r_p:= |G_p|$, and $n_p:=|O_p|$, where $O_p$ is the orbit of $p$. So $r_pn_p=|G|$ by the Orbit-Stabilizer Theorem. We count pairs $(p,g)$, where $p$ is a pole of $g \neq 1$. Now each $g$ has two poles so
+	\[
+	|\{ (p,g) \colon p \in P, gp=p, g \neq 1\}| = 2 (N-1) = \sum_{p \in P} r_p - 1
+	\]
+where the last equality follows since $G_p$ is the set of $g$'s with pole $p$. Replacing $r_p$ with $N/n_p$, we obtain 
+	\[
+	2N-2 = \sum_{p \in P} \dfrac{N}{n_p} -1 = \sum_{\text{orbits }O_p} n_p \left(\dfrac{N}{n_p} -1 \right) = \sum_{\text{orbits }O_p} N - \dfrac{N}{r_p}.
+	\]
+But then we have
+	\[
+	2 - \dfrac{2}{N} = \sum_{i=1}^k \left( 1 - \dfrac{1}{r_i}\right),
+	\]
+where we have labeled the orbits $O_1,\ldots,O_k$ and $r_i= |G_{p_i}|$. This equation is known as L\"uroth's Equation. 
+
+L\"uroth's equation implies that $k \leq 3$, as each term on the right hand side is at least $1/2$ and the left hand side is less than 2. If $k=1$, then there is a unique orbit or poles and thus $2- \frac{2}{N}= 1- \frac{1}{r}$. But the left hand side is at least 1, while the right hand side is less than 1, a contradiction. Now if $k=2$, then there are two orbits of poles so that
+	\[
+	\left(1-\dfrac{1}{r_1}\right) + \left(1-\dfrac{1}{r_2}\right)= 2-\dfrac{2}{N} \Longleftrightarrow \dfrac{1}{r_1} + \dfrac{1}{r_2} = \dfrac{2}{N} \Longleftrightarrow n_1+n_2 =2,
+	\]
+where the last equivalence follows since $r_in_i=N$, where $n_i=|O_i|$. But then each orbit is a singleton set, implying there are two poles. Furthermore, $r_i=N$ for $i=1,2$ so that every group element fixes both poles. Then $G \cong C_N$ by the $n=2$ case. In the case of $k=3$, we have
+	\[
+	\dfrac{1}{r_1} + \dfrac{1}{r_2} + \dfrac{1}{r_3} = 1 + \dfrac{2}{N}>1.
+	\]
+The number of algebraic possibilities are limited. We can assume $r_1 \leq r_2 \leq r_3$ and so $r_1<3$. The solutions are $(2,2,k)$ for any $k \geq 2$, $(2,3,3)$, $(2,3,4)$, $(2,3,5)$. We can construct the polyhedron in each case. 
+	\begin{itemize}
+	\item  $(2,2,k)$: \enskip We have $\frac{1}{2}+\frac{1}{2}+\frac{1}{k}=1+\frac{2}{N}$, so $N=2k$. But then there are two orbits of size $k$ and one of size 2, say $O_3=\{p,p' \}$. Half the elements of $G$, i.e. $k$ elements, fix $p$ and $p'$, while the remaining elements swap the elements. But then $G \cong D_k$.  
+	\item $(2,3,5)$: \enskip We have $\frac{1}{2}+\frac{1}{3}+\frac{1}{5}=1+\frac{2}{N}$ so that $N=60$. The orbits have sizes 30, 20, and 12. Let $V=O_3$ be the orbit of size 12. Choose $p \in V$ to be the north pole, and let $H=G_p$ be the stabilizer of $p$. We have $|H|= \frac{60}{12}=5$. In particular, $H$ is cyclic with order 5. Now $H$ (with order 5) acts on $V$ (of order 12), fixing $p$ and $-p$. But then the orbits have size 1, 1, 5, and 5. Now $V$ is the set of vertices of the icosahedron. 
+	% Give image p, diagon joined to 5 points, same fliiped with -p, contect triamgularly 
+	\item The cases of $(2,3,3)$ and $(2,3,4)$ are handled the same as the case above. 
+	\end{itemize}
+\qed \\
+
+
+\begin{cor}
+The finite subgroups of $\SO(3)$ have presentations 
+	\[
+	\begin{split}
+	\mathbb{C}_n&= \langle x \;|\; x^n=1 \rangle \\
+	\mathbb{D}_n&= \langle x,y \;|\; x^2=y^n=(xy)^2=1 \rangle \\
+	\mathbb{T}&= \langle x,y \;|\; x^2=y^3=(xy)^3=1 \rangle \\
+	\mathbb{O}&= \langle x,y \;|\; x^2=y^3=(xy)^4=1 \rangle \\
+	\mathbb{I}&= \langle x,y \;|\; x^2=y^3=(xy)^5=1 \rangle
+	\end{split}
+	\]
+\end{cor}
+
+\pf (Sketch) Suppose we have the Sch\"afli symbol $\{p,q\}$, i.e. each face has $p$ sides, and $q$ meet at each vertex. Fix a vertex, and let $\tau$ be rotation by $2\pi/q$ around this vertex. But then $|\tau|=q$. Also, fix an edge incident to our vertex, and let $\sigma$ be the rotation swapping the ends of this edge. Then $|\sigma|=2$. 
+
+% Give image vertex with 5 whell spoked and arrow between 2 spokes with 2 or i? Give upper right edge color, the specified one, along it label \sigma . This has bunny with head along chosen edge. Give image to right of sigma, then give arrow connecting to similar diagram labeled tau and rotate the same image and again by sigma till back to original with bunny facing origin feet on original edge. 
+
+Focus on the face fo the right of our edge, and consider $\sigma\tau$. This rotates the face by $2\pi//p$. So we must have $|\sigma\tau|=p$, and we have elements $\sigma$, $\tau$ satisfying $\sigma^2=\tau^q=(\sigma\tau)^p=1$. One needs to check that $\sigma$, $\tau$ generate $G$ and that
+	\[
+	|\langle x,y \;|\; x^2=y^q=(xy)^p=1 \rangle| = |G|.
+	\]
+\qed \\
+
+ 
+\begin{cor}
+We have isomorphisms $\mathbb{T} \cong A_4$, $\mathbb{O} \cong S_4$, $\mathbb{I} \cong A_5$. 
+\end{cor}
+
+ Note that the group $\langle x,y \;|\; x^r=y^s=(xy)^t=1\rangle$ is \emph{only} finite in the cases above. Associate to this the graph $T_{r,s,t}$, shown below.
+ 	\[
+	\begin{tikzpicture}
+	\foreach \Point in {(-2,1.5), (-1,1), (-2,3), (-1,2.5), (1,3)}{
+    \node at \Point {\textbullet};
+}
+	\end{tikzpicture}
+	\]
+	% r on bottom left, t on bottom right and s above, cnetral node counted each time
+
+with total $+s+t-2$ vertices. 
+
+$C_n: (n,1,n) give horizontal line with dots, the dynkin$ $A_{2n-1}$
+$D_n: (2,n,2)$  $D_{n+1}$
+$T: (2,3,3)$ $E_6$
+$O(2,3,4)$ $E_7$
+$I(2,3,5)$ $E_8$
+
+These are the ADE Coxeter-Dynkin diagrams. 
+
+
+
+
+
+
+
+
+Our next goal is to classify the finite subgroups of $\SL_2(\C)$. We travel from $\SO(3)$, to $\SU(2)$, onto $\SL_2(\C)$. 
+
+\begin{dfn}[Unitary Group]
+$U(n):= \{A \in \GL_n(\C) \colon A^*A=I_n\}$, where $A^*=\ov{A^T}$. But this is also $\{A \colon |Ax|=|x|\}$ Euclidean norm $=\{ A \colon (Ax)^*(Ay)=x^*y\}$ i.e. $A$ preserves the Hermitian inner product $\langle x,y \rangle = x^*y$. That is the $\{A \colon \text{rows/col of }A \text{ are orthogonal basis for }\C^n\}$. 
+\end{dfn}
+
+As before $U(n)$ can be described as the set of matrices preserving an arbitrary Hermitian inner product. 
+
+\begin{dfn}[Special Unitary Group]
+$\SU(n):=\{A \in U(n) \colon \det A=1\}$. 
+\end{dfn}
+
+
+\begin{lem}
+Every finite subgroup of $\GL_n(\C)$ is conjugate to a subgroup of $U(n)$. In particular, every subgroup of $\GL_n(\C)$ is conjugate to a subgroup of $\SL_n(\C)$ and $\SU(n)$. 
+\end{lem}
+
+\pf We construct a new Hermitian inner product on $\C^n$ so that a given finite group $G$ preserves the product. Define $\langle u,v \rangle= \frac{1}{|G|} \sum_{g \in G} (gu)^*(gv)$. Then for any $h \in G$, $\langle hu,hv \rangle= \frac{1}{|G|} \sum_{g \in G} (ghu)^*(ghv)= \frac{1}{|G|} \sum_{k \in G} (ku)^*(kv)=\langle u,v \rangle$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
