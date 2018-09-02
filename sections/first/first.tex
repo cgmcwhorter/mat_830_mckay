@@ -7,12 +7,13 @@
 The \mc Correspondence is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. 
 
 
-The organizational scheme for the \mc Correspondence is the Coxeter-Dynkin diagrams. 
-
-% Indent & Make `nice'
-V.I.~Arnold 1976: ``The problem is to find a common origin of the A-D-E Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification. 
-%
-
+The organizational scheme for the \mc Correspondence is the Coxeter-Dynkin diagrams. \\
+        \begin{nscenter}
+        \begin{minipage}{0.8\textwidth}
+        {\itshape ``The problem is to find a common origin of the A-D-E Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification.} \\
+        \phantom{x}\hspace{1cm} -- V.I.~Arnold ,1976 \\
+        \end{minipage}
+        \end{nscenter}
 The Coxeter-Dynkin ADE diagrams classify objects in each of the areas above, plus subadditive functions, root systems, Weyl groups, String Theory, Cluster Algebras, etc.. An example theorem from October demonstrating the \mc Correspondence is the following
 
 
@@ -30,6 +31,10 @@ These correspondences extend to isomorphisms between
 	\item the dual desingularization graph of $\spec R$. 
 	\end{itemize}
 \end{thm}
+
+
+
+\newpage
 
 
 
@@ -75,13 +80,8 @@ These correspondences extend to isomorphisms between
         \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V3); %r
         \draw[fill=cof,opacity=0.6] (V2) -- (V3) -- (V4); %l
         
-        \end{tikzpicture}
-        \]
-
-
-
+        \end{tikzpicture} \;
 % Cube (Hexahedron)
-        \[
         \begin{tikzpicture}[thick,scale=1.25]
         \coordinate (V1) at (1,1,1);
         \coordinate (V2) at (1,1,-1);
@@ -99,13 +99,8 @@ These correspondences extend to isomorphisms between
         \draw[dashed] (V4) -- (V8);
         \draw[dashed] (V6) -- (V8);
         \draw[dashed] (V7) -- (V8);
-        \end{tikzpicture}
-        \]
-
-
-
+        \end{tikzpicture} \;
 % Octahedron
-        \[
         \begin{tikzpicture}[thick,scale=2]
         \coordinate (V1) at (1,0,0);
         \coordinate (V2) at (-1,0,0);
@@ -123,7 +118,7 @@ These correspondences extend to isomorphisms between
         \draw[fill=greeo,opacity=0.6]  (V2) -- (V4) -- (V5) -- (V2);
         \draw[fill=greet,opacity=0.6]  (V1) -- (V3) -- (V5) -- (V1);
         \draw[fill=cof,opacity=0.6]  (V1) -- (V4) -- (V5) -- (V1);
-        
+     
         \end{tikzpicture}
         \]
 
@@ -238,7 +233,7 @@ These correspondences extend to isomorphisms between
 
 
 
-Platonic solids are defined by the property that the faces are congruent and convex. These five solids above are the only possible five solids satisfying these properties. 
+Platonic solids are defined by the property that the faces are each convex and pairwise congruent. These five solids above are the only possible five solids satisfying these properties. 
 
 
 \begin{prop}
