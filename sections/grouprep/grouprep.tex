@@ -1,0 +1,95 @@
+% !TEX root = ../../mat830_mckay.tex
+\newpage
+\section{Group Representations \& Characters}
+
+Our final goal for this section will be \mc original observation that the character tables of the binary polyhedral groups `are' the extended A-D-E diagrams. We begin with an introduction to group representations.
+
+
+\begin{dfn}[Representation]
+Let $G$ be a group. A (complex) representation of $G$ is a group homomorphism
+	\[
+	\rho: G \to \GL_n(\C),
+	\]
+for some $n \geq 1$. We call $n$ the dimension of $\rho$. We call the representation $G \to \C^*=\GL_1(\C)$ given by $g \mapsto 1$ for all $g \in G$ the trivial representation. 
+\end{dfn}
+
+
+We will identify $\GL_n(\C)$ as the automorphism group of $\C^n$, i.e. invertible linear maps. In this way, a representation is equivalent to an action of $G$ on $\C^n$. Write $\rho_g$ for the linear operator $\rho(g): \C^n \to \C^n$. Avoiding a choice of basis, we write $\rho: G \to \GL(V)$ for a vector space $V$. Often, we will not distinguish between $\rho$ and $V$, unless doing so would cause confusion. 
+
+
+\begin{rem}
+Recall the group algebra $\C[G]$ is the $\C$-vector space spanned by the elements of $G$,
+	\[
+	\C[G]= \left\{ \sum_{g \in G} \alpha_g g \;\bigg|\; \alpha_g \in \C \right\},
+	\]
+with addition given componentwise and multiplication given by $(\alpha\beta)(gh)$, extended by linearity. Suppose $M$ is a finitely generated $\C[G]$-module, then it is also a finitely generated $\C$-module, i.e. a $\C$-vector space. Therefore, $M \cong \C^n$, as vector spaces. Multiplication by group elements defines linear operators $(M \ma{\cdot g} M) \in \GL(M)\cong\GL_n(\C)$. Therefore, we obtain a map $\rho: G \to \GL_n(\C)$ given by $g \mapsto (M \ma{g} M)$, i.e. a representation. Conversely, a representation $V$ is equivalent to a $\C[G]$-module. 
+\end{rem}
+
+
+The direct sum of two representations $\rho: G \to \GL_n(\C)$, $\rho': G \to \GL_m(\C)$ is $\rho \oplus \rho' : G \to \GL_{n+m}(\C)$ given by 
+	\[
+	g \mapsto \left(\begin{tabular}{c|c} $\rho(g)$ & 0 \\ \hline 0 & $\rho'(g)$ \end{tabular}\right).
+	\]
+
+% action of $G$ on V oplus V' which stabilizes the subspaces V,V'
+
+\begin{dfn}[Indecomposable]
+If $\rho$ cannot be written as a direct sum of two representations, then we call the representation indecomposable. Otherwise, we call the representation decomposable. 
+\end{dfn}
+
+
+If $\rho$ is decomposable, there are invariant, i.e. stabilized, subspaces of the vector space $V \oplus V'$. 
+
+
+\begin{dfn}[Irreducible]
+We say that a representation $\rho: G \to \GL(V)$ is irreducible if $\rho$ has no invariant subspaces, i.e. no submodules other than $\{0\}$ and $V$. Otherwise, we say that $\rho$ is reducible.
+\end{dfn}
+
+
+Clearly, a decomposable representation must be reducible, which immediately gives the following by contrapositive. 
+
+\begin{thm}
+Any irreducible representation is indecomposable. 
+\end{thm}
+
+
+\begin{ex}
+Let $G=S_3$. What are the representations of $S_3$? There is always the trivial representation $1: S_3 \to \C^*$ given by $\sigma \mapsto 1$ for all $\sigma \in S_3$. We also have the sign (or alternating) representation $a: S_3 \to \C^\times$ given by $\sigma \mapsto (-1)^{\text{sign }\sigma}$, which restricts to an injection from $A_3$ to 1, i.e. $S_3 \setminus A_3$ injects to $-1$ under $a$. We know that every permutation can be represented by a matrix given by mapping a permutation $\sigma$ to the result of the permutation $\sigma$ acting on the rows of $I_3$. For example,
+	\[
+	(2\;3) \mapsto \three{1}{0}{0}{0}{1}{0}{0}{0}{1}.
+	\]
+This gives a homomorphism $S_3 \to \GL_3(\C)$, called the natural representation. This defines an action of $S_3$ on $\C^3$ by permutation of basis, i.e. $\sigma(\{z_1,z_2,z_3\})= \{z_{\sigma^{-1}(1)}, z_{\sigma^{-1}(2)}, z_{\sigma^{-1}(3)}\}$. Clearly, the trivial representation is both indecomposable and irreducible. The sign representation has dimension one, so it is both indecomposable and irreducible. The natural representation has stable subspaces, namely the one spanned by $(1,1,1)$, so that it cannot be indecomposable, i.e. the natural representation is decomposable. But then the natural representation is also reducible.
+\end{ex}
+
+
+We can also create submodule/subrepresentations by `modding out.' For example, define $V=\{ (z_1,z_2,z_3) \in \C^3 \colon z_1+z_2+z_3=0\}$---the natural representation modulo the trivial representation, with the permutation action. This space has dimension two and one can check the natural representation is isomorphic to $1 \oplus V$. This is called the standard representation. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

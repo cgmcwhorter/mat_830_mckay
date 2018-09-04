@@ -33,10 +33,23 @@ These correspondences extend to isomorphisms between
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
-
-
-
 % Platonic Solids
 \section{Platonic Solids and Finite Groups of Matrices}
 
@@ -173,7 +186,7 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \]
 
 
-\begin{prop}
+\begin{prop} \label{prop:allplatonic}
 The solids above are the only possible Platonic solids.
 \end{prop}
 
@@ -196,24 +209,17 @@ The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,
 	\end{tabular}
 	\end{table}
 \qed \\
-% Add column with image?
-% Otherwise dual pairs draw arrows between rows. Tetrahedron Self Dual
 
 
-Notice that the above proof is merely a `uniqueness proof' and does \emph{not} show the existence of these solids. We shall prove existence by classifying the rotational symmetry groups of these solids. Note that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
+Notice that the above proof is merely a uniqueness proof and does \emph{not} show the existence of these solids. We shall prove existence by classifying the rotational symmetry groups of these solids. Note that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
 	\begin{itemize}
-	\item the rotational symmetries of a dihedron or hosohedron is $D_{2k}$.	
-	\item the tetrahedral group, $\mathbf{T}$ of the 12 rotational symmetries of a tetrahedron. 
-	\item the octahedral group, $\mathbb{O}$, of the 24 rotational symmetries of the octahedron.
-	\item the icoahedral/dodecahedral group, $\mathcal{I}$, of 60 the rotational symmetries of the icosahedron/dodecahedron
+	\item the dihedral group, $D_{2k}$, of the symmetries of the dihedron/hosohedron.
+	\item the tetrahedral group, $\bfT$, of the 12 rotational symmetries of a tetrahedron. 
+	\item the octahedral group, $\bbO$, of the 24 rotational symmetries of the octahedron.
+	\item the icoahedral/dodecahedral group, $\cI$, of 60 the rotational symmetries of the icosahedron/dodecahedron
 	\end{itemize}
 
-Furthermore, these will all be familiar groups. 
-
-
-% for tetrahedron $A_4$, c.f. Dummit Foote exercise.
-% Draw a cube point in center of each face. Connect them all to get interior octahedron O S_$ I A_5
-% Correct grammar of itemize above
+Furthermore, these will all be familiar groups. For example, we shall find $\bfT \cong A_4$ and $\bbO \cong S_4$. Note that dual polyhedron have the same symmetry group. This follows from the fact that symmetries of the faces of one polyhedron correspond to symmetries of the centers of their faces, and vice versa. For instance, the cube and the octahedron both have the same symmetry group, $\bbO \cong S_4$, because they are dual. From the table in Proposition~\ref{allplatonic}, we can see that the dihedron and hosohedron are dual, the octahedron and cube are dual, the icosahedron and dodecahedron are dual, and the tetrahedron is self-dual. Now not only are the groups $D_{2k}$, $\bfT$, $\bbO$, and $\cI$, along with $C_k$, are the \emph{only} finite groups of rotations of $\R^3$.
 
 
 \begin{thm}
@@ -221,100 +227,109 @@ Along with the degenerate case of the cyclic group $C_k$ for any $k \geq 1$ corr
 \end{thm}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Matrix Groups}
 
 
-To classify the finite groups of rotational symmetries, recall the following definitions
+To classify the finite groups of rotational symmetries, we begin by recalling a few definitions.
 
 \begin{dfn}[Orthogonal Group]
 The orthogonal group, $O(n)$, is the set of all invertible orthogonal matrices, i.e. $O(n):= \{ A \in \GL_n(\R) \colon AA^T= I_n\}$.
 \end{dfn}
 
-A routine exercise verifies that the orthogonal group is equivalent to $\{ A \colon |Ax|=|x| \text{ for all }x \in \R^n\} = \{A \colon Ax \cdot Ay = x \cdot y, \text{ for all }x,y \in \R^n\}= \{ A \colon \text{ rows of }A\text{ form orthonormal basis for }\R^n\}= \{ A \colon \text{ columns of }A\text{ form orthonormal basis for }\R^n\}=\{ \text{ set of linear isometries of }\R^n\}$. Generally, if $\langle \cdot\;,\; \cdot \rangle$ is a symmetric bilinear form, then you can define the orthogonal group of the form $\langle \cdot\;,\; \cdot \rangle$ to be $\{ A \in \GL(\R) \colon \langle Ax \;,\; Ay \rangle=\langle x\;,\; y \rangle, \text{ for all }x,y \in \R\}$. 
-
-Recall also that $AA^T=I_n$ so that $\det(AA^T)=1$, $\det(A)^2=1$ and then $\det A = \pm 1$. 
-
-\begin{dfn}[Special Orthogonal Group]
-The special orthogonal group, $\SO(n)$, is the subgroup of $O(n)$ of matrices having determinant 1, i.e. $\SO(n):= \{ A \in \GL_n(\R) \colon AA^T=I_n, \det A=1\}$. 
-\end{dfn}
 
 \begin{ex}
-The case of $n=1$ is dull. The case of $n=2$
+The following are all orthogonal matrices:
+	\[
+	\begin{aligned}
+	A&= \dfrac{1}{\sqrt{2}} \two{1}{1}{1}{-1} && && B&= \dfrac{1}{3} \three{2}{-2}{1}{1}{2}{2}{2}{1}{-2} \\
+	P&= \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \end{pmatrix} && && R&= \two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}
+	\end{aligned}
+	\] \xqed
+\end{ex}
+
+A routine exercise verifies that the orthogonal group is also equivalent to any of the following:
 	\[
 	\begin{split}
-	A&=
-	\begin{pmatrix}
-	a & b \\
-	c & d
-	\end{pmatrix} \in O(n) \Rightarrow \text{ columns ar orthogonal} \\
-	\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} b \\ d \end{pmatrix}=0
+	O(n)&:= \{ A \in \GL_n(\R) \colon AA^T= I_n\} \\
+	&=\{ A \colon |Ax|=|x| \text{ for all }x \in \R^n\} \\
+	&= \{A \colon Ax \cdot Ay = x \cdot y, \text{ for all }x,y \in \R^n\} \\
+	&= \{ A \colon \text{ rows of }A\text{ form orthonormal basis for }\R^n\} \\
+	&= \{ A \colon \text{ columns of }A\text{ form orthonormal basis for }\R^n\} \\
+	&=\{ \text{ set of linear isometries of }\R^n\}.
 	\end{split}
 	\]
-But we know that $\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} c \\ -a \end{pmatrix}=0$ so $\begin{pmatrix} b \\ d \end{pmatrix}$ must be a multiple of $\begin{pmatrix} c \\ -a \end{pmatrix}$. But these are also unit vectors so the multiplier is $\pm 1$. So either 
+Note that we have defined $O(n)$ in terms of the symmetric bilinear form $\langle A, B \rangle = AB^T$. Generally, if $\langle \cdot\;,\; \cdot \rangle$ is a symmetric bilinear form, then you can define the orthogonal group of the form $\langle \cdot\;,\; \cdot \rangle$ to be $\{ A \in \GL(\R) \colon \langle Ax , Ay \rangle=\langle x, y \rangle, \text{ for all }x,y \in \R\}$. Observe also that from the relation $AA^T=I_n$, we obtain $\det(AA^T)=1$. It then follows that $\det(A)^2=1$, and then $\det A = \pm 1$.  A special subset of these matrices are our next group of interest. 
+
+
+\begin{dfn}[Special Orthogonal Group]
+The special orthogonal group, $\SO(n)$, is the subgroup of $O(n)$ of matrices having determinant 1, i.e. $\SO(n):= \{ A \in \GL_n(\R) \colon AA^T=I_n,\, \det A=1\}$. 
+\end{dfn}
+
+
+\begin{ex} \label{ex:so2}
+The case of $n=1$ is dull, consisting only of the identity matrix. The case of $n=2$ is a bit more interesting. Suppose that $A= \two{a}{b}{c}{d} \in \SO(2) \subseteq O(2)$. Since $A \in O(2)$, we know that the columns of $A$ are orthogonal, giving
 	\[
-	A=
-	\begin{pmatrix}
-	a & b \\
-	c & d
-	\end{pmatrix} \text{ or }
-	\begin{pmatrix}
-	a & c \\
-	c & -a
-	\end{pmatrix}
+	\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} b \\ d \end{pmatrix}^T=0.
 	\]
-Also, $a^2+c^2=1$, so we can find an angle $\theta \in [0,2\pi)$ so that $a= \cos \theta$ and $c= \sin \theta$. But then 
+A simple calculation shows that $\begin{pmatrix} a \\ c \end{pmatrix} \begin{pmatrix} c \\ -a \end{pmatrix}^T=0$. But then by linear independence, $\begin{pmatrix} b \\ d \end{pmatrix}$ must be a multiple of $\begin{pmatrix} c \\ -a \end{pmatrix}$. But these are also unit vectors, so the multiplier is $\pm 1$. This gives two possible cases for $A$: 
 	\[
-	A=
-	\begin{pmatrix}
-	\cos \theta & -\sin \theta \\
-	\sin \theta & \cos \theta
-	\end{pmatrix} \text{ or }
-	\begin{pmatrix}
-	\cos \theta & \sin \theta \\
-	\sin \theta & -\cos \theta
-	\end{pmatrix}
+	A=\two{a}{-c}{c}{a} \text{ or } \two{a}{c}{c}{-a}.
 	\]
-However, the left is in $\SO(2)$ and the other has determinant $-1$. Note that $A$ is rotation by $\theta$ counterclockwise and the second matrix is reflection across the line at angle $\theta/2$.
+Since $A \in \SO(2)$, we know that $\det A=1$. This gives $a^2+c^2=1$. Then we can find an angle $\theta \in [0,2\pi)$ so that $a= \cos \theta$ and $c= \sin \theta$. Using this in our possibilities above, we have
+	\[
+	A=\two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta} \text{ or } \two{\cos\theta}{\sin\theta}{\sin\theta}{-\cos\theta}
+	\]
+While the left matrix is an element of $\SO(2)$, the other has determinant $-1$. Therefore, we must have $A= \two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}$, a rotation by $\theta$ counterclockwise about the origin. The second matrix on the right above corresponds to the reflection across the line at angle $\theta/2$ through the origin. Therefore, the group $\SO(2)$ is precisely the group of rotations in the plane. 
+\xqed
 \end{ex}
 
 
+\begin{dfn}[Rotation of $\R^n$]
+Let $n>2$. A rotation of $\R^n$ is a linear map $\phi: \R^n \to \R^n$ satisfying
+	\begin{itemize}
+	\item $\phi$ fixes a line through the origin
+	\item $\phi \big|_{\ell^\perp}$ is a rotation of the subspace orthogonal to $\ell$
+	\end{itemize}
+\end{dfn}
+%\begin{dfn}[Rotation]
+%Recall a linear operator $T: \R^3 \to \R^3$ is called a rotation if
+%	\begin{itemize}
+%	\item $T$ fixes a unit vector $p$, called a \emph{pole}.
+%	\item The restriction of $T$ to $(\text{span}(p))^\perp \cong \R^2$ is a rotation of $\R^2$.
+%	\end{itemize}
+%
+%\end{dfn}
+
+
 \begin{thm}
-The finite subgroups of linear isometries of the plane are cyclic or dihedral. 
+The finite subgroups of linear isometries of the plane are a cyclic group or a dihedral group. 
 \end{thm}
 
-\pf (Sketch) If $G \subseteq \SO(2)$ is a finite group, then $G$ consists only of rotations by the work in the example. One can easily check that $G$ is generated by the rotation with smallest positive angle. If $G \subseteq O(2) \setminus \SO(2)$, then $G$ must contain a reflection $B$, and $G \cap \SO(2)= \langle A \rangle$ will be cyclic. One easily verifies that $G= \{I,A, \ldots, A^{n-1}, B, BA, \ldots, BA^{n-1}\}$. \qed \\
+\pfsk If $G \subseteq \SO(2)$ is a finite group, then $G$ consists only of rotations by the methods in Example~\ref{ex:so2}. One can check that $G$ is generated by the rotation with smallest positive angle. Now if $G \subseteq O(2) \setminus \SO(2)$, then $G$ must contain a reflection $B$, and $G \cap \SO(2)= \langle A \rangle$ will be cyclic. One then verifies that $G= \{I,A, \ldots, A^{n-1}, B, BA, \ldots, BA^{n-1}\}$. \qed \\
 
 
 \begin{cor}
 $\SO(2)$ consists of the rotations of $\R^2$. 
 \end{cor}
 
-
-\begin{dfn}[Rotation of $\R^n$]
-A rotation of $\R^n$ is a linear map $\phi$ on $\R^n$ so that $\phi$ fixes a line through the origin, and $\phi \big|_{\ell^\perp}$ is a rotation of the subspace orthogonal to $\ell$. 
-\end{dfn}
-
-% Make into two bullet points 
-% Need n>2?
-
-Note that $\SO(3)=\{\text{ rotations of }\R^3\}$ but $\SO(n)$ strictly contains the rotations of $\R^4$ for $n \geq 4$.
+\pf By Example~\ref{ex:so2}, we know that $\SO(2)$ is contained in the group of rotations of $\R^2$. Since every rotation of $\R^2$ can be represented by a matrix in the form of $\two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}$, the containment holds in the other direction. \qed \\
 
 
-
-
-
-
-
-% LECTURE 2
-
-\begin{dfn}[Rotation]
-Recall a linear operator $T: \R^3 \to \R^3$ is called a rotation if
-	\begin{itemize}
-	\item $T$ fixes a unit vector $p$, called a \emph{pole}.
-	\item The restriction of $T$ to $(\text{span}(p))^\perp \cong \R^2$ is a rotation of $\R^2$.
-	\end{itemize}
-
-\end{dfn}
+Note that $\SO(3)=\{\text{rotations of }\R^3\}$ but $\SO(n)$ strictly contains the rotations of $\R^4$ for $n \geq 4$. We now come to yet another theorem of Euler. 
 
 
 \begin{thm}[Euler's Theorem]
@@ -324,15 +339,16 @@ Recall a linear operator $T: \R^3 \to \R^3$ is called a rotation if
 In particular, the composition of two rotations of $\R^3$ is another rotation.
 \end{thm}
 
-\pf Suppose $T$ is a rotation, we can find a basis for $\R^3$ of the form $\{p,x_1,x_2\}$, where $p$ a pole for $T$ and $x_1$, $x_2$ is a basis for $\R^2= (\text{span}(p))^\perp$. With respect to this basis, 
+\pf Suppose $T$ is a rotation, we can find a basis for $\R^3$ of the form $\cB:=\{p,x_1,x_2\}$, where $p$ a pole for $T$ and $\{x_1, x_2\}$ is a basis for $\R^2= (\text{span}(p))^\perp$. With respect to the basis $\cB$, 
 	\[
-	[T]= \begin{pmatrix}
+	[T]_\cB= 
+	\begin{pmatrix}
 	1 & 0 & 0 \\
 	0 & \cos \theta & -\sin \theta \\
 	0 & \sin \theta & \cos \theta
 	\end{pmatrix} \in \SO(3).
 	\]
-Now let $A \in \SO(3)$. We need find a pole for $A$, i.e. $A$ fixes a nonzero vector. But then $A$ must have 1 as an eigenvector. Using the fact that $\det A=1$, we have
+Now let $A \in \SO(3)$. We need find a pole for $A$, i.e. a nonzero vector fixed by $A$. If this were the case, then $A$ must have 1 as an eigenvector. Using the fact that $\det A=1$, we have
 	\[
 	\begin{split}
 	\det(A-I)&= \det(A)\det(A-I) \\
@@ -345,7 +361,7 @@ Now let $A \in \SO(3)$. We need find a pole for $A$, i.e. $A$ fixes a nonzero ve
 	&= - \det(A-I).
 	\end{split}
 	\]
-Therefore, $\det(A-I)=0$. But then $A$ has a unit eigenvector, say $p$. The restriction of $A$ to $(\text{span}(p))^\perp$ still preserves the dot product, and so is a rotation by the $\SO(2)$ case. \qed \\
+Therefore, $\det(A-I)=0$. But then $A$ has a unit eigenvector, say $p$. The restriction of $A$ to $(\text{span}(p))^\perp$ still preserves the dot product, and so is a rotation of $\R^3$ by the $\SO(2)$ case. \qed \\
 
 
 \begin{thm}
@@ -393,13 +409,13 @@ The finite subgroups of $\SO(3)$ have presentations
 	\mathbb{C}_n&= \langle x \;|\; x^n=1 \rangle \\
 	\mathbb{D}_n&= \langle x,y \;|\; x^2=y^n=(xy)^2=1 \rangle \\
 	\mathbb{T}&= \langle x,y \;|\; x^2=y^3=(xy)^3=1 \rangle \\
-	\mathbb{O}&= \langle x,y \;|\; x^2=y^3=(xy)^4=1 \rangle \\
+	\bbO&= \langle x,y \;|\; x^2=y^3=(xy)^4=1 \rangle \\
 	\mathbb{I}&= \langle x,y \;|\; x^2=y^3=(xy)^5=1 \rangle
 	\end{split}
 	\]
 \end{cor}
 
-\pf (Sketch) Suppose we have the Sch\"afli symbol $\{p,q\}$, i.e. each face has $p$ sides, and $q$ meet at each vertex. Fix a vertex, and let $\tau$ be rotation by $2\pi/q$ around this vertex. But then $|\tau|=q$. Also, fix an edge incident to our vertex, and let $\sigma$ be the rotation swapping the ends of this edge. Then $|\sigma|=2$. 
+\pfsk Suppose we have the Sch\"afli symbol $\{p,q\}$, i.e. each face has $p$ sides, and $q$ meet at each vertex. Fix a vertex, and let $\tau$ be rotation by $2\pi/q$ around this vertex. But then $|\tau|=q$. Also, fix an edge incident to our vertex, and let $\sigma$ be the rotation swapping the ends of this edge. Then $|\sigma|=2$. 
 
 % Give image vertex with 5 whell spoked and arrow between 2 spokes with 2 or i? Give upper right edge color, the specified one, along it label \sigma . This has bunny with head along chosen edge. Give image to right of sigma, then give arrow connecting to similar diagram labeled tau and rotate the same image and again by sigma till back to original with bunny facing origin feet on original edge. 
 
@@ -411,7 +427,7 @@ Focus on the face fo the right of our edge, and consider $\sigma\tau$. This rota
 
  
 \begin{cor}
-We have isomorphisms $\mathbb{T} \cong A_4$, $\mathbb{O} \cong S_4$, $\mathbb{I} \cong A_5$. 
+We have isomorphisms $\mathbb{T} \cong A_4$, $\bbO \cong S_4$, $\mathbb{I} \cong A_5$. 
 \end{cor}
 
  Note that the group $\langle x,y \;|\; x^r=y^s=(xy)^t=1\rangle$ is \emph{only} finite in the cases above. Associate to this the graph $T_{r,s,t}$, shown below.
@@ -441,6 +457,12 @@ These are the ADE Coxeter-Dynkin diagrams.
 
 
 
+
+
+
+
+
+
 Our next goal is to classify the finite subgroups of $\SL_2(\C)$. We travel from $\SO(3)$, to $\SU(2)$, onto $\SL_2(\C)$. 
 
 \begin{dfn}[Unitary Group]
@@ -454,15 +476,90 @@ $\SU(n):=\{A \in U(n) \colon \det A=1\}$.
 \end{dfn}
 
 
+
+
+
+
+
+
 \begin{lem}
-Every finite subgroup of $\GL_n(\C)$ is conjugate to a subgroup of $U(n)$. In particular, every subgroup of $\GL_n(\C)$ is conjugate to a subgroup of $\SL_n(\C)$ and $\SU(n)$. 
+Every finite subgroup of $\GL_n(\C)$ is conjugate to a finite subgroup of $U(n)$. In particular, every subgroup of $\SL_n(\C)$ is conjugate to a finite subgroup of $\SL_n(\C)$ and $\SU(n)$. 
 \end{lem}
 
-\pf We construct a new Hermitian inner product on $\C^n$ so that a given finite group $G$ preserves the product. Define $\langle u,v \rangle= \frac{1}{|G|} \sum_{g \in G} (gu)^*(gv)$. Then for any $h \in G$, $\langle hu,hv \rangle= \frac{1}{|G|} \sum_{g \in G} (ghu)^*(ghv)= \frac{1}{|G|} \sum_{k \in G} (ku)^*(kv)=\langle u,v \rangle$. 
+\pf Let $G \subseteq \GL_n(\C)$ be a finite subgroup. We construct a new Hermitian inner product on $\C^n$ so that a given finite group $G$ preserves the product. Define $\langle u,v \rangle:= \frac{1}{|G|} \sum_{g \in G} (gu)^*(gv)$. Then for any $h \in G$, $u,v \in \C^n$,
+	\[
+	\langle hu,hv \rangle= \frac{1}{|G|} \sum_{g \in G} (ghu)^*(ghv)= \frac{1}{|G|} \sum_{k \in G} (ku)^*(kv)=\langle u,v \rangle. 
+	\]
 
 
 
 
+Let $\cB=\{b_1,\ldots,b_n\}$ be an orthonormal basis with respect to the form $\langle \;,\;\rangle$ for $\C^n$, and let $\rho: \C^n \to \C^n$ be the change of basis taking the standard basis to $B$. Then 
+	\[
+	\langle \rho e_i,\rho e_j \rangle= \langle b_i,b_j\rangle = \begin{cases} 1, & i=j \\ 0, & i\neq j \end{cases}.
+	\]
+It follows from linearity that $\langle \rho e_i,\rho e_j \rangle= u^*v$. Then for any $g \in G$, we claim that $\rho^{-1}g \rho \in U(n)$. It is sufficient to show that $\rho^{-1}g\rho$ preserves the usual Hermitian inner product. We have
+	\[
+	u^*v= \langle \rho u, \rho v \rangle= \langle g\rho u, g\rho v \rangle = (\rho^{-1}g\rho u)^* (\rho^{-1}h\rho v),
+	\]
+since $\rho^{-1}$ is the opposite change of basis. Therefore, $\rho^{-1} G \rho \subseteq U(n)$. As conjugation preserves the dot product, if $G \subseteq \SL_n(\C)$, then $\rho^{-1}G\rho \subseteq \SU(n)$. \qed \\
+
+
+In order to classify the finite subgroups of $\SL_2(\C)$, we need to understand $\SU(2)$. We know
+	\[
+	\begin{split}
+	\SU(2)= \left\{ A = \two{\alpha}{\beta}{\gamma}{\delta} \;\bigg|\; A^*=A^{-1}, \det A=1 \right\}= \left\{ \two{\alpha}{-\beta}{\ov{\beta}}{\ov{\alpha}} \;\bigg|\; \alpha,\beta \in \C, |\alpha|^2+|\beta|^2=1 \right\}.
+	\end{split}
+	\]
+To relate $\SO(3)$ and $\SU(2)$, we define a map $\pi: \SU(2) \to \SO(3)$. The group $\SO(3)$ is the group of symmetries of the unit sphere $S^2$. We define an action of $\SU(2)$ on $S^2$ by rotations. Since $\SU(2)$ acts naturally on $\C^2$, i.e. $2\times 2$ matrices, hence on $\bP^1_\C=\C^2/\sim$ (since the determinant is 1). 
+
+% Stereographic projection picture
+	\[
+	\begin{tikzpicture}
+	
+	\end{tikzpicture}
+	\]
+
+Topologically, $\P^1_\C$ is a real 2-sphere. But this gives a natural map $\pi: \SU(2) \to \SO(3)$, which one routinely verifies is a group homomorphism, and $-I_2$ acts trivially. In fact, one can verify that $\ker \pi= \{\pm I_2\}$. Therefore, $\pi$ is a two-to-one cover of $\SO(3)$. 
+
+
+\begin{lem}
+The only element of order 2 in $\SU(2)$ is $-I_2$.
+\end{lem}
+
+\pfsk Use the explicit form of the elements of $\SU(2)$. \qed \\
+
+
+\begin{thm}
+A finite subgroup of $\SU(2)$ is either cyclic of odd order or a double cover of a finite subgroup of $\SO(3)$. 
+\end{thm}
+
+\pf Let $\Gamma \subseteq \SU(2)$ be a finite subgroup. If $\Gamma$ has odd order, then by Lagrange's Theorem $\Gamma$ has no elements of order 2. Then $\Gamma \cap \ker \pi= \{I_2\}$ so that $\pi\big|_\Gamma: \Gamma \to \SO(3)$ maps $\Gamma$ bijectively to a finite subgroup of $\SO(3)$. The only such of odd order are the cyclic groups. If $\Gamma$ has even order, then by Cauchy's Theorem $\Gamma$ contains an element of order 2. Then $\ker \pi \subseteq \Gamma$ so that $\pi\big|_\Gamma$ is a two-to-one homomorphism onto a finite subgroup of $\SO(3)$. \qed \\
+
+
+\begin{thm}
+The finite subgroups of $\SL_2(\C)$, up to conjugacy, are
+	\[
+	\begin{split}
+	\C_n=\left\langle \two{\omega}{0}{0}{\omega^{-1}} \right\rangle,
+	B\cD_n:= \left\langle \C_{2n}, \two{0}{i}{i}{0} \right\rangle \\
+	B\cT:= \left\langle B\cD_2, \dfrac{1}{\sqrt{2}} \two{\omega_8}{\omega_8^3}{\omega_8}{\omega_8^7} \right\rangle \\
+	B\cO&= \left\langle B\cT, \two{\omega_8^3}{0}{0}{\omega_8^5} \right\rangle \\
+	B\cI= \left\langle ????\right\rangle
+	\end{split}
+	\]
+where $\omega$ is a primitive $n$\tss{th} root of unity. The group $B\cD_n$ is the binary dihedral group of order $4n$, $B\cT$ is the binary tetrahedral group of order 24, $B\cO$ the binary octahedral group of order 48, and $B\cI$ the binary icosahedral group of order 120. 
+\end{thm}
+
+
+The explicit generators come from the quaternionic description of $\pi$. There is also a classification of finite subgroups of $\GL_2(\C)$, coming from the extension of groups
+	\[
+	1 \ma{} \SL_2(\C) \ma{} \GL_2(\C) \ma{\det} \C^\times \ma{} 1.
+	\]
+So any $G \subseteq \GL_2(\C)$ is an extension of $G \cap \SL_2(\C)$ by a finite subgroup of $\C^\times$---which are cyclic. Though it takes a certain amount of work, one can classify the finite subgroups of $\SL_3(\C)$ using $A \in \SL_3(\C)$
+	\[
+	A \in \SL_3(\C) \rightsquigarrow \left( \begin{tabular}{c|ccc} $\det B^{-1}$ & & \\ \hline & & \\ & $B$ & \\ & & \end{tabular} \right), B \in \GL_2(\C).
+	\]
 
 
 
