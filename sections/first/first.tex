@@ -53,8 +53,8 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \draw (V4) -- (V2);
         \draw (V1) -- (V3);
         \draw[dashed] (V1) -- (V4);
-        \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V3); %r
-        \draw[fill=cof,opacity=0.6] (V2) -- (V3) -- (V4); %l
+        \draw[fill=drk,opacity=0.6] (V1) -- (V2) -- (V3); %r
+        \draw[fill=lght,opacity=0.6] (V2) -- (V3) -- (V4); %l
         \end{tikzpicture} \quad
 	%
         \begin{tikzpicture}[thick,scale=1.25]
@@ -68,9 +68,9 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \coordinate (V7) at (-1,-1,1);
         \coordinate (V8) at (-1,-1,-1);
         
-        \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V4) -- (V3) -- (V1);
-        \draw[fill=cof,opacity=0.6] (V1) -- (V5) -- (V7) -- (V3) -- (V1);
-        \draw[fill=greeo,opacity=0.6] (V1) -- (V5) -- (V6) -- (V2) -- (V1);
+        \draw[fill=drk,opacity=0.6] (V1) -- (V2) -- (V4) -- (V3) -- (V1);
+        \draw[fill=lght,opacity=0.6] (V1) -- (V5) -- (V7) -- (V3) -- (V1);
+        \draw[fill=med,opacity=0.6] (V1) -- (V5) -- (V6) -- (V2) -- (V1);
         \draw[dashed] (V4) -- (V8);
         \draw[dashed] (V6) -- (V8);
         \draw[dashed] (V7) -- (V8);
@@ -89,10 +89,10 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \draw[dashed] (V2) -- (V6);
         \draw[dashed] (V3) -- (V6);
         \draw[dashed] (V4) -- (V6);
-        \draw[fill=pur,opacity=0.6]  (V2) -- (V3) -- (V5) -- (V2);
-        \draw[fill=greeo,opacity=0.6]  (V2) -- (V4) -- (V5) -- (V2);
+        \draw[fill=drk,opacity=0.6]  (V2) -- (V3) -- (V5) -- (V2);
+        \draw[fill=med,opacity=0.6]  (V2) -- (V4) -- (V5) -- (V2);
         \draw[fill=greet,opacity=0.6]  (V1) -- (V3) -- (V5) -- (V1);
-        \draw[fill=cof,opacity=0.6]  (V1) -- (V4) -- (V5) -- (V1);
+        \draw[fill=lght,opacity=0.6]  (V1) -- (V4) -- (V5) -- (V1);
         \end{tikzpicture} 
         \]
 
@@ -126,12 +126,12 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \draw[dashed] (V9) -- (V5) -- (V15) -- (V13) -- (V1) -- (V9);
         \draw[dashed] (V6) -- (V10) -- (V2) -- (V13) -- (V15) -- (V6);
         \draw[dashed] (V13) -- (V2) -- (V18) -- (V17) -- (V1) -- (V13);
-        \draw[fill=greeo,opacity=0.6] (V7) -- (V16) -- (V8) -- (V20) -- (V19) -- (V7);
-        \draw[fill=pur,opacity=0.6] (V11) -- (V3) -- (V14) -- (V16) -- (V7) -- (V11);
-        \draw[fill=greeo,opacity=0.6] (V14) -- (V4) -- (V12) -- (V8) -- (V16) -- (V14);
-        \draw[fill=cof,opacity=0.6] (V8) -- (V12) -- (V10) -- (V6) -- (V20) -- (V8);
-        \draw[fill=greeo,opacity=0.6] (V18) -- (V2) -- (V10) -- (V12) -- (V4) -- (V18);
-        \draw[fill=pur,opacity=0.6] (V17) -- (V18) -- (V4) -- (V14) -- (V3) -- (V17);
+        \draw[fill=med,opacity=0.6] (V7) -- (V16) -- (V8) -- (V20) -- (V19) -- (V7);
+        \draw[fill=drk,opacity=0.6] (V11) -- (V3) -- (V14) -- (V16) -- (V7) -- (V11);
+        \draw[fill=med,opacity=0.6] (V14) -- (V4) -- (V12) -- (V8) -- (V16) -- (V14);
+        \draw[fill=lght,opacity=0.6] (V8) -- (V12) -- (V10) -- (V6) -- (V20) -- (V8);
+        \draw[fill=med,opacity=0.6] (V18) -- (V2) -- (V10) -- (V12) -- (V4) -- (V18);
+        \draw[fill=drk,opacity=0.6] (V17) -- (V18) -- (V4) -- (V14) -- (V3) -- (V17);
         \end{tikzpicture} \hspace{2cm}
         %
         \begin{tikzpicture}[thick]
@@ -159,16 +159,16 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
         \draw[dashed] (V3) -- (V6) -- (V2) -- (V3);
         \draw[dashed] (V2) -- (V6) -- (V7) -- (V2);
         \draw[dashed] (V2) -- (V7) -- (V4) -- (V2);
-	\draw[fill=cof,opacity=0.6] (V5) -- (V11) -- (V9) -- (V5);
-        \draw[fill=cof,opacity=0.6] (V12) -- (V9) -- (V11) -- (V12);
-        \draw[fill=cof,opacity=0.6] (V12) -- (V6) -- (V9) -- (V12);
-	\draw[fill=greeo,opacity=0.6] (V8) -- (V11) -- (V5) -- (V8);
-        \draw[fill=greeo,opacity=0.6] (V8) -- (V10) -- (V11) -- (V8);
-        \draw[fill=greeo,opacity=0.6] (V12) -- (V11) -- (V10) -- (V12);
-        \draw[fill=greeo,opacity=0.6] (V12) -- (V7) -- (V6) -- (V12);
-        \draw[fill=greeo,opacity=0.6] (V12) -- (V10) -- (V7) -- (V12);
-        \draw[fill=pur,opacity=0.6] (V4) -- (V7) -- (V10) -- (V4);
-        \draw[fill=pur,opacity=0.6] (V4) -- (V10) -- (V8) -- (V4);
+	\draw[fill=lght,opacity=0.6] (V5) -- (V11) -- (V9) -- (V5);
+        \draw[fill=lght,opacity=0.6] (V12) -- (V9) -- (V11) -- (V12);
+        \draw[fill=lght,opacity=0.6] (V12) -- (V6) -- (V9) -- (V12);
+	\draw[fill=med,opacity=0.6] (V8) -- (V11) -- (V5) -- (V8);
+        \draw[fill=med,opacity=0.6] (V8) -- (V10) -- (V11) -- (V8);
+        \draw[fill=med,opacity=0.6] (V12) -- (V11) -- (V10) -- (V12);
+        \draw[fill=med,opacity=0.6] (V12) -- (V7) -- (V6) -- (V12);
+        \draw[fill=med,opacity=0.6] (V12) -- (V10) -- (V7) -- (V12);
+        \draw[fill=drk,opacity=0.6] (V4) -- (V7) -- (V10) -- (V4);
+        \draw[fill=drk,opacity=0.6] (V4) -- (V10) -- (V8) -- (V4);
         \end{tikzpicture}
         \]
 
