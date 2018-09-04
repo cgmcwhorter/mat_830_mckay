@@ -4,17 +4,16 @@
 
 
 % Disclaimer and pronunciation of \mc
-The \mc Correspondence is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. 
+The \mc Correspondence is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. \\
 
-
-The organizational scheme for the \mc Correspondence is the Coxeter-Dynkin diagrams. \\
         \begin{nscenter}
         \begin{minipage}{0.8\textwidth}
         {\itshape ``The problem is to find a common origin of the A-D-E Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification.} \\
         \phantom{x}\hspace{1cm} -- V.I.~Arnold ,1976 \\
         \end{minipage}
         \end{nscenter}
-The Coxeter-Dynkin ADE diagrams classify objects in each of the areas above, plus subadditive functions, root systems, Weyl groups, String Theory, Cluster Algebras, etc.. An example theorem from October demonstrating the \mc Correspondence is the following
+
+The organizational scheme for the \mc Correspondence is the Coxeter-Dynkin diagrams. The Coxeter-Dynkin ADE diagrams classify objects in each of the areas above, plus subadditive functions, root systems, Weyl groups, String Theory, Cluster Algebras, etc.. An example theorem demonstrating the \mc Correspondence is the following, due to \mc, Auslander, Reiten, Artin, Verdier, Gonzalzez-Springber, Herzog, et al.,
 
 
 \begin{thm}
@@ -41,32 +40,11 @@ These correspondences extend to isomorphisms between
 % Platonic Solids
 \section{Platonic Solids and Finite Groups of Matrices}
 
-% Insert platonic solids Tikz
-%\[
-%\begin{tikzpicture}[thick,scale=7]
-%\coordinate (A1) at (0,0);
-%\coordinate (A2) at (0.6,0.2);
-%\coordinate (A3) at (1,0);
-%\coordinate (A4) at (0.4,-0.2);
-%\coordinate (B1) at (0.5,0.5);
-%\coordinate (B2) at (0.5,-0.5);
-%
-%\begin{scope}[thick,dashed,,opacity=0.6]
-%\draw (A1) -- (A2) -- (A3);
-%\draw (B1) -- (A2) -- (B2);
-%\end{scope}
-%\draw[fill=cof,opacity=0.6] (A1) -- (A4) -- (B1);
-%\draw[fill=pur,opacity=0.6] (A1) -- (A4) -- (B2);
-%\draw[fill=greeo,opacity=0.6] (A3) -- (A4) -- (B1);
-%\draw[fill=greet,opacity=0.6] (A3) -- (A4) -- (B2);
-%\draw (B1) -- (A1) -- (B2) -- (A3) --cycle;
-%\end{tikzpicture}
-%\]
 
-
-% Tetrahedron
+A Platonic solid is a regular, convex polyhedron, constructed by congruent regular polygonal faces with the same number of faces meeting at each vertex; that is, the platonic solids are defined by the property that the faces are each convex and pairwise congruent. The five solids shown below are the only five solids satisfying these properties.
         \[
         \begin{tikzpicture}[thick,scale=2]
+        \node at (0,-1,0) {Tetrahedron};
         \coordinate (V1) at (1.20821,-0.196544,0.0400412);
         \coordinate (V2) at (-0.557836,-0.981811,-0.474199);
         \coordinate (V3) at (-0.231484,0.978507,-0.699241);
@@ -74,15 +52,13 @@ These correspondences extend to isomorphisms between
         
         \draw (V4) -- (V2);
         \draw (V1) -- (V3);
-        
         \draw[dashed] (V1) -- (V4);
-        
         \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V3); %r
         \draw[fill=cof,opacity=0.6] (V2) -- (V3) -- (V4); %l
-        
-        \end{tikzpicture} \;
-% Cube (Hexahedron)
+        \end{tikzpicture} \quad
+	%
         \begin{tikzpicture}[thick,scale=1.25]
+	\node at (-0.2,-1.6,0) {Cube};
         \coordinate (V1) at (1,1,1);
         \coordinate (V2) at (1,1,-1);
         \coordinate (V3) at (1,-1,1);
@@ -95,13 +71,13 @@ These correspondences extend to isomorphisms between
         \draw[fill=pur,opacity=0.6] (V1) -- (V2) -- (V4) -- (V3) -- (V1);
         \draw[fill=cof,opacity=0.6] (V1) -- (V5) -- (V7) -- (V3) -- (V1);
         \draw[fill=greeo,opacity=0.6] (V1) -- (V5) -- (V6) -- (V2) -- (V1);
-        
         \draw[dashed] (V4) -- (V8);
         \draw[dashed] (V6) -- (V8);
         \draw[dashed] (V7) -- (V8);
-        \end{tikzpicture} \;
-% Octahedron
+        \end{tikzpicture} \quad
+	%
         \begin{tikzpicture}[thick,scale=2]
+        \node at (0,-1.1,0) {Octahedron};
         \coordinate (V1) at (1,0,0);
         \coordinate (V2) at (-1,0,0);
         \coordinate (V3) at (0,1,0);
@@ -113,138 +89,99 @@ These correspondences extend to isomorphisms between
         \draw[dashed] (V2) -- (V6);
         \draw[dashed] (V3) -- (V6);
         \draw[dashed] (V4) -- (V6);
-        
         \draw[fill=pur,opacity=0.6]  (V2) -- (V3) -- (V5) -- (V2);
         \draw[fill=greeo,opacity=0.6]  (V2) -- (V4) -- (V5) -- (V2);
         \draw[fill=greet,opacity=0.6]  (V1) -- (V3) -- (V5) -- (V1);
         \draw[fill=cof,opacity=0.6]  (V1) -- (V4) -- (V5) -- (V1);
-     
-        \end{tikzpicture}
+        \end{tikzpicture} 
         \]
 
-
-
-
-% Dodecahedron
-\[
-\begin{tikzpicture}[thick]
-\coordinate (V1) at (-0.75203,0.823405,1.32531);
-\coordinate (V2) at (0.354768,0.295358,-1.6694);
-\coordinate (V3) at (-0.354768,-0.295358,1.6694);
-\coordinate (V4) at (0.75203,-0.823405,-1.32531);
-\coordinate (V5) at (1.21738,0.73614,0.987963);
-\coordinate (V6) at (1.64014,0.534445,-0.155907);
-\coordinate (V7) at (-1.64014,-0.534445,0.155907);
-\coordinate (V8) at (-1.21738,-0.73614,-0.987963);
-\coordinate (V9) at (0.0257094,1.70714,-0.291514);
-\coordinate (V10) at (1.06576,-1.22183,0.609329);
-\coordinate (V11) at (-1.06576,1.22183,-0.609329);
-\coordinate (V12) at (-0.0257094,-1.70714,0.291514);
-\coordinate (V13) at (0.219608,1.46091,0.90416);
-\coordinate (V14) at (0.903649,1.13456,-0.946673);
-\coordinate (V15) at (0.862396,-0.349294,1.46091);
-\coordinate (V16) at (1.54644,-0.675646,-0.38992);
-\coordinate (V17) at (-1.54644,0.675646,0.38992);
-\coordinate (V18) at (-0.862396,0.349294,-1.46091);
-\coordinate (V19) at (-0.903649,-1.13456,0.946673);
-\coordinate (V20) at (-0.219608,-1.46091,-0.90416);
-
-\end{tikzpicture}
-\]
-
-% v1: 3,17,13
-% v2: 4, 18, 14
-% v3: 1, 19, 15
-% v4: 2, 20, 16
-% v5: 6, 15, 13
-% v6: 5, 16, 14
-% v7: 8, 19,17
-% v8: 7, 20,18
-% v9: 11, 14, 13
-% v10: 12, 16, 15
-% v11: 9,18,17
-% v12: 10,20,19
-% v13: 9,5,1
-% v14: 9,6,2
-% v15: 10,5,3
-% v16: 10,6,4
-% v17: 11,7,1
-% v18: 11,8,2
-% v19: 12,7,3
-% v20: 12,8,4
-
-
-
-
-% Icosahedron
-%\[
-%\begin{tikzpicture}[thick]
-%\coordinate (V1) at (-0.862045,1.62766,0.474995);
-%
-%\coordinate (V2) at (-0.178005,1.30131,-1.37584);
-%
-%\coordinate (V3) at (0.178005,-1.30131,1.37584);
-%
-%\coordinate (V4) at (0.862045,-1.62766,-0.474995);
-%
-%\coordinate (V5) at (0.329623,0.656657,1.75447);
-%
-%\coordinate (V6) at (1.43642,0.12861,-1.24023);
-%
-%\coordinate (V7) at (-1.43642,-0.12861,1.24023);
-%
-%\coordinate (V8) at (-0.329623,-0.656657,-1.75447);
-%
-%\coordinate (V9) at (1.10736,1.5404,0.137651);
-%
-%\coordinate (V10) at (1.75015,-0.269811,0.694404);
-%
-%\coordinate (V11) at (-1.75015,0.269811,-0.694404);
-%
-%\coordinate (V12) at (-1.10736,-1.5404,-0.137651);
-%
-%
-%%\draw (V1) -- (V11) -- (V7) -- (V1);
-%%\draw (V1) -- (V9) -- (V5) -- (V1);
-%%\draw (V1) -- (V7) -- (V5) -- (V1);
-%
-%\draw (V6) -- (V8) -- (V2) -- (V6);
-%\draw (V6) -- (V8) -- (V4) -- (V6);
-%\draw (V6) -- (V4) -- (V10) -- (V6);
-%\draw (V6) -- (V10) -- (V9) -- (V6);
-%\draw (V6) -- (V9) -- (V2) -- (V6);
-%\draw (V8) -- (V4) -- (V3) -- (V8);
-%\draw (V8) -- (V12) -- (V11) -- (V8);
-%\end{tikzpicture}
-%\]
-
-%v1: 11,9,7,5,2
-% v2: 11,9,8,6,1
-% v3: 12,10,7,5,4
-% v4: 12,10,8,6,3
-% v5: 10,9,3,1,7
-% v6: 10,9,4,2,8
-% v7: 12,11,3,1,5
-% v8: 12,11,4,2,6
-% v9: 6,5,2,1,10
-% v10: 6,5,4,3,9
-% v11: 8,7,2,1,12
-% v12: 8,7,4,3,11
-
-
-
-Platonic solids are defined by the property that the faces are each convex and pairwise congruent. These five solids above are the only possible five solids satisfying these properties. 
+        \[
+        \begin{tikzpicture}[thick]
+        \node at (0,-2.2,-0.1) {Dodecahedron};
+        \coordinate (V1) at (0.826987,-0.308601,1.49025);
+        \coordinate (V2) at (1.45166,0.942872,0.0607083);
+        \coordinate (V3) at (0.399592,-1.6823,0.100911);
+        \coordinate (V4) at (1.02426,-0.43083,-1.32864);
+        \coordinate (V5) at (-1.02426,0.43083,1.32864);
+        \coordinate (V6) at (-0.399592,1.6823,-0.100911);
+        \coordinate (V7) at (-1.45166,-0.942872,-0.0607083);
+        \coordinate (V8) at (-0.826987,0.308601,-1.49025);
+        \coordinate (V9) at (-0.373296,-0.587966,1.58586);
+        \coordinate (V10) at (0.637441,1.43696,-0.727196);
+        \coordinate (V11) at (-0.637441,-1.43696,0.727196);
+        \coordinate (V12) at (0.373296,0.587966,-1.58586);
+        \coordinate (V13) at (0.917837,0.882852,1.17395);
+        \coordinate (V14) at (0.226298,-1.33984,-1.07406);
+        \coordinate (V15) at (-0.226298,1.33984,1.07406);
+        \coordinate (V16) at (-0.917837,-0.882852,-1.17395);
+        \coordinate (V17) at (1.30466,-0.984938,0.572506);
+        \coordinate (V18) at (1.69073,-0.211486,-0.311002);
+        \coordinate (V19) at (-1.69073,0.211486,0.311002);
+        \coordinate (V20) at (-1.30466,0.984938,-0.572506);
+        
+        \draw[dashed] (V5) -- (V19) -- (V20) -- (V6) -- (V15) -- (V5);
+        \draw[dashed] (V5) -- (V9) -- (V11) -- (V7) -- (V19) -- (V5);
+        \draw[dashed] (V9) -- (V1) -- (V17) -- (V3) -- (V11) -- (V9);
+        \draw[dashed] (V9) -- (V5) -- (V15) -- (V13) -- (V1) -- (V9);
+        \draw[dashed] (V6) -- (V10) -- (V2) -- (V13) -- (V15) -- (V6);
+        \draw[dashed] (V13) -- (V2) -- (V18) -- (V17) -- (V1) -- (V13);
+        \draw[fill=greeo,opacity=0.6] (V7) -- (V16) -- (V8) -- (V20) -- (V19) -- (V7);
+        \draw[fill=pur,opacity=0.6] (V11) -- (V3) -- (V14) -- (V16) -- (V7) -- (V11);
+        \draw[fill=greeo,opacity=0.6] (V14) -- (V4) -- (V12) -- (V8) -- (V16) -- (V14);
+        \draw[fill=cof,opacity=0.6] (V8) -- (V12) -- (V10) -- (V6) -- (V20) -- (V8);
+        \draw[fill=greeo,opacity=0.6] (V18) -- (V2) -- (V10) -- (V12) -- (V4) -- (V18);
+        \draw[fill=pur,opacity=0.6] (V17) -- (V18) -- (V4) -- (V14) -- (V3) -- (V17);
+        \end{tikzpicture} \hspace{2cm}
+        %
+        \begin{tikzpicture}[thick]
+        \node at (0,-2.4,-0.4) {Icosahedron};
+        \coordinate (V1) at (1.59927,0.159038,1.01734);
+        \coordinate (V2) at (-0.160427,-0.239969,1.88005);
+        \coordinate (V3) at (0.173071,1.55995,1.07449);
+        \coordinate (V4) at (0.7162,-1.60997,0.716232);
+        \coordinate (V5) at (1.25575,1.30237,-0.587225);
+        \coordinate (V6) at (-1.59143,0.656782,0.808647);
+        \coordinate (V7) at (-1.25575,-1.30237,0.587225);
+        \coordinate (V8) at (1.59143,-0.656782,-0.808647);
+        \coordinate (V9) at (-0.7162,1.60997,-0.716232);
+        \coordinate (V10) at (-0.173071,-1.55995,-1.07449);
+        \coordinate (V11) at (0.160427,0.239969,-1.88005);
+        \coordinate (V12) at (-1.59927,-0.159038,-1.01734);
+        
+        \draw[dashed] (V1) -- (V2) -- (V4) -- (V1);
+        \draw[dashed] (V1) -- (V3) -- (V2) -- (V1);
+        \draw[dashed] (V1) -- (V4) -- (V8) -- (V1);
+        \draw[dashed] (V1) -- (V8) -- (V5) -- (V1);
+        \draw[dashed] (V1) -- (V5) -- (V3) -- (V1);
+        \draw[dashed] (V5) -- (V9) -- (V3) -- (V5);
+        \draw[dashed] (V3) -- (V9) -- (V6) -- (V3);
+        \draw[dashed] (V3) -- (V6) -- (V2) -- (V3);
+        \draw[dashed] (V2) -- (V6) -- (V7) -- (V2);
+        \draw[dashed] (V2) -- (V7) -- (V4) -- (V2);
+	\draw[fill=cof,opacity=0.6] (V5) -- (V11) -- (V9) -- (V5);
+        \draw[fill=cof,opacity=0.6] (V12) -- (V9) -- (V11) -- (V12);
+        \draw[fill=cof,opacity=0.6] (V12) -- (V6) -- (V9) -- (V12);
+	\draw[fill=greeo,opacity=0.6] (V8) -- (V11) -- (V5) -- (V8);
+        \draw[fill=greeo,opacity=0.6] (V8) -- (V10) -- (V11) -- (V8);
+        \draw[fill=greeo,opacity=0.6] (V12) -- (V11) -- (V10) -- (V12);
+        \draw[fill=greeo,opacity=0.6] (V12) -- (V7) -- (V6) -- (V12);
+        \draw[fill=greeo,opacity=0.6] (V12) -- (V10) -- (V7) -- (V12);
+        \draw[fill=pur,opacity=0.6] (V4) -- (V7) -- (V10) -- (V4);
+        \draw[fill=pur,opacity=0.6] (V4) -- (V10) -- (V8) -- (V4);
+        \end{tikzpicture}
+        \]
 
 
 \begin{prop}
 The solids above are the only possible Platonic solids.
 \end{prop}
 
-\pf Suppose a solid has faces with $p$ sides, and $q$ meet at each vertex. We write this as a pair $\{p,q\}$, called the Sch\"afli symbol. The external angles of each face add to $2\pi$ radians. The internal angles are then $\pi - \frac{2\pi}{p}$. So around each vertex, we have
+\pf Suppose a solid has faces with $p$ sides, and $q$ faces meet at each vertex. We write this as a pair $\{p,q\}$, called the Sch\"afli symbol. The external angles of each face add to $2\pi$ radians. The internal angles are then $\pi - \frac{2\pi}{p}$. So around each vertex, the sum of the angles is $q(\pi - \frac{2\pi}{p})$. This angle cannot be larger than $2\pi$ as the faces are concave if and only if $\dfrac{2}{p} + \dfrac{2}{q}>1$, and we require convex faces. Furthermore, this sum cannot be $2\pi$ for then the solid would be flat, i.e. a tiling of the plane. Therefore, we have the relation
 	\[
 	q \left( \pi - \dfrac{2\pi}{p}\right)< 2\pi.
 	\]
-If this were $2\pi$, the solid would be flat, i.e. a tiling of the plane. If the angle were $>2\pi$, the angle would be concave if and only if $\dfrac{2}{p} + \dfrac{2}{q}>1$. The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,5\}$. We can also use Euler's Formula $V-E+F=1$ to work out $V,E, F$. 
+The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,5\}$. Then Euler's Formula $V-E+F=1$ allows one to compute $V$, $E$, $F$, as found in the table.
 	\begin{table}[h]
 	\centering
 	\begin{tabular}{ccccc}
@@ -257,22 +194,24 @@ If this were $2\pi$, the solid would be flat, i.e. a tiling of the plane. If the
 	$\{3,5\}$ & icosahedron & 20 & 30 & 12 \\
 	$\{5,3\}$ & dodecahedron & 12 & 30 & 20
 	\end{tabular}
-	\end{table} \\
-% add column with picture
-% tetra self dual
-% Otherwise dual pairs draw arrows between rows
+	\end{table}
 \qed \\
+% Add column with image?
+% Otherwise dual pairs draw arrows between rows. Tetrahedron Self Dual
 
 
-Notice that the above proof is merely a `uniqueness proof' but does \emph{not} show existence of these solids. We shall prove existence by classifying their (rotational) symmetry groups. Observe that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
+Notice that the above proof is merely a `uniqueness proof' and does \emph{not} show the existence of these solids. We shall prove existence by classifying the rotational symmetry groups of these solids. Note that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
 	\begin{itemize}
-	\item the rotational symmetries of a dihedron of hosohedron is $D_{2k}$.	
-	\item tetrahedral group $\mathbf{T}$ of 12 rotational symmetries of a tetrahedron. 
-	\item the octahedral group, $\mathbb{O}$, has 24 rotational symmetries of the octahedron.
-	\item the icoahedral group $\mathcal{I}$ of 60 rotational symmetries of the icosahedron/dodecahedron
+	\item the rotational symmetries of a dihedron or hosohedron is $D_{2k}$.	
+	\item the tetrahedral group, $\mathbf{T}$ of the 12 rotational symmetries of a tetrahedron. 
+	\item the octahedral group, $\mathbb{O}$, of the 24 rotational symmetries of the octahedron.
+	\item the icoahedral/dodecahedral group, $\mathcal{I}$, of 60 the rotational symmetries of the icosahedron/dodecahedron
 	\end{itemize}
 
-Furthermore, these will all be familiar groups. % for tetrahedron $A_4$, c.f. Dummit Foote exercise.
+Furthermore, these will all be familiar groups. 
+
+
+% for tetrahedron $A_4$, c.f. Dummit Foote exercise.
 % Draw a cube point in center of each face. Connect them all to get interior octahedron O S_$ I A_5
 % Correct grammar of itemize above
 
