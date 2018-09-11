@@ -22,7 +22,12 @@ Recall the group algebra $\C[G]$ is the $\C$-vector space spanned by the element
 	\[
 	\C[G]= \left\{ \sum_{g \in G} \alpha_g g \;\bigg|\; \alpha_g \in \C \right\},
 	\]
-with addition given componentwise and multiplication given by $(\alpha\beta)(gh)$, extended by linearity. Suppose $M$ is a finitely generated $\C[G]$-module, then it is also a finitely generated $\C$-module, i.e. a $\C$-vector space. Therefore, $M \cong \C^n$, as vector spaces. Multiplication by group elements defines linear operators $(M \ma{\cdot g} M) \in \GL(M)\cong\GL_n(\C)$. Therefore, we obtain a map $\rho: G \to \GL_n(\C)$ given by $g \mapsto (M \ma{g} M)$, i.e. a representation. Conversely, a representation $V$ is equivalent to a $\C[G]$-module. 
+with addition given componentwise and multiplication given by $(\alpha\beta)(gh)$, extended by linearity. Suppose $M$ is a finitely generated $\C[G]$-module, then it is also a finitely generated $\C$-module, i.e. a $\C$-vector space. Therefore, $M \cong \C^n$, as vector spaces. Multiplication by group elements defines linear operators $(M \ma{\cdot g} M) \in \GL(M)\cong\GL_n(\C)$. Therefore, we obtain a map $\rho: G \to \GL_n(\C)$ given by $g \mapsto (M \ma{g} M)$, i.e. a representation. Conversely, a representation $V$ is equivalent to a $\C[G]$-module. Therefore, the following are equivalent
+	\begin{itemize}
+	\item a representation of a group $G$
+	\item a $\C[G]$-module
+	\item an action of $G$ on $\C^n$
+	\end{itemize}
 \end{rem}
 
 
@@ -58,11 +63,429 @@ Let $G=S_3$. What are the representations of $S_3$? There is always the trivial 
 	\[
 	(2\;3) \mapsto \three{1}{0}{0}{0}{1}{0}{0}{0}{1}.
 	\]
-This gives a homomorphism $S_3 \to \GL_3(\C)$, called the natural representation. This defines an action of $S_3$ on $\C^3$ by permutation of basis, i.e. $\sigma(\{z_1,z_2,z_3\})= \{z_{\sigma^{-1}(1)}, z_{\sigma^{-1}(2)}, z_{\sigma^{-1}(3)}\}$. Clearly, the trivial representation is both indecomposable and irreducible. The sign representation has dimension one, so it is both indecomposable and irreducible. The natural representation has stable subspaces, namely the one spanned by $(1,1,1)$, so that it cannot be indecomposable, i.e. the natural representation is decomposable. But then the natural representation is also reducible.
+This gives a homomorphism $S_3 \to \GL_3(\C)$, called the natural representation. This defines an action of $S_3$ on $\C^3$ by permutation of basis, i.e. $\sigma(\{z_1,z_2,z_3\})= \{z_{\sigma^{-1}(1)}, z_{\sigma^{-1}(2)}, z_{\sigma^{-1}(3)}\}$. 
+
+Clearly, the trivial representation is both indecomposable and irreducible. The sign representation has dimension one, so it is both indecomposable and irreducible. The natural representation has stable subspaces, namely the one spanned by $(1,1,1)$, so that it cannot be indecomposable, i.e. the natural representation is decomposable. But then the natural representation is also reducible. We can also create submodule/subrepresentations by `modding out.' For example, define $V=\{ (z_1,z_2,z_3) \in \C^3 \colon z_1+z_2+z_3=0\}$---the natural representation modulo the trivial representation, with the permutation action. This is called the standard representation. This space has dimension two and one can check the permutation representation is isomorphic to $1 \oplus V$. \xqed
 \end{ex}
 
 
-We can also create submodule/subrepresentations by `modding out.' For example, define $V=\{ (z_1,z_2,z_3) \in \C^3 \colon z_1+z_2+z_3=0\}$---the natural representation modulo the trivial representation, with the permutation action. This space has dimension two and one can check the natural representation is isomorphic to $1 \oplus V$. This is called the standard representation. 
+\begin{thm}[Maschke's Theorem]
+Every indecomposable representation over $\C$ of a finite group is irreducible. Therefore, a representation over $\C$ of a finite group is indecomposable if and only if it is irreducible.
+\end{thm}
+
+\pf Suppose that $V$ is a representation of $G$ and $W \subseteq V$ is a subrepresentation, i.e. a $G$-stable subspace. Fix a linear projection $\pi: V \twoheadrightarrow W$, and $G$-linearize it:
+	\[
+	\widetilde{\pi}(v) = \dfrac{1}{|G|} \sum_{g \in G} (g\pi g^{-1})(v).
+	\]
+Now notice we have
+	\[
+	\begin{split}
+	h\widetilde{\pi}(v)&= \dfrac{1}{|G|}h \sum_g (g\pi g^{-1})(v) \\
+	&= \dfrac{1}{|G|} \sum_g hg\pi g^{-1}h^{-1}hv \\
+	&= \dfrac{1}{|G|} \sum_{hg} (hg)\pi(hg^{-1})(hv) \\
+	&= \widetilde{\pi}(hv).
+	\end{split}
+	\]
+Therefore, $h\widetilde{\pi}(v)=\widetilde{\pi}(hv)$ so $\widetilde{\pi}$ is $G$-linear. It is routine to verify that $\widetilde{\pi}$ fixes $W$, and we know $\widetilde{\pi}$ projects $V$ onto $W$. Hence, $V \cong W \oplus \ker \widetilde{\pi}$. But then $V$ is reducible. \qed \\
+
+
+\begin{rem}
+This works over any field with $|G| \neq 0$. Another way to say this is that the group algebra $\C[G]$ is semisimple, i.e. short exact sequence of $\C[G]$-modules splits. 
+\end{rem}
+
+
+
+\subsection{Characters}
+
+\begin{dfn}[Character]
+Let $\rho?L G \to \GL_n(\C)$ be a representation of $G$. The character of $\rho$ is $\chi_\rho:= \text{tr}\circ \rho$, i.e. the composition
+%	\[
+%	\begin{tikzcd}
+%	G \arrow{r}{\rho} \arrow[bend=50ex]{rr}{\chi_p} & \GL_n(\C)  \arrow{r}{\text{tr}} & \C 
+%	\end{tikzcd}
+%	\]
+When the representation is apparent, we denote this simply as $\chi$.
+\end{dfn}
+
+
+Observe that $\chi_\rho$ is \emph{not} generally a homomorphism as the trace is not generally multiplicative, i.e. $\text{tr}(AB) \neq \text{tr}(A)\text{tr}(B)$. If $n=1$, then clearly $\chi_\rho$ is a homomorphism. Now while the trace map is not generally multiplicative, we do have that $\text{tr}(AB)=\text{tr}(BA)$. More generally, $\text{tr}(\cdot)$ is invariant under cyclic permutation of products. Therefore, $\chi_\rho$ is a \emph{class function}, i.e. $\chi_\rho$ is constant on conjugacy classes:
+	\[
+	\chi_\rho(g^{-1}hg)= \text{tr}(\rho(g^{-1}hg))=\text{tr}(\rho(g)^{-1}\rho(h)\rho(g))= \text{tr}(\rho(h))=\chi_\rho(h).
+	\]
+
+
+\begin{ex} %cf exercise
+Take $G=S_3=\{(1),(1\;2),(2\;3),(1\;3),(1\;2\;3),(1\;3\;2)\}$. The conjugacy classes of $S_n$ are classified by cycle type---corresponding to integer partitions of $n$. These are
+	\[
+	\{(1)\}, \{(1\;2),(2\;3),(1\;3)\}, \{(1\;2\;3),(1\;3\;2)\}.
+	\]
+We shall create a table for the characters of $S_n$. We only need one column per conjugacy class, and one row per representation. The trivial representation takes every $\sigma$ to the identity, so $\chi_{\text{triv}}(\sigma)=1$ for all $\sigma$. We know for the alternating representation that 
+	\[
+	a(\sigma)= 
+	\begin{cases}
+	1, & \sigma \text{ even} \\
+	-1, & \sigma \text{ odd}
+	\end{cases}
+	\]
+Therefore, $\chi_{\text{a}}$ is the same as $\chi_{\text{triv}}(\sigma)=1$. For the permutation representation, we have
+	\[
+	1 \mapsto \three{1}{}{}{}{1}{}{}{}{1} \quad (1\;2) \mapsto \three{}{1}{}{1}{}{}{}{}{1} \quad (1\;2\;3) \mapsto \three{}{}{1}{1}{}{}{}{1}{}
+	\]
+We knew also that the permutation representation was isomorphic to the standard representation summed with the trivial representation. Since the trace of a block matrix is the sum of the traces, we know that $\chi_{\text{perm}}= \chi_{\text{std}}+\chi_{\text{triv}}$. We can then subtract to find $\chi_{\text{std}}$, making its row on the table below redundant. 
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{c|rrr}
+	& $(1)$ & $(1\;2)$ & $(1\;2\;3)$ \\ \hline
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 \\
+	$\chi_{\text{a}}$ & 1 & $-1$ & 1 \\
+	$\chi_{\text{perm}}$ & 3 & 1 & 0 \\
+	$\chi_{\text{std}}$ & 2 & 0 & $-1$
+	\end{tabular}
+	\end{table}
+If we remove the redundant $\chi_{\text{perm}}$ row, we obtain the following table:
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{c|rrr}
+	& $(1)$ & $(1\;2)$ & $(1\;2\;3)$ \\ \hline
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 \\
+	$\chi_{\text{a}}$ & 1 & $-1$ & 1 \\
+	$\chi_{\text{perm}}$ & 3 & 1 & 0 \\
+	$\chi_{\text{std}}$ & 2 & 0 & $-1$
+	\end{tabular}
+	\end{table}
+We make the following observations:
+	\begin{enumerate}[1.]
+	\item The table is square, and the number of characters is the number of conjugacy classes.
+	\item The columns are orthogonal.
+	\item The rows are orthogonal if one weights each column by the number of elements in that class, e.g.
+		\[
+		\langle \chi_{\text{triv}}, \chi_{\text{std}} \rangle = 1(1 \cdot 2 ) + 3(1 \cdot 0) + 2(1\cdot -1)=0.
+		\]
+	\item The first column yields the dimension of $\rho$. In general, $\chi_p(1)=\text{tr}(\rho(1))= \text{tr}(I_n)=n$.
+	\item The sum of the squares of the 1\tss{st} column is $6=|S_3|$. 
+	\end{enumerate}
+
+
+\end{ex}
+
+
+
+
+
+
+\begin{prop}
+Let $G$ be a finite group, $\rho$ a finite dimensional representation of $G$ and $\chi$ its corresponding character. Then
+	\begin{enumerate}[(i)]
+	\item $\chi$ is a class function.
+	\item $\chi(1)=n$.
+	\item The characters of a direct sum of representations is the sum of the characters.
+	\item The character of a tensor product of representations is the product of the characters.	
+	\item $\chi(g^{-1})=\ov{\chi(g)}$
+	\item If $|g|=k$, then the eigenvalues of the matrix $\rho_g$ are powers of the $k$\tss{th} roots of unity, and $\chi(g)$ is a sum of such things.
+	\end{enumerate}
+\end{prop}
+
+
+%4
+Recall that if $V$ and $W$ are vector spaces with basis $\{e_1,\ldots,e_n\}$ and $\{f_1,\ldots,f_m\}$, respectively, then $V \otimes W$ is the vector space with basis $\{e_i \otimes f_j \}_{i=1,\ldots,n; j=1,\ldots,m}$ and scalar multiplication $\alpha(e_i \otimes f_j) = \alpha e_i \otimes f_j= e_i \otimes f_j$. If $V$ and $W$ carry actions of $G$, then so does $V \otimes W$ by $g(v\otimes w)= g(v) \otimes g(w)$. 
+%5 exercise
+%6 
+If $g^k=1$, then $(\rho_g)^k=I_n$ so the minimal polynomial of $\rho_g$ divides $x^k-1$. Therefore, its roots are roots of unity. The trace of a matrix is the sum of its eigenvalues.
+
+
+
+
+\subsection{Orthogonality Relations}
+
+
+Let $\cH$ denote the set of all class functions $G \to \C$. This contains the characters of $G$. Define a Hermitian inner product on $\cH$
+	\[
+	\langle \phi, \psi \rangle:= \dfrac{1}{|G} \sum_{g \in G} \ov{\phi(g)} \psi(g).
+	\]
+%Compare this with the weighted dot product for $S_3$.
+
+
+
+\begin{thm}
+The irreducible characters, i..e the characters of irreducible representations, are an orthonormal basis for $\cH$ with respect to this inner product. In particular,
+	\[
+	\langle \chi_\rho, \chi_{\rho'} \rangle =
+	\begin{cases}
+	1, & \rho \cong \rho' \\
+	0, & \rho \neq \rho'
+	\end{cases}
+	\]
+\end{thm}
+
+\pf The proof will proceed in eight steps.
+	\begin{enumerate}[(i)]
+	\item For any representation $V$, the fixed subspace $V^G:=\{v \in V \colon gv=v \text{ for all }g \in G\}$ is a subrepresentation of $V$. There is a natural projection
+		\[
+		\begin{tikzcd}
+		\pi: V \arrow{r} & V^G \subseteq V \\
+		v \arrow[mapsto]{r} & \displaystyle\dfrac{1}{|G|} \sum_{g \in G} gv.
+		\end{tikzcd}
+		\]
+	\item Compute the trace of $\pi$. First, extend a basis for $V^G$ to a basis for $V$. Then
+%		\[
+%		[\pi] = \begin{pmatrix} 1 diagon then 0 then 0s
+%		\]
+		and so $\text{tr}(\pi)= \dim V^G$. Now the trace of a sum is the sum of the traces, so 
+			\[
+			\text{tr}(\pi)= \text{tr}\left( \dfrac{1}{|G|} \sum_{g \in G} g(\cdot) \right) = \dfrac{1}{|G|} \sum_{g \in G} \text{tr}(\rho_g)= \dfrac{1}{|G|} \sum_{g \in G} \chi_\rho(g).
+			\]
+		In other words, $\dim V^G$ is the average value of $\chi_\rho$. 
+	
+	\item For representations $V$ and $W$, we have
+		\[
+		\begin{tikzcd}
+		\Hom_\C(V,W)=\{\text{linear maps }V \to W\} \\ %supset
+		\Hom_G(V,W) = \left\{ G\text{-linear maps, i.e. }gf(v)=f(gv)\right\}
+		\end{tikzcd}
+		\] 
+	Now $\dim \Hom_\C(V,W)= \dim V \cdot \dim W$. However, what is $\dim \Hom_G(V,W)$? 
+	
+	
+	\item We know that $\Hom_\C(V,W)$ is again a representation of $G$: for $g \in G$, $f: V \to W$ a linear map, define $(gf)(v):= g(f(g^{-1}v))$. %has to satisfy (hg)(f)= h(g(f)) and taking h=g^{-1}, the formula follows.
+	
+	\item Now $\Hom_\C(V,W)^G= \{ f \in \Hom_\C(V,W) \colon gf=f \text{ for all }g \in G\}$. That is, $\{ f \colon (gf)(v)=f(v) \text{ for all }g \in G, v \in V\}$. which is $\{f \colon g(f(g^{-1}(v)))=f(v) \text{ for all }g,v\}$, rearranging is $f(g^{-1}(v))= g^{-1}(f(v))$ for all $g$, which is $\Hom_G(V,W)$. 
+	\end{enumerate}
+So if $V$ and $W$ are irreducible, 
+	\[
+	\dim \Hom_G(V,W)= 
+	\begin{cases}
+	1, & V \cong W \\
+	0, & V \not\cong W
+	\end{cases}
+	\]
+and on the other hand, $\dim \Hom_G(V,W)= \dim(\Hom_\C(V,W)^G)$ by 5, which is $=\dim((V^* \otimes_\C W)^G)$, which is the average value of $\chi_{V^* \otimes W}$ which is the average value of $\ov{\chi_V} \chi_W$ which is $\langle \chi_V, \chi_W \rangle$. 
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+% PP or list?
+
+
+Consequently, the characters determine the representations; that is, $\rho \cong \rho'$ if and only if $\chi_\rho = \chi_{\rho'}$. 
+
+
+The number of irreducible representations of $G$ is equal to the number of conjugacy classes. [Because $\cH$ has a basis given by the characteristic functions of the conjugacy classes.]
+
+
+A representation $\rho$ is irreducible if and only if $\langle \chi_\rho,\chi_\rho\rangle=1$. [For any $\rho$, Maschke's Theorem allows one to write $\rho \cong \rho_1^{a_1} \oplus \cdots \oplus \rho_r^{a_r}$, where the $\rho_i$ are distinct, irreducible, and $a_i$ is its multiplicity. But then $\chi_\rho= a_1\chi_{\rho_1} + \cdots + a_r \chi_{\rho_r}$. But then 
+	\[
+	\langle \chi_\rho, \chi_\rho \rangle = \sum_{i,j} a_i a_j \langle \chi_{\rho_i}, \chi_{\rho_j} \rangle= \sum_{i=1}^r a_i^2.
+	\]
+Therefore, $\rho=\rho_i$ must be irreducible. The other direction follows straight from the theorem.
+
+
+The multiplicity of an irreducible representation $\rho_i$ in a given representation is $\langle \chi_{\rho_i}, \chi_\rho \rangle$. % Using the same trick.
+
+
+% End list
+
+
+
+% 09/11/2018
+
+\begin{dfn}[Regular Representation]
+The regular representation of $G$ is a $\C$-vector space $\C[G]$. Equivalently, $\C[G]$, as a module over itself, or $G \to \GL(\C[G])$.
+\end{dfn}
+
+
+Recall $\C[G]$ has a basis $\{g \in G\}$. The action of $h \in G$ is given by $g \mapsto hg$, i.e. $h$ permutes basis elements. 
+
+
+\begin{prop}
+Every irreducible representation $V$ appears as a direct summand in the regular representation, with multiplicity equal to its dimension, i.e.
+	\[
+	\C[G] \cong \bigoplus_{i=1}^r V_i^{\dim V_i},
+	\]
+where $V_1,\ldots, V_r$ are the irreducible representations. In particular, 
+	\[
+	|G|= \sum_{i=1}^r (\dim V_i)^2= \sum_{i=1}^r (\chi_i(1))^2.
+	\]
+\end{prop}
+
+\pf L.T.R. \qed \\
+
+
+
+
+
+
+\begin{cor}
+$G$ is abelian if and only if every representation is 1-dimensional. 
+\end{cor}
+
+
+\pf $G$ is abelian if and only if every conjugacy class is a singleton if and only if there are $|G|$ classes if and only if there are $|G|$ irreducibles if and only if all the representations have dimension 1. \qed \\
+
+
+
+
+
+
+
+
+
+\begin{ex}
+\begin{enumerate}[(i)]
+\item $G=S_3$. We found three irreducible representations: $\chi_{\text{triv}}, \chi_{\text{akt}}, \chi_{\text{std}}$. Since $1^2+1^2+2^2=6=|S_3|$, this must be all the irreducible representations for $S_3$. 
+
+\item Let $G= C_n= \langle x \colon x^n=1\rangle$. Every irreducible is a map $G \to \C^\times$ completely determined by the image of $x$. Since the map is a morphism, $1 \mapsto 1$, which implies that the image of $x$ must be an $n$\tss{th} root of unity. But then we obtain
+	\[
+	\begin{split}
+	\rho_k: \; x &\mapsto \omega_n^j \\
+	x^r &\mapsto \omega_n^{j_r}
+	\end{split}
+	\]
+for $j=0,\ldots,n-1$, where $\rho_0$ is the trivial representation. Then we have character table
+	\[
+	\begin{tabular}{cccccc}
+	& $\{1\}$ & $\{x\}$ & $\{x^2\}$ & $\cdots$ & $\{x^{n-1}\}$ \\
+	$\rho_0$ & 1 &1 & $\cdots$ & 1 \\
+	$\rho_1$ & $\omega$ & $\omega^2$ & $\cdots$ & $\omega^{n-1}$ \\
+	$\rho_2$ & 1 & $\omega^2$ & $\omega^4$ & $\cdots$ & $\omega^{2(n-1)}$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ \\
+	$\rho_{n-1}$ & 1 & $\omega^{n-1}$ & $\omega^{2(n-1)}$ & $\cdots$ & $\omega^{(n-1)^2}$
+	\end{tabular}
+	\]
+
+\item Let $G= S_4$. We have cycle types $1,(1\;2),(1\;2\;3),(1\;2\;3\;4),(1\;2)(3\;4)$, with multiplicity, $1,6,2\binom{4}{3}=8$, $3!=6$, 3, respectively. 
+	\[
+	\begin{tabular}{cccccc}
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 & 1 &1 \\
+	$\chi_{\text{alt}}$ & 1 & $-1$ & 1 & $-1$ & 1 \\
+	$\chi_{\text{std}}$ & 3 & 1 & 0 & $-1$ & $-1$ \\
+	$\chi_{\text{perm}}$ & 4 & 2 & 1 & 0 & 0 \\
+	$\chi_{\text{std}} \otimes \chi_{\text{alt}}$ & 3 & $-1$ & 0 & 1 & $-1$ \\
+	$R$ & 2 & 0 & $-1$ & 0 & 2
+	\end{tabular}
+	\]
+Is the standard representation irreducible> We have $\langle \chi_{\text{std}}, \chi_{\text{std}} \rangle = \dfrac{1}{|G|} (1\cdot 3^2+6 \cdot 1^2 + 6 \cdot 0^2+6(-1)^2+3(-1)^3)= \dfrac{1}{24} \cdot 24=1$, so yes. Are we done? Well, we have $1^2+1^2+3^2=11<24$, so no. A sneaky trick is to tensor with the known representations. Tensoring with the trivial one does nothing so we proceed with the others. The tensor of the standard with the alternating representation is 3-dimensional and irreducible by the same calculation. So now $1^2+1^2+3^2+3^2=20$, missing 4. So missing one two dimensional or 4 1-dimensional. In either case, there is (at least one) 2-dimensional representation, say $R$. So the first row of the entry for $R$ must be 2. Call the other entries $a$, $b$, $c$, and $d$ respectively. Using the orthogonality relations, one finds a system of four equations and four unknowns only to find $a=c=0$, $b=-1$, $d=2$. Finally, $\langle \chi_R, \chi_R \rangle= \cdots = 1$, so $R$ is irreducible, as expected. This is then the complete character table. 
+
+\item $G=A_4 \subseteq S_4$. The Class Equation tells that the number of things in each conjugacy class must divide the order of the group. So unlike the situation in $S_4$, $(1\;2\;3)$ is not a conjugacy class (size 8, $|A_4|=12$). ?????????
+
+So $(1\;2\;3)\not\sim (1\;3\;2)$.
+
+So it must split into at least to conjugacy classes. These are 1, $(1\;2\;3)$, $(1\;3\;2)$, $(1\;2)(3\;4)$, of sizes 1, 4, 4, and 3, respectively.
+	\[
+	\begin{tabular}{ccccc}
+	& 1 & $(1\;2\;3)$ & $(1\;3\;2)$ & $(1\;2)(3\;4)$ \\
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 & 1 \\
+	$\chi_{\text{std}}$ & 3 & 0 & 0 & $-1$ \\
+	$R$ & 2 & $-1$ & $-1$ & 2 \\ % call R \chi_M
+	\end{tabular}
+	\]
+We always have the trivial representation. We can always restrict any representation of $S_4$ to $A_4$. Doing so with the alternating representation gives the trivial representation. The standard tensor alternating restricted to $A_4$ is the standard representation on $A_4$. Note one can restrict an irreducible representation and no longer be irreducible. We have $\langle \chi_{\text{std}},\chi_{\text{std}}\rangle =1$, $\langle R,R \rangle= \dfrac{1}{12}(1\cdot 2^2+4(-1)^2+4(-1)^2+3\cdot 2^2)=2$, not irreducible. So the restriction of $R$ to $A_4$ splits into two 1-dimensional representations. So we must split the $R$ row into two, say $U$ and $U'$.
+	\[
+	\begin{tabular}{ccccc}
+	& 1 & $(1\;2\;3)$ & $(1\;3\;2)$ & $(1\;2)(3\;4)$ \\
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 & 1 \\
+	$\chi_{\text{std}}$ & 3 & 0 & 0 & $-1$ \\
+	$U$ & 1 & a & b & c \\
+	$U'$ & 1 & $-1-a$ & $-1-b$ & $2-c$
+	\end{tabular}
+	\]
+Once we have $a,b,c$, we know that the rows of $U,U'$ add to the rows of $R$, hence the last row must be what is given above. Linear Algebra gives $a=\omega_3$, $b=\omega_3^2$, and $c=1$. Could we have seen that without Linear Algebra? If we have a quotient of $A_4$, where characters we know, we can restrict along the quotient map. Normal subgroup in $A_4$: $\{1,(1\;2)(3\;4), (1\;3)(2\;4), (1\;4)(2\;3)\}$. The quotient is, having order 3, $C_3$, which has two nontrivial irreducible representations. Let's say $C_3=\langle (1\;2\;3)\rangle$. Then these representations are $(1\;2\;3) \mapsto \omega_3$, $(1\;3\;2) \mapsto \omega_3^2$ and $(1\;2\;3) \mapsto \omega_3^2$, $(1\;3\;2) \mapsto \omega_3$. 
+	\[
+	\begin{tabular}{ccccc}
+	& 1 & $(1\;2\;3)$ & $(1\;3\;2)$ & $(1\;2)(3\;4)$ \\
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 & 1 \\
+	$\chi_{\text{std}}$ & 3 & 0 & 0 & $-1$ \\
+	$U$ & 1 & $\omega$ & $\omega^2$ & 1 \\
+	$U'$ & 1 & $\omega^2$ & $\omega$ & 1
+	\end{tabular}
+	\]
+
+\item Take $G=B\cT \subseteq \SL_2(\C)$, which has a 2-to-1 map $B\cT \to \cT$, where $\cT$ is the tetrahedral group of order 12. We know that $\cT \cong A_4$. Then we know that we can restrict the 4 irreducibles of $A_4$ to $B\cT$. Then the preimage of a conjugacy class in $\cT$ is either a single conjugacy class in $B\cT$ of twice the size, or 2 classes, each of the same size as the original. So to start, just lump the classes together. The classes are 1, $(1\;2\;3)$, $(1\;3\;2)$, $(1\;2)(3\;4)$, of sizes 2, 8, 8, 6.
+	\[
+	\begin{tabular}{ccccc}
+	$\chi_{\text{triv}}$ & 1 & 1 & 1 & 1 \\
+	$\chi_{\text{std}}$ & 3 & 0 & 0 & $-1$ \\
+	$U$ & 1 & $\omega$ & $\omega^2$ & 1 \\
+	$U'$ & 1 & $\omega^2$ & $\omega$ & 1 \\
+	$\rho \otimes U$ &
+	$\rho \otimes U'$ & 
+	\end{tabular}
+	\] %left column restriction of
+There is also the ``given rep'' $B\cT \hookrightarrow \GL_2(\C)$, which is two-dimensional. Also, $\rho \otimes U$, $\rho \otimes U'$, there are two more 2-dimensional. So we'll have different values in the $(1\;2\;3)$ column, $a$, $\omega a$, $\omega^2 a$ for some $a$. So they are pairwise nonisomorphic. Fact, $\rho$ is irreducible (we had explicit matrix generators for $B\cT$). So $\rho \otimes U$, $\rho \otimes U'$ are too. Then $1^2+3^2+1^2+1^2+2^2+2^2+2^2=24$, and that is all. There are then seven conjugacy classes in $B\cT$. The preimage of $\{1\}$ is $\{\pm 1\}$, the identity matrix. So that class splits in two. Fact: the class $\{(1\;2)(3\;4), (1\;3)(2\;4), (1\;4)(2\;3)\}$ in $\cT$ lifts to a single class of size 6. Then the other two split into two. 
+% top row class size first 4s the (123) second 4s (132)
+%	\[
+%	\begin{tabular}{cccccccc}
+%	& 1 & 1 & 4 & 4 & 4 & 4 & 6 \\
+%	$\chi_{\text{triv}}$  & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+%	$\chi_{\text{std}}  & 3 & 3 & 0 & 0 & 0 & 0 & $-1$ \\
+%	$U$ & 1 & 1 & $\omega$ & $\omega$ & $\omega^2$ & $\omega^2$ & 1 \\
+%	$U'$ & 1 & 1 & $\omega^2$ & $\omega^2$ & $\omega$ & $\omega$ & 1 \\
+%	$\rho$ 2 & a & b & c & d & e & f \\
+%	$\rho \otimes U$ & a
+%	$\rho \otimes U'$ & a
+%	\end{tabular}
+%	\]
+	\[
+	\begin{tabular}{cccccccc}
+	& 1 & 1 & 4 & 4 & 4 & 4 & 6 \\
+	$\chi_{\text{triv}}$  & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+	$\chi_{\text{std}}$  & 3 & 3 & 0 & 0 & 0 & 0 & $-1$ \\
+	$U$ & 1 & 1 & $\omega$ & $\omega$ & $\omega^2$ & $\omega^2$ & 1 \\
+	$U'$ & 1 & 1 & $\omega^2$ & $\omega^2$ & $\omega$ & $\omega$ & 1 \\
+	$\rho$ & 2 & $-2$ & 1 & $-1$ & 1 & $-1$ & 0 \\
+	$\rho \otimes U$ & 2& $-2$ & $\omega$ & $-\omega$ & $\omega^2$ & $-\omega^2$ & 0 \\
+	$\rho \otimes U'$ & 2 & $-2$ & $\omega^2$ & $-\omega^2$ & $\omega$ & $-\omega$ & 0
+	\end{tabular}
+	\]
+\end{enumerate}
+\end{ex}
+
+
+
+Note that the character table does not determine the group. For example $D_4$ and $Q_8$ have the same character table. [Lose a lot passing to conugacy classes.] However, the character table carries a lot of information about the group. For example, if $\rho_1,\ldots,\rho_r$ are the irreducible representations, then for every $i,j$, 
+	\[
+	\rho_i \otimes \rho_j \cong \bigoplus_{k=1}^r \rho_k^{c_{i,j}^k}
+	\]
+for some \emph{structure constants} of the group, $c_{i,j}^k$. When $G$ is given to us as a subgroup of $\GL$, it's already interesting to look at
+	\[
+	\rho \otimes \rho_j = \bigoplus_{i=1}^r \rho_i^{c_{i,j}},
+	\]
+where $\rho$ is the given representation. Then
+	\[
+	\chi \chi = \sum c_{i,j} \chi_i
+	\]
+and we can read the $c_{i,j}$'s from the character table. Back to $B\cT$. We are given $\rho$, the 5th row of the table. Let's decompose $\rho \otimes \text{std}$. We have $\rho \otimes \text{std}: 6,-6,0,0,0,0,0$. Checking carefully and using the properties of $\omega$, this is the sum of $\rho$, $|\rho \otimes U$, and $\rho \otimes U'$. 
+
+
+
+\begin{dfn}[\mc Quiver]
+Let $G$ be a finite subgroup of $\GL_n(\C)$. The \mc quiver of $G$ has vertices $\rho_1,\ldots,\rho_r$, the irreducible representations of $G$, arrows $c_{ij}$ for $\rho_i \to \rho_j$ if $\rho_i$ appears with multiplicity $c_{ij}$ in $\rho \otimes \rho_j$. 
+\end{dfn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
