@@ -468,11 +468,199 @@ and we can read the $c_{i,j}$'s from the character table. Back to $B\cT$. We are
 
 
 \begin{dfn}[\mc Quiver]
-Let $G$ be a finite subgroup of $\GL_n(\C)$. The \mc quiver of $G$ has vertices $\rho_1,\ldots,\rho_r$, the irreducible representations of $G$, arrows $c_{ij}$ for $\rho_i \to \rho_j$ if $\rho_i$ appears with multiplicity $c_{ij}$ in $\rho \otimes \rho_j$. 
+Let $G$ be a finite subgroup of $\GL_n(\C)$. The \mc quiver of $G$ has vertices $\rho_1,\ldots,\rho_r$, the irreducible representations of $G$, arrows $m_{ij}$ for $\rho_i \to \rho_j$ if $\rho_i$ appears with multiplicity $m_{ij}$ in $\rho \otimes \rho_j$. 
+\end{dfn}
+
+
+% Insert table from page 19.
+
+
+Recall $m_{ij}= \dim \Hom_G(V_i, V \otimes V_j)= \langle \chi_i, \chi\chi_j \rangle$ (abstract stuff on boses). We have $G=C_2$ embedded in $\GL_3(\C)$ as $\left\langle \three{-1}{}{}{}{-1}{}{}{}{-1} \right\rangle$. We know the irreducible representations of $C_2= \langle \sigma \colon \sigma^2=1\rangle$. The two representations must be $\sigma \mapsto 1$, $ \sigma \mapsto -1$, call the first $\rho_1$ and the second $\rho_{-1}$. Notice $\rho(\text{given}) \cong \rho_{-1}^{(3)}$ and 
+	\[
+	\begin{tabular}{c|cc}
+	& $\rho_1$ & $\rho_{-1}$ \\ \hline
+	$\rho_1$ & $\rho_1$ & $\rho_{-1}$ \\
+	$\rho_{-1}$ & $\rho_{-1}$ & $\rho_1$ 
+	\end{tabular}
+	\]
+So $\rho \otimes \rho_1= \rho = \rho_{-1}^{(3)}$, $\rho \otimes \rho_{-1} = \rho_{-1}^{(3)} \otimes \rho_{-1} = \rho_1^{(3)}$. Then we have
+
+% rho_1 on left rho _{-1} left, three curved arrows between them.
+
+Now consider $C_n= \left\langle \two{\omega_n}{}{}{\omega_n^{-1}} \right\rangle \subseteq \SL_2(\C)$. We know the irreducible representations of $C_n: \rho_0,\rho_1,\ldots,\rho_{n-1}$, where $\rho_j$ takes the generator of $C_n$ to $\omega_n^j$. Our given representation is $\rho \cong \rho_! \otimes \rho_{n-1}$. What is $\rho_j \otimes \rho_k$? It's $\rho_{j+k}$, with $jk$ taken mod $n$. So $\rho \otimes \rho_j= (\rho_1 \oplus \rho_{n-1}) \otimes \rho_j= \rho_{j+1} \oplus \rho_{j-1}$, where again indices are taken mod $n$. 
+
+
+% \rho_{j-1} right arrow to \rho_j then on right rho_{j+1} with left arrow to \rho_j. 
+
+We get the above diagram for every $j$. 
+
+% Give circular diagram rho_0 at top of clock and go around to \rho_{n-1} with arrows back and forth between each node. 
+
+
+
+Example
+
+	\[
+	\begin{tabular}{l |rrrrr}
+	$D_4$ & $\{1\}$ & $\{x^2\}$ & $\{x,x^3\}$ & $\{y,x^2y\}$ & $\{y,x^3y\}$ \\ \hline
+	$\beta_{++}$ & 1 & 1 & 1 & 1 & 1 \\
+	$\beta_{+-}$ & 1 & 1 & 1 & $-1$ & $-1$ \\
+	$\beta_{-+}$ & 1 & 1 & $-1$ & $-1$ & $-1$ \\
+	$\beta_{--}$ & 1 & 1 & $-1$ & $-1$ & 1 \\
+	$\rho$ & 2 & $-2$ & 0 & 0 & 0 
+	\end{tabular}
+	\]
+
+
+where $\rho_{\pm\pm}(x)=\pm1$, $\beta_{\pm\pm}(y)=\pm1$, and $\rho$ is the ``geometric'' representation as symmetries of an $n$-gon in $\C^2$.
+
+Now let's compute the \mc quiver of $D_4$ with respect to $\rho: D_4 \hookrightarrow \GL_2(\C)$. 
+
+% \rho on left \otimes \beta_{--} with
+	
+	\[
+	\begin{split}
+	\rho \otimes \beta{++} &\cong \rho \\
+	\rho \otimes \beta{+-} &\cong \rho \\
+	\rho \otimes \beta{-+} &\cong \rho \\
+	\rho \otimes \beta{--} &\cong \rho \\
+	\rho \otimes \rho &\cong \beta_{++} \oplus \beta_{+-} \oplus \beta_{-+} \oplus \beta_{--}
+	\end{split}
+	\]
+
+% 4 diagram clockwise with bpp at top, rho center, with arrows going each way.
+
+
+
+Then picture
+
+% BT \subseteq \SL_2(\C) below it 
+% Below it U updown arrow \rho \otimes U \updown arrow std, then row beneath with left/righa arrows in order triv rho std rho, rho \otimes U' then U'
+
+% Give same diagram beneath with dots alone except for trivial, label BO.
+
+% Give another with left right arrows, node above 3rd dot, trivial at end, row has 8 entries, including trivial. 
+
+
+\mc observed that the arrows in the \mc quiver of the binary tetrahedral groups come in opposing pairs, no more than one between any two vertices, and if you remove the trivial representation, one obtains an ADE Dynkin diagram. 
+
+
+The first two parts are relatively simple to prove without knowing the classification. For example, $m_{ji}= \langle \chi_j,\chi\chi_i \rangle$. Now $\chi$ is the character of $G \hookrightarrow \SL_2(\C)$ is self-adjoint since it is in $\SL_2$. But then $m_{ji}= \langle \chi_j,\chi\chi_i \rangle= \langle \chi_j\chi,\chi_i \rangle= \langle \chi_i, \chi,\chi_j \rangle=m_{ij}$. 
+
+
+Our next goal is to give a uniform proof (meaning without classification) of \mc's observation about ADE diagrams. 
+
+
+
+
+\subsection{ADE and Extended ADE Diagrams}
+
+
+A list:
+
+% left (A_n) horizontal dots, one above, lines connecting for triangle. on far right (\tilde{A}_n) circle to vertex
+
+% Dn same as D_n with one extra off far right to make 'symmetric' on far right (\tilde{D}_n)
+
+% (E_6) . - . - (two above this, top circled) - . - .
+
+% E7 7 dots as above, far left circled, one extra above 4th one
+
+% E_8 8 horizonal, last circled, extra above third.
+
+% Note that n \geq 0 and for consistentcy \tilde{A}_0 single self loop dot.
+
+
+The extended ADE diagrams have one extra vertex, circled. Then have $n+1$ vertices. They have the weird property that \dots
+
+\begin{prop} \label{prop:a}
+Let $T$ be a connected finite graph (possibly with multiple edges). Then either $T$ is an ADE diagram or $T$ contains an extended ADE, and not both. 
+\end{prop}
+
+\pf If $T$ does not contain an extended ADE, $\tilde{A}_n$ then no cycles, so a tree. not contain $\tilde{D}_n$ so then at most one branch point of valence $=3$. So its a $T_{pqr}$, 
+
+% horizontal line with dots, p vertices left with meet, q in top, and r in right leg, all counting the connecting vertex. 
+
+Assume that $p \leq q \leq r$. Not contain $\tilde{E}_6$ so that $p \leq 2$. Not contain $\tilde{E}_7$, so then $q \leq 3$. Not contain $\tilde{E}_8$ so that $r \leq 5$. But then $T_{1,1,n}$, $T_{2,2,n}$, or $T_{2,3,3}$, $T_{2,3,4}$, $T_{2,3,5}$, and these are $A_n$, $D_{n+2}$, $E_6$, $E_7$, or $E_8$, respectively. \qed \\
+
+
+There are two `birthplaces' for extended ADE diagrams. The first is additive functions on graphs, the second is Tits quadratic forms of graphs. 
+
+
+\begin{dfn}
+Let $T$ be a finite connected graph on a vertex set $\{1,\ldots,n\}$. Then an additive function on $T$ is a function $a: \{1,\ldots,n\} \to \N_{>0}$ such that for every $i$
+	\[
+	\sum_{\text{there is edge i - j}} a_j = 2a_i
+	\]
+whee $a_i = a(i)$. It is subadditive if less than or equal to. Strictly subadditive if strict inequalty. 
 \end{dfn}
 
 
 
+Example
+% two dots connected with 1s
+is a subadditive function since $2 \geq 1$. Could there be an additive function? We would need $2a_1=a_2$ and $2a_2=a_1$, impossible. 
+
+
+
+Example
+% two vercied, double edge between
+Now $a_1=1=a_2$ is an additive function because we count each edge separately. $2a_1=2a_2$.
+
+Ecample
+% three edges now
+We would need $2a_1 \leq 3a_2$, $2a_2 \leq 3a_1$, impossible. 
+
+
+
+Example 
+$\tilde{D}_5$
+
+% Draw double off two vertices label in rows abcdef
+%f=1
+%d=2
+%b=1
+%c=2
+%a=1
+%e=1
+% go through logic.
+So carries additive function.
+
+
+The crucial observation is that if $T$ is the \mc graph of a subgroup of $\SL_2(\C)$ (replace each left/right arrow with dash), then labeling each vertex with the dimension of the corresponding representation is an additive function! This is because we tensor with the given 2-dimensional representation $\rho$, and connect $\rho_i$ to all the $\rho_j$ appearing in $\rho \otimes \rho_i$. So
+	\[
+	2\dim \rho_i = \dim(\rho \otimes \rho_i) = \sum_{\rho_i - \rho_j} \dim \rho_j.
+	\]
+
+
+\begin{thm}
+A graph $T$ carries an additive function if and only if it is extended ADE. It carries a strictly subadditive function if and only if it is ADE. 
+\end{thm}
+
+
+
+
+
+\begin{lem} \label{lem:b}
+The extended ADE graphs carry additive functions, and the ADE graphs carry strictly subadditive functions. 
+\end{lem}
+
+\pf Write them down. \qed \\
+
+
+We need to reinterpret additive functions. Write a function $a: \{1,\ldots,n\} \to \N_{>0}$ as a column vector $a= \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$. Then $a$ is subadditive if and only if $2 \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} \geq \begin{pmatrix} \sum a_j \\ \vdots \\ \sum a_j \end{pmatrix}$ % on right of each row 1-j, 2-j, \vdots n-j
+
+$= \text{indicdence matrix} \cdot \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}$, i.e. $2I- A$ has nonnegative entries, where $I$ is the identity matrix and $A$ is the indicence matrix and $[A]_{ij}$ is the number of edges between $i$ and $j$. 
+
+% incidence D_4
+%label 1, 4,3,2
+%A = 0,0,0,1; 0,0,0,1; 0,0,0,1; 1,1,1,0
+% subadditive 1,2,1,1
+
+%A.a = column 2,2,2,3
+%2a = 2,2,2,4 \geq 2,2,2,3= Aa
+
+%$C=2I-A$ is called the Coxeter matrix of $T$.
 
 
 
@@ -490,28 +678,47 @@ Let $G$ be a finite subgroup of $\GL_n(\C)$. The \mc quiver of $G$ has vertices 
 
 
 
+%\usepackage{tikz}
+%\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing}
+%\usepackage{tikz-cd}
+%\usepackage{tkz-euclide}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.8}
+%\usepgfplotslibrary{polar}
+%\usepgflibrary{shapes.geometric}
+%\usetikzlibrary{calc}
+%\pgfplotsset{my style/.append style={axis x line=middle, axis y line=middle, xlabel={$x$}, ylabel={$y$}, axis equal}}
+%\tikzset{snake it/.style={-stealth,
+%decoration={snake, 
+%    amplitude = .4mm,
+%    segment length = 2mm,
+%    post length=0.9mm},decorate}}
+
+
+
+%\[
+%\begin{tikzcd}
+%\mathbb{Z} \arrow{r}{r} & \mathbb{Q} \arrow[yshift=1ex]{r}{g_1} \arrow[yshift=-1ex]{r}{g_2} & A
+%\end{tikzcd}
+%\]
+
+%\[
+%\begin{tikzcd}
+%\varinjlim M_i \arrow[dotted,yshift=1ex]{rr}{\theta}& & \overline{\varinjlim M_i} \arrow[dotted,yshift=-1ex]{ll}{\overline{\theta}}\\
+%& M_i \arrow{ul}{\alpha_i} \arrow[swap]{ur}{\beta_i} \arrow{d}{\varphi^i_j} & \\
+%& M_j \arrow[bend left=50]{uul}{\alpha_j} \arrow[bend right=50,swap]{uur}{\beta_j} & 
+%\end{tikzcd}
+%\] 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%\[
+%\begin{tikzcd}
+%V \arrow[out=0,in=90,loop]{}
+%\end{tikzcd}
+%\]
 
 
 
