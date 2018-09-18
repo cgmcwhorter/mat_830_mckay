@@ -487,7 +487,7 @@ So $\rho \otimes \rho_1= \rho = \rho_{-1}^{(3)}$, $\rho \otimes \rho_{-1} = \rho
 
 % rho_1 on left rho _{-1} left, three curved arrows between them.
 
-Now consider $C_n= \left\langle \two{\omega_n}{}{}{\omega_n^{-1}} \right\rangle \subseteq \SL_2(\C)$. We know the irreducible representations of $C_n: \rho_0,\rho_1,\ldots,\rho_{n-1}$, where $\rho_j$ takes the generator of $C_n$ to $\omega_n^j$. Our given representation is $\rho \cong \rho_! \otimes \rho_{n-1}$. What is $\rho_j \otimes \rho_k$? It's $\rho_{j+k}$, with $jk$ taken mod $n$. So $\rho \otimes \rho_j= (\rho_1 \oplus \rho_{n-1}) \otimes \rho_j= \rho_{j+1} \oplus \rho_{j-1}$, where again indices are taken mod $n$. 
+Now consider $C_n= \left\langle \two{\omega_n}{}{}{\omega_n^{-1}} \right\rangle \subseteq \SL_2(\C)$. We know the irreducible representations of $C_n: \rho_0,\rho_1,\ldots,\rho_{n-1}$, where $\rho_j$ takes the generator of $C_n$ to $\omega_n^j$. Our given representation is $\rho \cong \rho_1 \otimes \rho_{n-1}$. What is $\rho_j \otimes \rho_k$? It's $\rho_{j+k}$, with $jk$ taken mod $n$. So $\rho \otimes \rho_j= (\rho_1 \oplus \rho_{n-1}) \otimes \rho_j= \rho_{j+1} \oplus \rho_{j-1}$, where again indices are taken mod $n$. 
 
 
 % \rho_{j-1} right arrow to \rho_j then on right rho_{j+1} with left arrow to \rho_j. 
@@ -520,10 +520,10 @@ Now let's compute the \mc quiver of $D_4$ with respect to $\rho: D_4 \hookrighta
 	
 	\[
 	\begin{split}
-	\rho \otimes \beta{++} &\cong \rho \\
-	\rho \otimes \beta{+-} &\cong \rho \\
-	\rho \otimes \beta{-+} &\cong \rho \\
-	\rho \otimes \beta{--} &\cong \rho \\
+	\rho \otimes \beta_{++} &\cong \rho \\
+	\rho \otimes \beta_{+-} &\cong \rho \\
+	\rho \otimes \beta_{-+} &\cong \rho \\
+	\rho \otimes \beta_{--} &\cong \rho \\
 	\rho \otimes \rho &\cong \beta_{++} \oplus \beta_{+-} \oplus \beta_{-+} \oplus \beta_{--}
 	\end{split}
 	\]
@@ -573,9 +573,9 @@ A list:
 
 The extended ADE diagrams have one extra vertex, circled. Then have $n+1$ vertices. They have the weird property that \dots
 
-\begin{prop} \label{prop:a}
+\begin{lem} \label{lem:a}
 Let $T$ be a connected finite graph (possibly with multiple edges). Then either $T$ is an ADE diagram or $T$ contains an extended ADE, and not both. 
-\end{prop}
+\end{lem}
 
 \pf If $T$ does not contain an extended ADE, $\tilde{A}_n$ then no cycles, so a tree. not contain $\tilde{D}_n$ so then at most one branch point of valence $=3$. So its a $T_{pqr}$, 
 
@@ -661,6 +661,159 @@ $= \text{indicdence matrix} \cdot \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmat
 %2a = 2,2,2,4 \geq 2,2,2,3= Aa
 
 %$C=2I-A$ is called the Coxeter matrix of $T$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lem} \label{lem:c}
+If $T$ admits an additive function, then every subadditive function on $T$ is additive.
+\end{lem}
+
+\pf Set $C=2I_n - A$, where $A$ is the incidence matrix of $T$.. Assume $a$ is an additive function and $b$ is a subadditive function. We need show that $b$ is additive. Consider $b^TCa$. Since $a$ is additive, $Ca=0$. But we also know $b^TCa=b^TC^Ta$ since $C$ is symmetric, which is $(Cb) \cdot a$, which is a positive linear combination of entries of $Cb$ (since entries of $a$ are positive). But then $Cb=0$, which implies that $b$ is additive. \qed \\
+
+
+\begin{cor} \label{cor:d}
+Every subadditive function on an extended ADE diagram is additive. 
+\end{cor}
+
+
+\begin{lem} \label{lem:e}
+Suppose that $T \subsetneq T'$ are finite connected graphs. If $T'$ carries a subadditive function $a$, the restriction of $a$ to $T$ is strictly subadditive. 
+\end{lem}
+
+\pf We know 
+	\[
+	2a_i \geq \sum_{i-j \in T'} a_j \geq \sum_{i-j \in T}
+	\]
+where second inequality follows since every edge in $T$ is an edge in $T'$. Since $T' \neq T$, there is at least one edge in $T'$ not in $T$, so the inequality must be strict. \qed \\
+
+
+
+
+We can now prove a previously stated theorem.
+
+\begin{thm}
+A graph $T$ carries an additive function if and only if it is extended ADE. It carries a strictly subadditive function if and only if it is ADE. 
+\end{thm}
+
+\pf First, Lemma~\ref{lem:b} does $\leftarrow$ for both. For $\to$, assume carries an additive function $a$ and is not an extended ADE. Then by Lemma~\ref{lem:a}, either $T$ is ADE or $T$ \emph{strictly} contains an extended ADE. 
+
+If $T$ is ADE, then $T$ carries a strictly subadditive function, contradicting Lemma~\ref{lem:c}. If $T$ strictly contains an extended ADE, then this ADE carries a strictly subadditive function by Lemma~\ref{lem:e}, contradicting Lemma~\ref{lem:c}. 
+
+Finally if $T$ carries a strictly subadditive function and its not ADE, then $T$ contains an extended ADE, which must carry a strictly subadditive function by Lemma~\ref{lem:e}, contradicting Corollary~\ref{cor:d}. \qed \\
+
+
+\begin{cor} \label{cor:point}
+The \mc graph of a binary polyhedral group is extended ADE, with additive function given by the dimensions of the irreducible representations. In particular, the `extra vertex' has value 1. 
+\end{cor}
+
+
+
+
+
+
+\subsection{Another Aside: The Quadratic Form of a Graph}
+
+\begin{dfn}
+Let $T$ be a finite connected graph, possibly with multiple edges. A quadratic form of $T$, also known as a Tits form, is the polynomial $q_T(x_1,\ldots,x_n)= \sum_{i=1}^n x_i^2 - \sum_{i-j} x_ix_j$, where as usual we count edges with multiplicity. 
+\end{dfn}
+
+
+\begin{ex}
+% 1 - 2
+$q_T(x_1,x_2)= x_1^2+x_2^2-x_1x_2$.
+
+% 1 triple line 2
+$q_T(x_1,x_2)= x_1^2+x_2^2-3x_1x_2$
+\end{ex}
+
+Observe that $q(\mathbf{x})= \frac{1}{2}\mathbf{x}^TC\mathbf{x}$, where $C$ is the Coxeter matrix of $T$. So we wonder if $q_T$ is related to (sub)additive functions. 
+
+\begin{thm}
+The quadratic form $q_T$ is positive definite, i.e. $q(x) \geq 0$ for all $x$ and only zero for $x=0$, if and only if $T$ is an ADE diagram, and positive semidefinite, i.e. $q(x) \geq 0$, if and only if $T$ is extended ADE. 
+\end{thm}
+
+The theorem can be proved directly. Show that if $q_T$ is positive definite, then $T$ does not contain any cycles, or more than one branch point, or a vertex of degree $>3$. So $T$ is a $T_{pqr}$ tree. Show that $q_T$ is positive definite if and only if $1/p+1/q+1/r>1$., so then ADE. \qed \\
+
+% 1 -2 -3 triangle cycle:
+% x^2+y^2+z^2 - xy - xz - yz= 1/2( (x-y)^2+(x-z)^2+(y-z)^2)
+% extended ADE but not ADE so should find zero.
+% q(1,1,1)=0
+
+
+% Thm -> q pos semidefinite - > q is sum of squares. 
+
+One can also prove the theorem by translating $q_T$ into the additive function notation: 
+
+\begin{prop}
+If $a$ is an additive function on $T$, then $q_T$ is positive semidefinite. (also strictly subadditive then positive definite). 
+\end{prop}
+
+\pf Assume $a$ is an additive function. For each edge $e:i-j$, define $q_e(x_1,\ldots,x_n)= \dfrac{1}{2a_ia_j} (a_ix_j-a_jx_i)^2$. The coefficient of $x_i^2$ is $\dfrac{1}{2a_ia_j} a_j^2= \dfrac{a_j}{2a_i}$. The coefficient of $x_ix_j$ is $\dfrac{1}{a_ia_j} (-2a_ia_j)= -1$. Consider the sum $\sum_e q_e(x_1,\ldots,x_n)$. Coefficient of $x_ix_j$ is number of edges $i-j$. The coefficient of $x_i^2$ is $\sum_{\text{Edges e containing i}} \dfrac{a_j}{2a_i}= \dfrac{1}{2a_i} \sum a_j=1$. So $q_T= \sum q_e$'s is a sum of squares, so positive semidefinite. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Invariant Theory}
+
+
+This is a transition from groups and graphs to commutative algebra and algebraic geometry. 
+
+
+\begin{ex}
+Consider $C_2 \subseteq \SL_2(\C)$, with generator $\two{-1}{0}{0}{-1}$. Then $C_2$ acts on $\C^2$ by $\sigma(p)= -p$ (or, rotates $p$ by $\pi$). The quotient space of this group action has for points the orbit of the action: for every nonzero point $\{p,-p\}$ (except for 0). A fundamental domain for this action, i.e. a subset of $\C^2$ containing exactly one point from each orbit. 
+
+% axes with origin dotted and positive half of x-axis and same for positive y-axis, upper half plane and dark x-axis. arrow then get a cone. 
+More precisely, we can define a continuous surjective map $\pi: \C^2 \to \text{cone}$ such that the fibers of $\pi$ are precisely the orbits of the action. Choose coordinates so that the cone is defined by $y^2=xz$, then $\pi(u,v)= (u^2,uv,v^2)$ works. 
+
+To be more systematic, instead consider the ring of polynomials $\C[u,v]$, though of as the set of polynomials on $\C^2$. [The function $u$ picks out the first coordinate of a point $p \in \C^2$ and so forth.] 
+
+The polynomial function on the quotient space $\C^2/C_2$ are exactly the polynomials on $\C^2$ that are constant on orbits. That is, $\{f \in \C[u,v] \colon f(p)=f(-p) \text{ for all } p \in \C^2\}=\C[u^2.uv,v^2] \subseteq \C[u,v]$, note $\C[u^2,uv,v^2] \cong \C[x,y,z]/(y^2-xz)$. Observations about the ring $\C[u^2,uv,v^2]$: commutative, graded, noetherian, domain, dimension 2, integrally closed, Cohen-Maccaulay (in fact, gorenstein), the polynomial ring $\C[u,v]$ is a finitely generated module over it, even reflexive, in fact $\C[u,v] \cong R \oplus (Ru + Rv)$, every indecomposable reflective $R$-module appears as a direct summand of polynomial ring $\C[u,v]$. 
+\end{ex}
+
+
+Now the question is how many of these are specific to this example? In fact, most are always true. 
+
+
+
+\subsection{Classical invariant theory (of finite groups)}
+
+Finite groups so no tori or Lie groups. 
+
+For this material, we follow Kraft-Procesi. In particular, we take a coordinate free approach whenever possible. Now let $k$ be an infinite field and $W$ a finite dimensional vector space. We say that a function $f: W \to k$ is regular if polynomial in the elements of some basis of $W$. [Observe this is independent of basis.] Let $k[W]$ be the ring of regular functions on $W$. If $\{x_1,\ldots,x_n\}$ were a basis for $W^*=\Hom(W,k)$, then $k[W] \cong k[x_1,\ldots,x_n]$ is a polynomial ring. This is because the field is infinite---not true for finite fields (obstruction nonzero vanishing functions). 
+
+A regular function $f \in k[W]$ is homogeneous of degree $d$ if $f(\lambda w)=\lambda^d w$ for all $\lambda \in k$ and $w \in W$. Concretely in terms of basis for $W^*$, this means that $f$ is a linear combination of monomials of degree $d$: $x_1^{d_1} \cdots x_n^{d_n}$ with $d_1+\cdots+d_n=d$. Since every polynomial is a sum of such monomials, every polynomial is a sum of homogeneous polynomials, i.e. $f \in k[W]$ is uniquely a sum of homogeneous polynomials, so $k[W] \cong \bigoplus_{d \geq 0} k[W]_d$, where $k[W]_d=$ homogeneous regular functions of degree $d$. In particular, $k[W]$ is a graded ring, i.e. $A= \bigoplus A_i$ as abelian groups such that $A_iA_j \subseteq A_{i+j}$. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
