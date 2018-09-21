@@ -1,0 +1,224 @@
+% !TEX root = ../../mat830_mckay.tex
+\newpage
+\section{Invariant Theory}
+\subsection{A Motivating Example}
+We now make a transition from groups and graphs to Commutative Algebra and Algebraic Geometry. We begin with a motivating example. 
+
+
+\begin{ex} \label{ex:mot}
+Consider $C_2 \subseteq \SL_2(\C)$, with generator $\two{-1}{0}{0}{-1}$. Then $C_2$ acts on $\C^2$ by $\sigma(p)= -p$, i.e. $\sigma$ is a rotation of $\text{Arg }p$ by $\pi$. The quotient space of this group action has for points the orbit of the action: for every nonzero point $\{p,-p\}$, along with $\{0\}$. A fundamental domain for this action, i.e. a subset of $\C^2$ containing exactly one point from each orbit. 
+
+% axes with origin dotted and positive half of x-axis and same for positive y-axis, upper half plane and dark x-axis. arrow then get a cone. 
+
+More precisely, let $\cC$ denote a cone. We can define a continuous surjective map $\pi: \C^2 \to \cC$ such that the fibers of $\pi$ are precisely the orbits of the action. Choose coordinates so that the cone is defined by $y^2=xz$, then $\pi(u,v)= (u^2,uv,v^2)$ is such a map. To be more systematic, instead consider the ring of polynomials $\C[u,v]$, thought of as the set of polynomials on $\C^2$. [The function $u$ picks out the first coordinate of a point $p \in \C^2$ and so forth.] 
+
+The polynomial functions on the quotient space $\C^2/C_2$ are exactly the polynomials on $\C^2$ that are constant on orbits; that is, the polynomial functions are the set $\{f \in \C[u,v] \colon f(p)=f(-p) \text{ for all } p \in \C^2\}=\C[u^2.uv,v^2] \subseteq \C[u,v]$, note $\C[u^2,uv,v^2] \cong \C[x,y,z]/(y^2-xz)$. Note that the ring $R:= \C[u^2,uv,v^2]$ is an integral domain of dimension two, graded, integrally closed, Cohen-Maccaulay (in fact gorenstein), reflexive, and the polynomial ring $\C[u,v]$ is a finitely generated module over it. In fact, $\C[u,v] \cong R \oplus (Ru + Rv)$. Finally, every indecomposable reflexive $R$-module appears as a direct summand of the polynomial ring $\C[u,v]$. \xqed
+\end{ex}
+
+The question we shall explore is how many properties of the ring $R$ in Example~\ref{ex:mot} are specific to this example, and how many are properties hold more generally. 
+
+
+
+% -------------------------
+% Classical Invariant Theory
+% -------------------------
+\subsection{Classical Invariant Theory of Finite Groups}
+
+Invariant Theory has connections to many fields, including tori and Lie groups. However, we shall only consider finite groups, so these shall not make an appearance. For this material, we follow Kraft-Procesi. In particular, we take a coordinate free approach whenever possible. Now let $k$ be an infinite field and $W$ a finite dimensional vector space. We say that a function $f: W \to k$ is regular if it is a polynomial in the elements of some basis of $W$---this is independent of basis. Let $k[W]$ be the ring of regular functions on $W$. If $\{x_1,\ldots,x_n\}$ were a basis for $W^*=\Hom(W,k)$, then $k[W] \cong k[x_1,\ldots,x_n]$ is a polynomial ring. This holds because the field is infinite, and this is not true for finite fields (the obstruction is nonzero vanishing functions). 
+
+
+\begin{dfn}[Homogenous Function]
+A regular function $f \in k[W]$ is homogeneous of degree $d$ if $f(\lambda w)=\lambda^d w$ for all $\lambda \in k$ and $w \in W$.
+\end{dfn}
+
+Concretely in terms of a basis for $W^*$, this means that $f$ is a linear combination of monomials of degree $d$, i.e. $x_1^{d_1} \cdots x_n^{d_n}$ with $d_1+\cdots+d_n=d$. Since every polynomial is a sum of such monomials, every polynomial is a sum of homogeneous polynomials; that is, $f \in k[W]$ is uniquely a sum of homogeneous polynomials, so $k[W] \cong \bigoplus_{d \geq 0} k[W]_d$, where $k[W]_d=$ homogeneous regular functions of degree $d$. In particular, $k[W]$ is a graded ring, i.e. $A= \bigoplus A_i$ as abelian groups such that $A_iA_j \subseteq A_{i+j}$. As a final remark, we know that $k[W] \cong k[x_1,\ldots,x_n]$. Fixing a basis $\{e_1,\ldots,e_n\}$ for $W$, then $x_1,\ldots,x_n$ is a dual basis for $W^*$, i.e. $x_i(e_j)= \delta_{ij}$. 
+
+
+Now suppose we have a subgroup $G \subseteq \GL(W)$, or more generally a representation $\rho: G \to \GL(W)$. This gives an action of $G$ on $W$: $gw:=\rho(g)w$. In turn, this gives an action of $G$ on $k[W]$, $(gf)(w):=f(g^{-1}w)$ (the $(-1)$-power is needed to get a left action). Moreover, this action is compatible (in fact the same as) the action of $G$ on the dual space $W^*$. Keep in mind that $k[W]_1$ is the set of linear maps from $W \to k$, i.e. $W^*$. In fact, $k[W]_d= \sym_d(W^*)$, the d\tss{th} symmetric power of $W^*$, as such it inherits the action of $G$ on $W^*$. 
+
+
+\begin{dfn}[Invariant Function]
+A function $f \in k[W]$ is invariant ($G$-invariant) if $gf=f$ for all $g \in G$. Equivalently, $f(w)=f(gw)$ for all $g^{-1} \in G$, i.e. $g \in G$. We write $k[W]^G$ for the set $\{ f \in k[W] \colon f \text{ invariant}\}$.
+\end{dfn}
+
+
+One can check that $k[W]^G$ is a ring: each $g \in G$ acts as an automorphism of $k[W]$. 
+
+
+\begin{ex}
+Let $S_n$ be the symmetric group on $n$ letters. Now $S_n$ has an action on $W=k^n$ via $\sigma(e_i)=e_{\sigma(i)}$. Equivalently, $\sigma(a_1,\ldots,a_n)=(a_{\sigma^{-1}(1)}, \ldots, a_{\sigma^{-1}(n)})$. Then $S_n$ also acts on $k[W] \cong k[x_1,\ldots,x_n]$, where $\{x_i\}_{i=1}^n$ is the dual basis. What is $\sigma(x_i)$? We know $x_i(e_j)=\delta_{ij}$, so 
+	\[
+	(\sigma x_i)(e_j)=x_i(\sigma^{-1}(e_j))=x_ie_{\sigma^{-1}(j)}=\delta_{i \sigma^{-1}(j)}.
+	\] 
+But this means $(\sigma x_i)(e_j)=\delta_{i \sigma^{-1}(j)}=1$ if and only if $\sigma^{-1}(j)=i$ if and only if $\sigma(i)=j$. Therefore, $\sigma x_i= x_{\sigma(i)}$. Generally for any $f \in k[x_1,\ldots,x_n]$, $(\sigma f)(x_1,\ldots,x_n)= f(x_{\sigma(1)},\ldots,x_{\sigma(n)})$. Now the question is which functions are invariant; that is, which functions of $k[x_1,\ldots,x_n]$ are independent of the order of the $x_i$? These are the symmetric polynomials, e.g. $x_1+\cdots+x_n$, $x_1\cdots x_n$, $x_1^7+\cdots+x_n^7$. \xqed
+\end{ex}
+
+
+The symmetric polynomials in $n$ variables are all composed of the elementary symmetric polynomials, given as follows:
+	\[
+	\begin{split}
+	s_0(x_1,\ldots,x_n)&:= 1 \\
+	s_1(x_1,\ldots,x_n)&:= \sum_{1 \leq i \leq n} x_i=  x_1 + \cdots + x_n \\
+	s_2(x_1,\ldots,x_n)&:= \sum_{1 \leq i<j \leq n} x_i x_j \\
+	s_3(x_1,\ldots,x_n)&:= \sum_{1 \leq i<j<k \leq n} x_i x_j x_k \\
+	&\;\;\;\vdots \\
+	s_n(x_1,\ldots,x_n)&:= x_1\cdots x_n
+	\end{split}
+	\]
+
+
+\begin{thm}[Fundamental Theorem of Symmetric Functions/Newton's Theorem] \label{thm:fundone}
+Any symmetric polynomial in $x_1,\ldots,x_n$ is uniquely expressible as a linear combination of elementary symmetric polynomials. 
+\end{thm}
+
+
+In particular, the $s_i$'s are algebraically independent of each other, i.e. there are no nontrivial polynomial relations among them. Therefore, it must be that $k[x_1,\ldots,x_n]^{S_n}= k[s_1,\ldots,s_n]$. This is indeed a polynomial ring since the $s_i$ have no relations between them. There are algorithms to write any symmetric polynomial in the elementary symmetric polynomials. 
+
+
+\begin{ex} \hfill
+        \begin{enumerate}[(i)]
+        \item $x^2+y^2=(x+y)^2-2xy= s_1^2-2s_2$
+        \item $x_1^3+x_2^3+x_3^3= s_1^3-3s_1s_2+3s_3$
+        \item $x_1^2x_2+x_1^2x_3+x_2^2x_1+x_2^2x_3+x_3^2x_1+x_3^2x_2= s_1s_2 - 3s_3$
+        \end{enumerate} \xqed
+\end{ex}
+
+
+\begin{rem}
+The power sums, $p_1(x_1,\ldots,x_n)=x_1+\cdots+x_n$, $p_2(x_1,\ldots,x_n)=x_1^2+\cdots+x_n^2$, $\ldots$, $p_n(x_1,\ldots,x_n)=x_1^n+\cdots+x_n^n$, also generate the ring of symmetric polynomials. The complete symmetric polynomials, the Schur polynomials, etc. all also generate the ring of symmetric polynomials. Hence, there are procedures from going from one set of these polynomials to another. The transition functions between them are crucial in the representation of $S_n$ and $\GL_n$ (Schur-Weyl Theory). 
+\end{rem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+As another aside, the discriminant of $S_n$ acting on $x_1,\ldots,x_n$ is\footnote{To some, this is the square of what they would define as the discriminant.}
+	\[
+	\Delta= \prod_{i<j} (x_i - x_j)^2
+	\]
+The discriminant is symmetric, so it must be a polynomial in $s_1,\ldots,s_n$. 
+
+
+\begin{ex}
+If $n=2$, then $\Delta=(x-y)^2=x^2-2xy+y^2= s_1^2- 4s_2$. If $n=3$, $\Delta=(x - y)^2(x-z)^2(y-z)^2= s_1^2s_2^2- 4s_2^3 - 4s_1^3s_3 - 27 s_3^2+ 18s_1s_2s_3$. 
+\end{ex}
+
+Given a polynomial $g(t) \in \C[t]$ with roots $a_1,\ldots,a_n$ (with multiplicity), the discriminant of $g$ is
+	\[
+	\Delta(g)= \Delta(a_1,\ldots,a_n)= \prod_{i<j} (a_i-a_j)^2
+	\]
+
+Observe $\Delta(g)=0$ if and only if $g$ has a repeated root. For example, $g(t)=t^2+bt+c$, then $\Delta(g)= b^2-4c$. An exercise for the reader is to show $\Delta(g)= (\det V)^2$, where $V$ is the Vandermonde matrix:
+	\[
+	V=
+	\begin{pmatrix}
+	1 & a_1 & a_1^2 & \cdots & a_1^{n-1} \\
+	1 & a_2 & a_2^2 & \cdots & a_2^{n-1} \\
+	\vdots & \vdots & & \ddots & \vdots \\
+	1 & a_n & a_n^2 & \cdots & a_n^{n-1}
+	\end{pmatrix}
+	\]
+
+
+
+
+\subsection{Restricting the Action of $S_n$}
+
+We want to restrict the action of $S_n$ on $k[x_1,\ldots,x_n]$ to the subgroup $A_n \subseteq S_n$. All the symmetric functions are still invariant. Is anything else invariant? Notice that $(i\;j)\sqrt{\Delta}= - \sqrt{\Delta}$. So if $\sigma$ is an even permutation, $\sigma(\sqrt{\Delta})= \sqrt{\Delta}$.
+
+FACT: $k[x_1,\ldots,x_n]^{A_n}= k[s_1,\ldots,s_n,\sqrt{\Delta}]$.
+
+
+Indeed, we can think of $k[x_1,\ldots,x_n]^{A_n}$ as consisting of the symmetric polynomials and the sign-symmetric polynomials: $f(x_{\sigma(1)},\ldots,x_{\sigma(n)})= (-1)^{\sgn(\sigma)} f(x_1,\ldots,x_n)$. 
+
+
+Moreover, $\Delta= (\sqrt{\Delta})^2$ is a polynomial in the `variables' $s_1,\ldots,s_n$. But then $k[x_1,\ldots,x_n]^{A_n}$ is isomorphic to a hypersurface ring: $k[y_1,\ldots,y_n,z]/(z^2-f(y_1,\ldots,y_n))$. 
+
+
+
+
+First, a few basic questions about $k[W]^G$:
+
+1. (Generators and Relations): Given a finite group $G \subseteq \GL(W)$, is the ring of invariants $k[W]^G$ a finitely generated $k$-algebra? 
+
+2. If so, describe them explicitly and also is the ideal of relations among the generators finitely generated?If so, describe them explicitly.
+
+Following theorem due to Hilbert and Noether:
+
+\begin{thm}[First Fundamental Theorem of Invariant Theory for Finite Groups]
+Let $k=\C$. The invariant ring $\C[W]^G$ is generated as a $\C$-algebra by at most $\binom{|G|+\dim W}{\dim W}$ homogeneous polynomials of degree at most $|G|$. 
+\end{thm}
+
+
+Note $\binom{n+d}{d}$ is the vector space dimension of homogenous polynomials of degree $d$ in $n$ variables. Hilbert proved finiteness as an application of the Hilbert-Basis Theorem [1890]. The proof given was  nonconstructive. There is a story that Gordan (rep. theory of binary forms, was constructive), is said to have a said thats not math thats theology. Mostly believed to be a story. Hilbert later gave a constructive proof. [1890s]. Noether gave the bound in the theorem which is tight, by showing $k[W]^G$ is generated by
+	\[
+	\left\{\dfrac{1}{|G|} \sum_{g \in G } gm \colon m \text{ runs over monomials of degree } \leq |G| \right\}
+	\]
+
+
+Sketch of Hilbert's (nonconstructive proof)
+
+\begin{thm}[Hilbert Basis Theorem]
+The polynomial ring $k[x_1,\ldots,x_n]$ is noetherian, i.e. every ideal of $k[x_1,\ldots,x_n]$ is finitely generated, where $k$ is a field.
+\end{thm}
+
+Let $S=k[x_1,\ldots,x_n]$, $R=k[x_1,\ldots,x_n]^G \subseteq S$. Let $I$ be the ideal of $R$ generated by all invariants of positive degree. 
+
+Exercise: If $I$ is a finitely generated ideal of $R=k[f_1,\ldots,f_t]$, say $I=Rf_1+\cdots+Rf_t$, then $\{f_i\}$ generate the ring of invariants as a $k$-algebra. The proof follows by induction on the degree. 
+
+
+We know that $IS$ is a finitely generated ideal of $S$ by the Hilbert Basis Theorem. Define the Reynold's operator 
+	\[
+	\begin{split}
+	\rho&: S \to R \\
+	f&\mapsto \dfrac{1}{|G|} \sum_{g \in G} gf.
+	\end{split}
+	\]
+Observe that 
+
+1. $\rho(S) \subseteq R$. We have seen this before in a different form.
+2. $\rho$ fixes $R$ elementwise. 
+3. $\rho$ is a ring homomorphism, and is $R$-linear: if $h \in S^G$, $f \in S$, then $\rho(hf)=h \rho(f)$
+4. For any ideal $J$ of $R$, $JS=\{ \sum as \colon a \in J, s \in S\}$. So $\rho(JS)=\{ \rho(\sum as) \colon a \in J, s \in S\}= \{ \sum \rho(as) \colon a \in J, s \in S\}= \{ \sum \rho(s)a \colon a \in J, s \in S\}= \{ \sum ra \colon r \in R, a \in J\}= J$. But then $\rho(JS)=J$. (3rd $=$ sign follows from 3) and last from $\rho$ maps $S$ onto $R$. 
+
+
+Then the ideal $I$ generated by the invariants of positive degree is the same as $\rho(IS)$, and $IS$ is finitely generated so $I$ is as well. 
+
+
+% Chekov gun quote
+
+\begin{thm}[The Second Fundamental Theorem of Invariant Theory for Finite Groups]
+The invariant ring is finitely generated. [Hilbert's Syzygy Theorem]
+\end{thm}
+
+
+There are versions of the 1st and 2nd Fundamental Theorem of Invariant Theory for many classes of groups.
+

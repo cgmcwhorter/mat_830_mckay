@@ -2,13 +2,11 @@
 \newpage
 \section{Introduction}
 
-
-% Disclaimer and pronunciation of \mc
-The \mc Correspondence is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. \\
+The \mc Correspondence (pronounced mc-eye) is an umbrella for a family of correspondences linking finite groups, resolutions of singularities of algebraic varieties, Lie Algebras, Character Theory, Invariant Theory, Representations of Quivers, and Cohen-Macaulay modules. It will not be our goal to see any particular connection in depth, but rather a surface level introduction to these correspondences generally, with a strong emphasis on examples. \\
 
         \begin{nscenter}
         \begin{minipage}{0.8\textwidth}
-        {\itshape ``The problem is to find a common origin of the A-D-E Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification.} \\
+        {\itshape ``The problem is to find a common origin of the ADE Classification Theorems, and to substitute a priori proofs to a posteriori verifications of the parallels of the classification.} \\
         \phantom{x}\hspace{1cm} -- V.I.~Arnold ,1976 \\
         \end{minipage}
         \end{nscenter}
@@ -33,28 +31,14 @@ These correspondences extend to isomorphisms between
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \newpage
+% -------------------------
 % Platonic Solids
+% -------------------------
 \section{Platonic Solids and Finite Groups of Matrices}
 
 
-A Platonic solid is a regular, convex polyhedron, constructed by congruent regular polygonal faces with the same number of faces meeting at each vertex; that is, the platonic solids are defined by the property that the faces are each convex and pairwise congruent. The five solids shown below are the only five solids satisfying these properties.
+A Platonic solid is a regular, convex polyhedron, constructed by congruent regular polygonal faces with the same number of faces meeting at each vertex; that is, the platonic solids are defined by the property that the faces are each convex and pairwise congruent. The solids shown below are the only five solids satisfying these properties.
         \[
         \begin{tikzpicture}[thick,scale=2]
         \node at (0,-1,0) {Tetrahedron};
@@ -190,11 +174,7 @@ A Platonic solid is a regular, convex polyhedron, constructed by congruent regul
 The solids above are the only possible Platonic solids.
 \end{prop}
 
-\pf Suppose a solid has faces with $p$ sides, and $q$ faces meet at each vertex. We write this as a pair $\{p,q\}$, called the Sch\"afli symbol. The external angles of each face add to $2\pi$ radians. The internal angles are then $\pi - \frac{2\pi}{p}$. So around each vertex, the sum of the angles is $q(\pi - \frac{2\pi}{p})$. This angle cannot be larger than $2\pi$ as the faces are concave if and only if $\dfrac{2}{p} + \dfrac{2}{q}>1$, and we require convex faces. Furthermore, this sum cannot be $2\pi$ for then the solid would be flat, i.e. a tiling of the plane. Therefore, we have the relation
-	\[
-	q \left( \pi - \dfrac{2\pi}{p}\right)< 2\pi.
-	\]
-The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,5\}$. Then Euler's Formula $V-E+F=1$ allows one to compute $V$, $E$, $F$, as found in the table.
+\pf Suppose a solid has faces with $p$ sides and $q$ faces meeting at each vertex. We write this as a pair $\{p,q\}$, called the Schl\"afli symbol. The external angles of each face add to $2\pi$ radians, as is the case with any convex polygon. Each exterior angle is then $\frac{2\pi}{p}$ radians. The internal angles are then $\pi - \frac{2\pi}{p}$. So around each vertex, the sum of the angles is $q(\pi - \frac{2\pi}{p})$. 
 	\begin{table}[h]
 	\centering
 	\begin{tabular}{ccccc}
@@ -208,41 +188,33 @@ The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,
 	$\{5,3\}$ & dodecahedron & 12 & 30 & 20
 	\end{tabular}
 	\end{table}
-\qed \\
+This angle cannot be larger than $2\pi$ as the faces are concave if and only if $\dfrac{2}{p} + \dfrac{2}{q}>1$, and we require convex faces. Furthermore, this sum cannot be $2\pi$ for then the solid would be flat, i.e. a tiling of the plane. Therefore, we have the relation
+	\[
+	q \left( \pi - \dfrac{2\pi}{p}\right)< 2\pi.
+	\]
+The integer solutions are $\{p,2\}$, $\{2,q\}$ or $\{3,3\}$, $\{3,4\}$, or $\{3,5\}$. Then Euler's Formula $V-E+F=1$ allows one to compute $V$, $E$, $F$, as found in the table. \qed \\
 
 
-Notice that the above proof is merely a uniqueness proof and does \emph{not} show the existence of these solids. We shall prove existence by classifying the rotational symmetry groups of these solids. Note that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. We shall find
+Notice that the above proof is merely a uniqueness proof and does \emph{not} show the existence of these solids. We shall prove existence by classifying the rotational symmetry groups of these solids. We shall find
 	\begin{itemize}
 	\item the dihedral group, $D_{2k}$, of the symmetries of the dihedron/hosohedron.
-	\item the tetrahedral group, $\bfT$, of the 12 rotational symmetries of a tetrahedron. 
+	\item the tetrahedral group, $\bbT$, of the 12 rotational symmetries of a tetrahedron. 
 	\item the octahedral group, $\bbO$, of the 24 rotational symmetries of the octahedron.
-	\item the icoahedral/dodecahedral group, $\cI$, of 60 the rotational symmetries of the icosahedron/dodecahedron
+	\item the icoahedral/dodecahedral group, $\bbI$, of 60 the rotational symmetries of the icosahedron/dodecahedron
 	\end{itemize}
-
-Furthermore, these will all be familiar groups. For example, we shall find $\bfT \cong A_4$ and $\bbO \cong S_4$. Note that dual polyhedron have the same symmetry group. This follows from the fact that symmetries of the faces of one polyhedron correspond to symmetries of the centers of their faces, and vice versa. For instance, the cube and the octahedron both have the same symmetry group, $\bbO \cong S_4$, because they are dual. From the table in Proposition~\ref{allplatonic}, we can see that the dihedron and hosohedron are dual, the octahedron and cube are dual, the icosahedron and dodecahedron are dual, and the tetrahedron is self-dual. Now not only are the groups $D_{2k}$, $\bfT$, $\bbO$, and $\cI$, along with $C_k$, are the \emph{only} finite groups of rotations of $\R^3$.
+Note that dual pairs\footnote{The dual of a polyhedron $P$ has a vertex at the center of each face of $P$, and two vertices joined by an edge if the faces abut each other.} of polyhedra have the same rotational symmetry groups. Furthermore, these will all be familiar groups. For example, we shall find $\bbT \cong A_4$ and $\bbO \cong S_4$. This follows from the fact that symmetries of the faces of one polyhedron correspond to symmetries of the centers of their faces, and vice versa. For instance, the cube and the octahedron both have the same symmetry group, $\bbO \cong S_4$, because they are dual. From the table in Proposition~\ref{prop:allplatonic}, we can see that the dihedron and hosohedron are dual, the octahedron and cube are dual, the icosahedron and dodecahedron are dual, and the tetrahedron is self-dual. Finally, the groups $D_{2k}$, $\bbT$, $\bbO$, and $\bbI$, along with the cyclic groups $C_n$ for $n \in \N$, are the \emph{only} finite groups of rotations of $\R^3$.
 
 
 \begin{thm}
-Along with the degenerate case of the cyclic group $C_k$ for any $k \geq 1$ corresponding to rotation of $\R^3$ by $\dfrac{2\pi}{k}$, these are all of the finite groups of rotations of $\R^3$. 
+Along with the degenerate case of the cyclic group $C_k$ for any $k \geq 1$ corresponding to rotation of $\R^3$ by $\dfrac{2\pi}{k}$, the groups $D_{2k}$, $\bbT$, $\bbO$, and $\bbI$ are all of the finite groups of rotations of $\R^3$. 
 \end{thm}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+% -------------------------
+% Matrix Groups
+% -------------------------
 \subsection{Matrix Groups}
-
 
 To classify the finite groups of rotational symmetries, we begin by recalling a few definitions.
 
@@ -261,6 +233,7 @@ The following are all orthogonal matrices:
 	\] \xqed
 \end{ex}
 
+
 A routine exercise verifies that the orthogonal group is also equivalent to any of the following:
 	\[
 	\begin{split}
@@ -269,10 +242,10 @@ A routine exercise verifies that the orthogonal group is also equivalent to any 
 	&= \{A \colon Ax \cdot Ay = x \cdot y, \text{ for all }x,y \in \R^n\} \\
 	&= \{ A \colon \text{ rows of }A\text{ form orthonormal basis for }\R^n\} \\
 	&= \{ A \colon \text{ columns of }A\text{ form orthonormal basis for }\R^n\} \\
-	&=\{ \text{ set of linear isometries of }\R^n\}.
+	&=\{ \text{set of linear isometries of }\R^n\}.
 	\end{split}
 	\]
-Note that we have defined $O(n)$ in terms of the symmetric bilinear form $\langle A, B \rangle = AB^T$. Generally, if $\langle \cdot\;,\; \cdot \rangle$ is a symmetric bilinear form, then you can define the orthogonal group of the form $\langle \cdot\;,\; \cdot \rangle$ to be $\{ A \in \GL(\R) \colon \langle Ax , Ay \rangle=\langle x, y \rangle, \text{ for all }x,y \in \R\}$. Observe also that from the relation $AA^T=I_n$, we obtain $\det(AA^T)=1$. It then follows that $\det(A)^2=1$, and then $\det A = \pm 1$.  A special subset of these matrices are our next group of interest. 
+Note that we have defined $O(n)$ in terms of the symmetric bilinear form $\langle A, B \rangle = AB^T$. Generally, if $\langle \cdot,\cdot \rangle$ is a symmetric bilinear form then you can define the orthogonal group of the form $\langle \cdot, \cdot \rangle$ to be $\{ A \in \GL(\R) \colon \langle Ax , Ay \rangle=\langle x, y \rangle \text{ for all }x,y \in \R\}$. Observe also that from the relation $AA^T=I_n$, we obtain $\det(AA^T)=1$. Recall that $\det(AB)=\det(A)\det(B)$, and $\det(A)=\det(A^T)$. It then follows that $\det(A)^2=1$, and then $\det A = \pm 1$.  A special subset of these matrices are our next group of interest. 
 
 
 \begin{dfn}[Special Orthogonal Group]
@@ -293,33 +266,27 @@ Since $A \in \SO(2)$, we know that $\det A=1$. This gives $a^2+c^2=1$. Then we c
 	\[
 	A=\two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta} \text{ or } \two{\cos\theta}{\sin\theta}{\sin\theta}{-\cos\theta}
 	\]
-While the left matrix is an element of $\SO(2)$, the other has determinant $-1$. Therefore, we must have $A= \two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}$, a rotation by $\theta$ counterclockwise about the origin. The second matrix on the right above corresponds to the reflection across the line at angle $\theta/2$ through the origin. Therefore, the group $\SO(2)$ is precisely the group of rotations in the plane. 
-\xqed
+While the left matrix is an element of $\SO(2)$, the other has determinant $-1$. Therefore, we must have $A= \two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}$, a rotation by $\theta$ counterclockwise about the origin. The second matrix on the right above corresponds to the reflection across the line at angle $\theta/2$ through the origin. Therefore, the group $\SO(2)$ is precisely the group of rotations in the plane. Similarly, $\SO(3)$ is the group of rotations for three-dimensional space, see Theorem~\ref{thm:eulerthm}. \xqed
 \end{ex}
 
 
 \begin{dfn}[Rotation of $\R^n$]
 Let $n>2$. A rotation of $\R^n$ is a linear map $\phi: \R^n \to \R^n$ satisfying
 	\begin{itemize}
-	\item $\phi$ fixes a line through the origin
+	\item $\phi$ fixes a line $\ell$ through the origin
 	\item $\phi \big|_{\ell^\perp}$ is a rotation of the subspace orthogonal to $\ell$
 	\end{itemize}
 \end{dfn}
-%\begin{dfn}[Rotation]
-%Recall a linear operator $T: \R^3 \to \R^3$ is called a rotation if
-%	\begin{itemize}
-%	\item $T$ fixes a unit vector $p$, called a \emph{pole}.
-%	\item The restriction of $T$ to $(\text{span}(p))^\perp \cong \R^2$ is a rotation of $\R^2$.
-%	\end{itemize}
-%
-%\end{dfn}
+
+
+Sometimes the definition of rotations of $\R^n$ is instead given as follows: a rotation of $\R^n$ is a linear operator if $T$ fixes a unit vector $p$, called a pole, and the  restriction of $T$ to $(\text{span}(p))^\perp \cong \R^2$ is a rotation of $\R^2$. We will make use of this alternate definition later. For now, we shall prove that the finite subgroups of linear isometries of the plane are a cyclic group or a dihedral group. 
 
 
 \begin{thm}
 The finite subgroups of linear isometries of the plane are a cyclic group or a dihedral group. 
 \end{thm}
 
-\pfsk If $G \subseteq \SO(2)$ is a finite group, then $G$ consists only of rotations by the methods in Example~\ref{ex:so2}. One can check that $G$ is generated by the rotation with smallest positive angle. Now if $G \subseteq O(2) \setminus \SO(2)$, then $G$ must contain a reflection $B$, and $G \cap \SO(2)= \langle A \rangle$ will be cyclic. One then verifies that $G= \{I,A, \ldots, A^{n-1}, B, BA, \ldots, BA^{n-1}\}$. \qed \\
+\pfsk If $G \subseteq \SO(2)$ is a finite group, then $G$ consists only of rotations by Example~\ref{ex:so2}. One can check that $G$ is generated by the rotation with smallest positive angle. Now if $G \subseteq O(2) \setminus \SO(2)$, then $G$ must contain a reflection $B$, and $G \cap \SO(2)= \langle A \rangle$ will be cyclic. One then verifies that $G= \{I,A, \ldots, A^{n-1}, B, BA, \ldots, BA^{n-1}\}$. \qed \\
 
 
 \begin{cor}
@@ -329,17 +296,17 @@ $\SO(2)$ consists of the rotations of $\R^2$.
 \pf By Example~\ref{ex:so2}, we know that $\SO(2)$ is contained in the group of rotations of $\R^2$. Since every rotation of $\R^2$ can be represented by a matrix in the form of $\two{\cos\theta}{-\sin\theta}{\sin\theta}{\cos\theta}$, the containment holds in the other direction. \qed \\
 
 
-Note that $\SO(3)=\{\text{rotations of }\R^3\}$ but $\SO(n)$ strictly contains the rotations of $\R^4$ for $n \geq 4$. We now come to yet another theorem of Euler. 
+Note that $\SO(3)=\{\text{rotations of }\R^3\}$ but $\SO(n)$ strictly contains the rotations of $\R^n$ for $n \geq 4$. We now come to yet another theorem of Euler. 
 
 
-\begin{thm}[Euler's Theorem]
+\begin{thm}[Euler's Theorem] \label{thm:eulerthm}
 	\[
 	\SO(3)= \{\text{rotation of }\R^3\}
 	\]
 In particular, the composition of two rotations of $\R^3$ is another rotation.
 \end{thm}
 
-\pf Suppose $T$ is a rotation, we can find a basis for $\R^3$ of the form $\cB:=\{p,x_1,x_2\}$, where $p$ a pole for $T$ and $\{x_1, x_2\}$ is a basis for $\R^2= (\text{span}(p))^\perp$. With respect to the basis $\cB$, 
+\pf Suppose $T$ is a rotation. We can find a basis for $\R^3$ of the form $\cB:=\{p,x_1,x_2\}$, where $p$ a pole for $T$ and $\{x_1, x_2\}$ is a basis for $\R^2= (\text{span}(p))^\perp$. With respect to the basis $\cB$, 
 	\[
 	[T]_\cB= 
 	\begin{pmatrix}
@@ -361,28 +328,28 @@ Now let $A \in \SO(3)$. We need find a pole for $A$, i.e. a nonzero vector fixed
 	&= - \det(A-I).
 	\end{split}
 	\]
-Therefore, $\det(A-I)=0$. But then $A$ has a unit eigenvector, say $p$. The restriction of $A$ to $(\text{span}(p))^\perp$ still preserves the dot product, and so is a rotation of $\R^3$ by the $\SO(2)$ case. \qed \\
+Therefore, $\det(A-I)=0$. But then $A$ has a unit eigenvector, say $p$. The restriction of $A$ to $(\text{span}(p))^\perp$ still preserves the dot product, and so $A$ is a rotation of $\R^3$ by the $\SO(2)$ case. \qed \\
 
 
 \begin{thm}
-The finite subgroups of $\SO(3)$ are cyclic, dihedral, or the group of rotational symmetries of a tetrahedron, an octahedron, or an icosahedron. 
+The finite subgroups of $\SO(3)$ are cyclic, dihedral, or the group of rotational symmetries of a tetrahedron, an octahedron, or an icosahedron (the symmetry groups of the Platonic solids).
 \end{thm}
 
-\pf Let $G \subseteq \SO(3)$ be finite with $|G|=N>1$. Set $P=\{p \in \R^3 \colon p \text{ pole of some }1\neq g \in G\}= \{ p \in \R^3 \colon |p|=1, gp=g \text{ for some }g\neq 1\}$. We claim that $G$ acts on $P$, i.e. if $p \in P$, $g \in G$, then $gp \in P$. If $p$ is a pole of $h \in G$, then $(ghg^{-1})(gp)=gp$ since $h$ fixes $p$. But then $gp$ is a pole of $ghg^{-1}$. Observe each $1 \neq g \in G$ has two poles, so $|P|<\infty$. For $p \in P$, let $G_p:= \stab_p=\{g \in G \colon p \text{ pole of }g\} \cup \{1_G\}$. 
+\pf Let $G \subseteq \SO(3)$ be finite with $|G|=N>1$, and define $P=\{\vec{p} \in \R^3 \colon \vec{p} \text{ pole of some }1\neq g \in G\}= \{ \vec{p} \in \R^3 \colon |\vec{p}|=1, g\vec{p}=g \text{ for some }g\neq 1\}$. We claim that $G$ acts on $P$, i.e. if $\vec{p} \in P$, $g \in G$, then $g\vec{p} \in P$. If $\vec{p}$ is a pole of $h \in G$, then $(ghg^{-1})(g\vec{p})=g\vec{p}$ since $h$ fixes $\vec{p}$. But then $g\vec{p}$ is a pole of $ghg^{-1}$. Observe each $1 \neq g \in G$ has two poles, so $|P|<\infty$. For $\vec{p} \in P$, let $G_{\vec{p}}:= \stab_{\vec{p}}=\{g \in G \colon \vec{p} \text{ pole of }g\} \cup \{1_G\}$. 
 
-Now $G_p$ is the set of all rotations with pole $p$, and $G_p$ is cyclic by the $n=2$ case. Furthermore, $G_p$ is generated by the smallest nonzero rotation. Let $r_p:= |G_p|$, and $n_p:=|O_p|$, where $O_p$ is the orbit of $p$. So $r_pn_p=|G|$ by the Orbit-Stabilizer Theorem. We count pairs $(p,g)$, where $p$ is a pole of $g \neq 1$. Now each $g$ has two poles so
+Now $G_{\vec{p}}$ is the set of all rotations with pole $\vec{p}$, and $G_{\vec{p}}$ is cyclic by the $n=2$ case. Furthermore, $G_{\vec{p}}$ is generated by the smallest nonzero rotation. Let $r_{\vec{p}}:= |G_{\vec{p}}|$, and $n_{\vec{p}}:=|O_{\vec{p}}|$, where $O_{\vec{p}}$ is the orbit of $\vec{p}$. So $r_{\vec{p}} n_{\vec{p}}=|G|$ by the Orbit-Stabilizer Theorem. We count pairs $(\vec{p},g)$, where $\vec{p}$ is a pole of $g \neq 1$. Now each $g$ has two poles so
 	\[
-	|\{ (p,g) \colon p \in P, gp=p, g \neq 1\}| = 2 (N-1) = \sum_{p \in P} r_p - 1
+	|\{ (\vec{p},g) \colon \vec{p} \in P, g\vec{p}=\vec{p}, g \neq 1\}| = 2 (N-1) = \sum_{\vec{p} \in P} r_{\vec{p}} - 1
 	\]
-where the last equality follows since $G_p$ is the set of $g$'s with pole $p$. Replacing $r_p$ with $N/n_p$, we obtain 
+where the last equality follows since $G_{\vec{p}}$ is the set of $g$'s with pole $\vec{p}$. Replacing $r_{\vec{p}}$ with $N/n_{\vec{p}}$, we obtain 
 	\[
-	2N-2 = \sum_{p \in P} \dfrac{N}{n_p} -1 = \sum_{\text{orbits }O_p} n_p \left(\dfrac{N}{n_p} -1 \right) = \sum_{\text{orbits }O_p} N - \dfrac{N}{r_p}.
+	2N-2 = \sum_{\vec{p} \in P} \dfrac{N}{n_{\vec{p}}} -1 = \sum_{\text{orbits }O_{\vec{p}}} n_{\vec{p}} \left(\dfrac{N}{n_{\vec{p}}} -1 \right) = \sum_{\text{orbits }O_{\vec{p}}} N - \dfrac{N}{r_{\vec{p}}}.
 	\]
 But then we have
 	\[
 	2 - \dfrac{2}{N} = \sum_{i=1}^k \left( 1 - \dfrac{1}{r_i}\right),
 	\]
-where we have labeled the orbits $O_1,\ldots,O_k$ and $r_i= |G_{p_i}|$. This equation is known as L\"uroth's Equation. 
+where we have labeled the orbits $O_1,\ldots,O_k$ and $r_i= |G_{\vec{p}_i}|$. This equation is known as L\"uroth's Equation. 
 
 L\"uroth's equation implies that $k \leq 3$, as each term on the right hand side is at least $1/2$ and the left hand side is less than 2. If $k=1$, then there is a unique orbit or poles and thus $2- \frac{2}{N}= 1- \frac{1}{r}$. But the left hand side is at least 1, while the right hand side is less than 1, a contradiction. Now if $k=2$, then there are two orbits of poles so that
 	\[
@@ -394,9 +361,40 @@ where the last equivalence follows since $r_in_i=N$, where $n_i=|O_i|$. But then
 	\]
 The number of algebraic possibilities are limited. We can assume $r_1 \leq r_2 \leq r_3$ and so $r_1<3$. The solutions are $(2,2,k)$ for any $k \geq 2$, $(2,3,3)$, $(2,3,4)$, $(2,3,5)$. We can construct the polyhedron in each case. 
 	\begin{itemize}
-	\item  $(2,2,k)$: \enskip We have $\frac{1}{2}+\frac{1}{2}+\frac{1}{k}=1+\frac{2}{N}$, so $N=2k$. But then there are two orbits of size $k$ and one of size 2, say $O_3=\{p,p' \}$. Half the elements of $G$, i.e. $k$ elements, fix $p$ and $p'$, while the remaining elements swap the elements. But then $G \cong D_k$.  
-	\item $(2,3,5)$: \enskip We have $\frac{1}{2}+\frac{1}{3}+\frac{1}{5}=1+\frac{2}{N}$ so that $N=60$. The orbits have sizes 30, 20, and 12. Let $V=O_3$ be the orbit of size 12. Choose $p \in V$ to be the north pole, and let $H=G_p$ be the stabilizer of $p$. We have $|H|= \frac{60}{12}=5$. In particular, $H$ is cyclic with order 5. Now $H$ (with order 5) acts on $V$ (of order 12), fixing $p$ and $-p$. But then the orbits have size 1, 1, 5, and 5. Now $V$ is the set of vertices of the icosahedron. 
-	% Give image p, diagon joined to 5 points, same fliiped with -p, contect triamgularly 
+	\item  $(2,2,k)$: \enskip We have $\frac{1}{2}+\frac{1}{2}+\frac{1}{k}=1+\frac{2}{N}$, so $N=2k$. But then there are two orbits of size $k$ and one of size 2, say $O_3=\{\vec{p},\vec{p}' \}$. Half the elements of $G$, i.e. $k$ elements, fix $\vec{p}$ and $\vec{p}'$, while the remaining elements swap the elements. But then $G \cong D_k$.  
+	\item $(2,3,5)$: \enskip We have $\frac{1}{2}+\frac{1}{3}+\frac{1}{5}=1+\frac{2}{N}$ so that $N=60$. The orbits have sizes 30, 20, and 12. Let $V=O_3$ be the orbit of size 12. Choose $p \in V$ to be the north pole, and let $H=G_{\vec{p}}$ be the stabilizer of $p$. We have $|H|= \frac{60}{12}=5$. In particular, $H$ is cyclic with order 5. Now $H$ (with order 5) acts on $V$ (of order 12), fixing $\vec{p}$ and $-\vec{p}$. But then the orbits have size 1, 1, 5, and 5. Now $V$ is the set of vertices of the icosahedron. 
+		\[
+		\begin{tikzpicture}
+		\node at (3.05,1.35) {$\vec{p}$};
+		\node at (2.9,-2.35) {$-\vec{p}$};
+		\filldraw[black] (3,1) circle (2pt);
+		\filldraw[black] (3,-2) circle (2pt);
+		
+		\filldraw[black] (1,0) circle (2pt);
+		\filldraw[black] (2,0) circle (2pt);
+		\filldraw[black] (3,0) circle (2pt);
+		\filldraw[black] (4,0) circle (2pt);
+		\filldraw[black] (5,0) circle (2pt);
+
+		\filldraw[black] (1,-1) circle (2pt);
+		\filldraw[black] (2,-1) circle (2pt);
+		\filldraw[black] (3,-1) circle (2pt);
+		\filldraw[black] (4,-1) circle (2pt);
+		\filldraw[black] (5,-1) circle (2pt);
+		
+		\draw (1,0) -- (3,1);
+		\draw (2,0) -- (3,1);
+		\draw (3,0) -- (3,1);
+		\draw (4,0) -- (3,1);
+		\draw (5,0) -- (3,1);
+		
+		\draw (1,-1) -- (3,-2);
+		\draw (2,-1) -- (3,-2);
+		\draw (3,-1) -- (3,-2);
+		\draw (4,-1) -- (3,-2);
+		\draw (5,-1) -- (3,-2);
+		\end{tikzpicture}
+		\]
 	\item The cases of $(2,3,3)$ and $(2,3,4)$ are handled the same as the case above. 
 	\end{itemize}
 \qed \\
@@ -419,7 +417,7 @@ The finite subgroups of $\SO(3)$ have presentations
 
 % Give image vertex with 5 whell spoked and arrow between 2 spokes with 2 or i? Give upper right edge color, the specified one, along it label \sigma . This has bunny with head along chosen edge. Give image to right of sigma, then give arrow connecting to similar diagram labeled tau and rotate the same image and again by sigma till back to original with bunny facing origin feet on original edge. 
 
-Focus on the face fo the right of our edge, and consider $\sigma\tau$. This rotates the face by $2\pi//p$. So we must have $|\sigma\tau|=p$, and we have elements $\sigma$, $\tau$ satisfying $\sigma^2=\tau^q=(\sigma\tau)^p=1$. One needs to check that $\sigma$, $\tau$ generate $G$ and that
+Focus on the face fo the right of our edge, and consider $\sigma\tau$. This rotates the face by $2\pi//p$. So we must have $|\sigma\tau|=p$, and we have elements $\sigma$, $\tau$ satisfying $\sigma^2=\tau^q=(\sigma\tau)^p=1$. One needs to check that $\sigma$, $\tau$ generate $G$, and that
 	\[
 	|\langle x,y \;|\; x^2=y^q=(xy)^p=1 \rangle| = |G|.
 	\]
@@ -545,10 +543,10 @@ The finite subgroups of $\SL_2(\C)$, up to conjugacy, are
 	B\cD_n:= \left\langle \C_{2n}, \two{0}{i}{i}{0} \right\rangle \\
 	B\cT:= \left\langle B\cD_2, \dfrac{1}{\sqrt{2}} \two{\omega_8}{\omega_8^3}{\omega_8}{\omega_8^7} \right\rangle \\
 	B\cO&= \left\langle B\cT, \two{\omega_8^3}{0}{0}{\omega_8^5} \right\rangle \\
-	B\cI= \left\langle ????\right\rangle
+	B\bbI= \left\langle ????\right\rangle
 	\end{split}
 	\]
-where $\omega$ is a primitive $n$\tss{th} root of unity. The group $B\cD_n$ is the binary dihedral group of order $4n$, $B\cT$ is the binary tetrahedral group of order 24, $B\cO$ the binary octahedral group of order 48, and $B\cI$ the binary icosahedral group of order 120. 
+where $\omega$ is a primitive $n$\tss{th} root of unity. The group $B\cD_n$ is the binary dihedral group of order $4n$, $B\cT$ is the binary tetrahedral group of order 24, $B\cO$ the binary octahedral group of order 48, and $B\bbI$ the binary icosahedral group of order 120. 
 \end{thm}
 
 
