@@ -611,6 +611,52 @@ In the case $n=2$, $\cA^2_{x,y}$, $\cP^1_{u:v}$. $X=\{ ((x,y),[u:v]) \colon xv=y
 % two planes parallel, loop around top plane with darkened point in middle. tiny x in top plane mapping to bottom single point. But the whole loop maps to single point. 
 
 
+\begin{rem}
+$X= \Proj(S[x_1t,\ldots,x_nt])$, where $S= \C[x_1,\ldots,x_n]$ is degree 0 with $\deg t=1$. Note that $S[x_1t,\ldots,x_nt] \subseteq S[t]$. Defining $u_k:= x_it$, the relations $x_iu_j=x_ju_i$ imply $x_i(x_jt)=x_j(x_it)$. 
+\end{rem}
+
+
+Observations about $X$. 
+
+\begin{itemize}
+\item We have a map $\pi: X \to \cA^n$ given by $(p,q) \mapsto p$.
+\item The fiber of $\pi$ over the origin $(0,\ldots,0)$ is $\{ (x_1,\ldots,x_n); [u_1,\ldots,u_n] \colon x_1=x_2=\cdots=x_n=0\} \cong \cP^{n-1}$. 
+\item The fiber over a point $(x_1,\ldots,x_n) \neq (0,0,\ldots,0)$ is the single point $((x_1,\ldots,x_n),[x_1:x_2:\cdots:x_n])$. Therefore, $\pi$ is a bijection away from the origin. 
+\end{itemize}
+
+Then $X$ looks like a copy of $\cA^n$ with the origin replaced by $\cP^{n-1}$. 
+
+\begin{itemize}
+\item $X$ is not just the union of $(\cA^n \setminus \{0\}) \cup \cP^{n-1}$, in fact, it is irreducible (as a variety, or a topological space in the Zariski topology), which we shall show soon (see the notes)
+
+\item In the case $n=2$, 
+	\[
+	X= \{ ((x,y), [u:v]) \colon xv=yu\}.
+	\]
+Consider a line through the origin in $\cA^2$ and its preimage in $X$. 
+
+% picture small plane, above it a surface. tick a point in the plane and draw a line through it across the entire plane (diagonally SE) called L', then get curve above it. Line through squizzle above, labeled \pi^{-1}(L'). 
+
+$L=\{ (ta,tb) \colon t \in \C\}$. For $t \neq 0$, there is a unique point in $X$ lying over that point on the line. So if we let $L'= L \setminus \{(0,0)\}$, then $\pi^{-1}(L')$ is a punctured line in $X$. Its closure in $X$, $\overline{\pi^{-1}(L')}$ is $\overline{\{((ta,tb), [ta:tb]) \colon t \neq 0\}}= \{ ((ta,tb),[ta:tb])\}= \{((ta,tb), [a:b])\}$. The `new point' must be on the `exceptional fiber' $\cP^1$, the point $[a:b]$ on $\cP^1$. The correspondence sending the line $L=\{(ta,tb)\}$ to the point $[a:b]$ is a bijection between points of the exceptional fibre and lines through the origin. The same is true for all $n$. 
+\end{itemize}
+
+
+
+Blowing up the origin in a subset of $\cA^n$. 
+
+Suppose $Y \subseteq \cA^n$ containing $(0,0,\ldots,0)$. Then the blowup of $Y$ at $(0,0,\ldots,0)$ is 
+	\[
+	\overline{Y}:= \overline{\pi^{-1}(Y \setminus \{(0,0,\ldots,0)\})},
+	\]
+where $\pi: X \to \cA^n$ is the blowup from before.
+
+
+The blow up of a line through the origin is just a line in $X$, which meets the exceptional fiber at one point. 
+
+
+FACT: $\tilde{Y}$ is defined as a subset of $\cA^n \times \cP^{n-1}$ by the equations defining $Y$, plus $x_iu_i=x_ju_i$ for $i \neq j$. 
+
+We have $\pi^{-1}(Y)= \pi^{-1}(Y \setminus \{(0,0,\ldots,0)\}) \cup \pi^{-1}((0,0,\ldots,0))= \tilde{Y} \cup E$, where $E \cong \cP^{n-1}$ is the exceptional fiber. We call $\tilde{Y}$ the strict transform of $Y$ and $\pi^{-1}(Y)$ the total transform. 
 
 
 
@@ -618,6 +664,81 @@ In the case $n=2$, $\cA^2_{x,y}$, $\cP^1_{u:v}$. $X=\{ ((x,y),[u:v]) \colon xv=y
 
 
 
+
+% ??????????????????????????? WTF IS THE BELOW????????
+
+
+\begin{ex}
+Take $Y$ to be the union of the $x$ and $y$ axes in $\cA^2$ defined by $xy=0$. In fact, the total transform $\pi^{-1}(Y)$ is defined by the equations of $Y$ and $x_iu_j= x_ju_i$
+
+
+% Give 3D image: vertical line E \cong P^1, two parallel axes labeled \pi^{-1}(x-axis) and another same but y-axis, rescp. 
+
+
+ We know the preimage of the $x$-axis is a line in $x$ meeting $E$, the exceptional fiber, at the point $[1:0]$. Similarly, the preimage of the $y$-axis os a line meeting $E$, the exceptional fiber, at the point $[0:1]$. So $\tilde{Y}$ is the union of two skew lines. 
+
+% Give plane, point in center, two lines forming X through it. surface above, squiggle in the surface above point. Two lines pass through squiggle intersect at an angle. Entire image labeled \pi^{-1}(Y).
+
+Recall $\cP^{n-1}=\{ [u_1,\ldots,u_n] \colon u_i \text{ not all 0}/\sim$ is covered by affine chartsL $U_1= \{[u_1,\ldots,u_n] \colon u_i \neq 0\} \cong \cA^{n-1}$, since we can scale so that $u_i=1$, so $=\{[u_1,\ldots,1,u_i,\ldots, u_n]\}$
+
+Continuing the example. Consider the chart where $u \neq 0$. On this chart, $\tilde{Y}$ is defined by $xy=0$ and $y=xv$. So it is defined by $x^2v=0$ ($y=vx$). This is the union of $\{x^2=0\}$ with $\{v=0\}$. If $x^2=0$, then $x=0$, so $y=xv=0$. So we have the point $\{(0,0),[1:v]\}$. 
+
+Alternatively, consider subset of $X$ where $v=0$. Then in particular $u \neq 0$. 
+
+
+
+So in this char $u=1$, we have $x=0: E$, $v=0:$ $((x,0), [1:0])$, $\pi^{-1}(x-axis)$. 
+
+In the chart $v=1$, we get $y=0:$ the $v=1$ chart of $E$, $u=0: \pi^{-1}(y-axis)$. 
+\end{ex}
+
+
+
+
+%???????????????????????????????? WTF IS THE ABOVE?!
+
+
+
+
+\begin{ex}
+$Y: \{x^2+y^3=0\}$ cusp, $(A_2)$ singularity from previous table. The total transform $\pi^{-1}(Y)$ is defined by $x^2+y^3=0$, $xv=yu$ in $\cA^2 \times \cP^1$. Charts again: $u=1$: Here $y=xv$ and $x^2+(xv)^3=0$. Then $x^2(1+xv^3)=0$. This defines a union of two algebraic sets: $x^2=0$ and $1+xv^3=0$. 
+
+There are then two cases: $x^2=0$. Then $y=0$ as well so then $\{((0,0), [1:v])\}$, an affine chart of $E \cong \P^1$. 
+
+In the case of $1+xv^3=0$......who knows but there are no singular points (partials vanish only at $x=v=0$, which is not on vanishing set of $1+xv^3$. For any $x \neq 0$, there are three distinct points, the three cube roots. 
+
+In the other chart, $v=1$, $x^2+y^3=0$, $x=yu$. We substitute in: $y^2u^2+y^3=0$. Gives $y^2(u^2+y)=0$. 
+
+$y^2$ is part of $E$ and $u^2+y$ is a parabola. 
+
+% axes: vertical y, horizontal u, plot y= -x^2 parabola, deeply fill in x-axis. 
+
+Following image from Hauser:
+
+% circle at bottom, give 'duck mouth' vshape facing right. Give twisting band passing behind itself the bottom edge in same direction as bottom duck mouth edge. Then give dark line following inner edge of band. The top/bottom edge of the strip should be dotted. Can find picture already. 
+
+We have resolved the singularity of the curve at the origin. But could do more, or ask for more. The total transform ($E \cup \tilde{Y}$) still has a singularity (see the intersection of line and parabola, meet at point of tangency). We could blow up again, and again,\dots until the total transform has `simple normal crossing' singularities, i.e. no tangency. So we would blow up the vanishing set of $y^2(u^2+y)$ in the $uy$-plane at the origin in the $(u,y)$-plane.
+\end{ex}
+
+Exercise: One more blowup is enough: we get $x$ crossing for total transform.
+
+% Image: duck mouth y, <- sideways parabola meeting once @ vertex line E, parabola tilde y <- the picture like above with 3 lines in 3D, E vertical, E' horizontal top, tildetilde y bottom line. 
+
+The composition takes $\tilde{\tilde{Y}}$ to $Y$ and collapses both $E$'s to the origin. The exceptional fiber of the whole operation is
+
+% Two line cross E's, (E & E'). 
+
+
+The number of times we have to blow up is measure of how singular the original was, i.e. its `multiplicity.' 
+
+There are examples where blowing up increases the multiplicity. However, there are other numbers one can attach to these that go down when blowing up. Hironaka's proof is 17 nested inductions to show that blow-ups and normalization eventually resolve the singularities.  
+
+
+
+
+
+
+% Two line cross E's, (E & E').  squiggle arrow to graph vertices E, E' attached to each other, labeled A_2. 
 
 
 
