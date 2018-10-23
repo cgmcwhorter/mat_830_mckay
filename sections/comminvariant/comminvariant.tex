@@ -378,12 +378,125 @@ Let $A= k[x,y,z]$ and $M= (x,y)$. We have the short exact sequence
 	\[
 	0 \ma{} (x,y) \ma{} A \ma{} \dfrac{A}{(x,y)} \ma{} 0.
 	\]
-We know $A/(x,y) \cong k$, a field, so this has depth 0. We know that $\dep A=2$. Then it must be that $\dep (x,y)=1$. So $(x,y)$ is neither reflexive nor MCM. What is $M^{**}$? 
+We know $A/(x,y) \cong k$, a field, so this has depth 0. We know that $\dep A=2$. Then it must be that $\dep (x,y)=1$. So $(x,y)$ is neither reflexive nor MCM. What is $M^{**}$? Consider the free resolution
+	\[
+	A \ma{} A \oplus A \ma{} (x,y) \ma{} 0
+	\]
+with maps $a \mapsto (y,-x)$ and $(a,b) \mapsto ax+by$. Taking duals yields,
+	\[
+	0 \ma{} (x,y)^* \ma{} (A \oplus A)^* \ma{i^*} A^*
+	\]
+Now $i^*(e_1)$ (the first coordinate function) is $i^*(e_1)=e_1i=y$ and $i^*(e_2)=e_2i= -x$. Then $i^*$ is the map $(a,b) \mapsto ay-bx$ and further $(x,y)^* \cong \ker i^* \cong A(x,y) \cong A$. But $(x,y)^{**} \cong A^* \cong A$. 
+
+% Rewrite
+%	\[
+%	0 \ma{} A \ma{(y\;-x)^T} A \oplus A \ma{(x\;y)} A
+%	\]
+%Dualizing gives
+%	\[
+%	0 \ma{} (x,y)^* \ma{} A \oplus A \ma{(y\;-x)} A
+%	\]
+%$\ker [y\;-x]= \ker [x\;y]=A$. 
+\end{ex}
+
+
+\begin{thm}[Herzog, 1978]
+Let $S= k[u,v]$, $G \subseteq \GL_2(k)$ a finite group with $|G| \in k^*$. Set $R= \widehat{S^G}$, the completion of the invariant ring. Then every indecomposable MCM $R$-module is a direct summand of $\hat{S}= k\llbracket u,v \rrbracket$.
+\end{thm}
+
+\pf We shall assume the Krull-Schmidt property for $R$ and $S$, and leave the details passing between the ring and its completion for the reader. Let $M$ be an indecomposable MCM (reflexive) $R$-module. We want $M$ to be a direct summand of $S$ as an $R$-module. Since $|G| \in k^\times$, we have the Reynold's operator, so $R$ is a direct summand of $S$ as $R$-modules. So we have the split monic $R \hookrightarrow S$. Apply $\Hom_R(M^*,-)$. Then we have $\Hom_R(M^*,R) \to \Hom_R(M^*,S)$ still splits. However, $\Hom_R(M^*,R)=M^{**} \cong M$ as $M$ is reflexive. The $R$-module $\Hom_R(M^*,S)$ is naturally an $S$-module: $(sf)(\lambda):= s(f(\lambda))$ for $s \in S$, $f: M^* \to S$, $\lambda \in M^*$. Furthermore, we have proved that $\Hom$ modules have depth $\geq 2$. So $\Hom_R(M^*,S)$ is an $S$-module of depth 2, hence an MCM $S$-module, hence free. So $M$ is a direct summand over $R$ of a free $S$-module. $M \mid S^n$ for some $n$. But $M$ is indecomposable, and we have Krull-Schmidt, so $M$ must be a direct summand of $S$, i.e. $M \mid S$, which is what we wanted to show. \qed \\
+
+
+\begin{rem}
+We need the `hats' in order to use the Krull-Schmidt uniqueness theorem for direct-sum decompositions. This fails even for $k[u,v]$. Could get away with much less, the Hensalization for example. 
+\end{rem}
+
+
+\begin{cor}
+For 2-dimensional rings of invariants $R= S^G$. $\add_R(S)=MCM(R)$.
+\end{cor}
+
+
+
+\begin{ex}
+Let $C_n= \langle \sigma \colon \sigma^n=1 \rangle$ act on $S= k[u,v]$ via $\sigma(x)= \omega_n x$, $\sigma(y)= \omega_n^{-1}y$, i.e. 
+	\[
+	\sigma = \two{\omega_n}{}{}{\omega_n^{-1}} \in \SL_2(k).
+	\]
+Then $R= S^G= k[u^n,u^{n-1}v, \ldots, v^n]$ (we worked this out before). Furthermore, we worked out $S \cong_{R-mod} R \oplus I_1 \oplus I_2 \oplus \cdots \oplus I_{n-1}$, where $I_j$ is generated as an $R$-module by monomials of degree $j \mod n$. Explicitly, $I_j= (u^j,u^{j-1}v,\ldots,v^j) R \cong (u^jv^{n-j}, u^{j-1}v^{n-j+1}, \ldots, v^n)$. By Herzog's Theorem, every maximal MCM (or reflexive) can be written $R^{a_0} \oplus I_1^{a_1} \oplus I_2 \oplus \cdots \oplus I_{n-1}^{a_{n-1}}$.
+\end{ex}
+
+
+\begin{dfn}
+We say that a (local or graded) ring $A$ has finite CM representation type (fCMt) if it has finitely many indecomposable MCM modules up to isomorphism. 
+\end{dfn}
+
+
+\begin{cor}
+$k[u,v]^G$ have fCMt. 
+\end{cor}
+
+
+Note that Herzog's Theorem does not hold in dimension greater than two. 
+
+\begin{ex}
+Let $C_2= \{\pm 1\}$ act on $k[x,y,z]$. Then $R= k[x^2,y^2,z^2,xy,xz,yz]$. As $R$-modules, $S$ has rank 2 (by previous work) $S \cong R \oplus I$, where $I$ is all monomials of odd degree, i.e. $(x,y,z)R \cong (x^2,xy,xz)R$. Take a syzygy of $I$: 
+	\[
+	0 \ma{} N:= \ker \pi \ma{} R^3 \ma{\pi} I \ma{} 0
+	\]
+FACT: Another theorem of Herzog coming soon. $N$ is indecomposable. [Theorem says it is a syzygy of an indecomposable MCM module. So $N$ is an indecomposable MCM module of rank 2, hence it is not isomorphic to either $R$ or $I$, so does not appear as a summand of $S$ (technically, this requires Krull-Schmidt). 
 \end{ex}
 
 
 
-% Think about this.
+\subsection{The Gorenstein and Isolated Singularity Properties}
+
+
+Goal is to determine when invariant rings have these properties, then use them in Auslander version of the \mc Correspondence. 
+
+
+\begin{dfn}[Gorenstein]
+Let $A= A_0 \oplus A_1 \oplus \cdots \oplus A_s$ be a graded algebra over $A_0=k$, a field. Assume that $A_s=0$ but $A_{>s}=0$. Say that $A$ is Gorenstein (or a Poincar\'e duality algebra) if $A_s \cong k$ is a 1-dimensional vector space and for every $i$, the mapping $A_i \times A_{s-i} \to A_s \cong k$ given by $(a,a') \mapsto aa'$ is a perfect pairing. [Recall a bilinear map $\langle, \rangle: V \times W \to k$ is a perfect pairing if the induced map $V \to W^\vee:= \Hom_k(W,k)$ is an isomorphism of vector spaces, where the induced map is given by  $v \mapsto \langle v, - \rangle: W \to k$.] 
+\end{dfn}
+
+
+In particular, if $A$ is Gorenstein, then $A_i^\vee \cong A_{s-i}$. By the way, this is equivalent to the usual definition that $\soc A= \{a \colon a A_{\geq 1}=0 \}$ is 1-dimensional. Notice $A_s$ is always in $\soc A$, and if $\soc$ were to contain any elements of degree $i \neq s$, say $a$, then the map $A_i \to A_{s-i}^\vee$ given by $v \mapsto \mu_v$, multiplication by $v$, would have $a$ in the kernel so that it would not be an $\cong$. 
+
+
+
+Bookkeeping devices: For a graded ring $A= \bigoplus_{i=0}^\infty A_i$ where $A_0=k$, the Hilbert function counts vector space dimensions, $H_A(n) \stackrel{def}{=} \dim_k A_n$. One can do this for modules also, $H_M(n) \stackrel{def}{=} \dim_k M_n$. If now $A= A_0 \oplus \cdots \oplus A_s$ is a finite dimensional Gorenstein ring, then $A_i \cong A_{s-i}^\vee$ so they have the same $k$-dimension, so $H_A(i)= H_A(s-i)$, where $i=0,\ldots,s$. That is, the Hilbert function is symmetric. Caution: symmetric hilbert function does not imply gorenstein. Note also $\sum_i H_A(i)= \dim_k( \oplus A_i)= \dim_k A$. The Hilbert series of $A$ is the generating function for its Hilbert function $h_A(t)= \sum_{n \geq 0} H_A(n) t^n$. Notice that $h_A(t)$ is a polynomial if and only if $A_i=0$ for $i \gg 0$ if and only if $\dim_k A< \infty$. 
+
+
+\begin{thm}[Hilbert]
+For $n \gg 0$, $H_A(n)$ agrees with a polynomial $P_A(n)$ of degree $\dim A+1$, called the Hilbert polynomial. In particular, $h_A(t)$ is a rational function of $t$. 
+\end{thm}
+
+
+Again let $A$ be a finite dimensional Gorenstein graded ring. Since the Hilbert function is symmetric, $h_A(t)= h_0 + h_1t + h_2t^2+ \cdots + h_st^s$ with $h_i= H_A(i)$ and $h_i= h_{s-i}$. Then 
+	\[
+	h_A(1/t) = t^{-s} h_A(t).
+	\]
+
+
+\begin{ex}
+$A= k[x,y]/(x^2,y^2)= k \oplus \langle x,y \rangle \oplus \langle xy \rangle$. So $s=2$. The bilinear map $A_1 \times A_2 \to A_2$ is a perfect pairing, so $A$ is Gorenstein. $h_A(t)= 1+2t+t^2$, so $h_A(1/t)= 1+2/t+1/t^2= 1/t^2(1+2t+t^2)$. 
+\end{ex}
+
+
+\begin{ex}
+$A= k[x,y]/(x^2,xy,y^3)$. $H_A: (1,2,1)$ same Hilbert function as previous example but $A$ is not Gorenstein since $x$ kills all terms in degree 1, $xA_{\geq 1}= 1$ but $x$ does not have degree 2=s. 
+\end{ex}
+
+
+
+\subsection{Module-Theoretic Properties of Gorenstein Rings}
+
+Observe that for any finite dimensional graded algebra $A$, the $k$-dual $A^\vee= \Hom_k(A,k)$ is an injective $A$-module. This follows directly from $\Hom - \otimes$ adjointness, we want ot show $\Hom_A(-,A^\vee)$ is exact. But $\Hom_A(-,A^\vee)= \Hom_A(-, \Hom_k(A,k))= \Hom_k(-\otimes_A A,k)= \Hom_k(-,k)$, which is exact. 
+	\[
+	A^\vee = \Hom_k(A,k) = \Hom_k( \oplus_{i=0}^s A_i,k) = \oplus_{i=0}^s \Hom_k(A_i,k) \cong \oplus_{i=0}^s A_{s-i}
+	\]
+So $A^\vee \cong A$ as vector spaces. One can check that $A^\vee \cong A$ as $A$-modules. The upside is that a Gorenstein finite dimensional algebra is self injective, i.e. injective as a module over itself. 
+
 
 
 
