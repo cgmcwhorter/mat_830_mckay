@@ -79,7 +79,7 @@ $R= S^G$ is a UFD in the following cases (this is not a complete list, just exam
 \end{ex}
 
 
-Having proved Noether's Theorem, our next goal is the Hochster-Eagon Theorem that $R= S^G$, i.e. invariant rings are Cohen-Macaulay. We work with graded rings (recall that $k[x_1,\ldots,x_n]= \bigoplus_p k[x_1,\ldots,x_n]_p$, the $p$th graded piece consisting of homogeneous polynomials of degree $p$ and our group actions preserve degree so $k[x_1,\ldots,x_n]^= \bigoplus_p k[x_1,\ldots,x_n]_p^G$. Let $A= \bigoplus_{i=1}^\infty A_i= A_0 \oplus A_1 \oplus \cdots$ be a graded ring with $A_0= k$ a field. Sometimes [Bruns-Herzog] such rings are called *local since they have a unique homogeneous maximal ideal $\fm= A_1 \oplus A_2 \oplus \cdots$. 
+Having proved Noether's Theorem, our next goal is the Hochster-Eagon Theorem that $R= S^G$, i.e. invariant rings are Cohen-Macaulay. We work with graded rings (recall that $k[x_1,\ldots,x_n]= \bigoplus_p k[x_1,\ldots,x_n]_p$), the $p$th graded piece consisting of homogeneous polynomials of degree $p$ and our group actions preserve degree so $k[x_1,\ldots,x_n]^= \bigoplus_p k[x_1,\ldots,x_n]_p^G$. Let $A= \bigoplus_{i=1}^\infty A_i= A_0 \oplus A_1 \oplus \cdots$ be a graded ring with $A_0= k$ a field. Sometimes [Bruns-Herzog] such rings are called *local since they have a unique homogeneous maximal ideal $\fm= A_1 \oplus A_2 \oplus \cdots$. 
 
 
 \begin{dfn}[Homogenous System of Parameters]
@@ -495,9 +495,177 @@ Observe that for any finite dimensional graded algebra $A$, the $k$-dual $A^\vee
 	\[
 	A^\vee = \Hom_k(A,k) = \Hom_k( \oplus_{i=0}^s A_i,k) = \oplus_{i=0}^s \Hom_k(A_i,k) \cong \oplus_{i=0}^s A_{s-i}
 	\]
-So $A^\vee \cong A$ as vector spaces. One can check that $A^\vee \cong A$ as $A$-modules. The upside is that a Gorenstein finite dimensional algebra is self injective, i.e. injective as a module over itself. 
+So $A^\vee \cong A$ as vector spaces. One can check that $A^\vee \cong A$ as $A$-modules. The upside is that a Gorenstein finite dimensional algebra is self injective, i.e. injective as a module over itself. The converse is also true: sketch: show $A^\vee= \Hom_k(A,k)$ is the injective hull of $k$, since $A$ is self-injective and contains $k$, conclude $A \cong A^\vee$. 
+
+It follows that if $A$ is Gorenstein, then every finitely generated $A$-module is torsionless and in fact is reflexive. Sketch: Start with $k= A/A_{\geq 1}$. We have $k^*= \Hom_A(k,A)= \ann_A A_{\geq 1}= \soc A \cong k$, where the last isomorphism follows since $A$ is Gorenstein. So $k^{**} \cong k$ also, and we just have to show $k \to k^{**}$ is not zero. Then finish by induction on $\dim_k M$. 
 
 
+
+%%%%%%%%%%%%
+
+
+
+\begin{dfn}
+A graded algebra $A= \oplus_{i=0}^\infty A_i$ with $A_0=k$ a field is called Gorenstein if there is a regular sequence $x_1,\ldots,x_d$, of elements of positive degree so that $\overline{A}:= A/(x_1,\ldots,x_d)$ is a finite dimensional Gorenstein ring. Note $d$ is necessarily $\dim A$. 
+\end{dfn}
+
+
+Equivalently, though we we will not prove this, the quotient $A/(x_1,\ldots,x_d)$ is a finite-dimensional Gorenstein ring for every regular sequence $x_1,\ldots,x_d$. How do Hilbert series behave when we kill a regular sequence? 
+
+
+\begin{prop}
+Let $A$ be a graded ring and $x \in A$ a homogeneous element of degree $e>0$. Then
+	\[
+	h_A(t)= \dfrac{h_{A/(x)}(t) - t^e h_{\ann x}(t)}{1 - t^e}
+	\]
+\end{prop}
+
+In particular, $x$ is a nonzero divisor if and only if $h_{A/(x)}(t)= (1-t^e) h_A(t)$.
+
+
+The ``in particular'' is clear by subsitution, get zero, but that's the sum of dimensions of graded pieces so must be zero ring?
+
+
+For the rest, consider a more general situation. Let
+	\[
+	0 \ma{} L \ma{} M \ma{} N \ma{} 0
+	\]
+be an exact sequence of graded $A$-modules and homogeneous maps of degree zero so $L_i \hookrightarrow M_i$, $M_i \twoheadrightarrow N_i$. Then for each degree $n$, we get
+	\[
+	0 \ma{} L_n \ma{f_n} M_n \ma{g_n} N_n \ma{} 0
+	\]
+is an exact sequence of vector spaces. But then we can easily calculate dimensions. Then $\dim_k M_N= \dim_k L_n + \dim_k N_n$. Or in terms of Hilbert functions, $H_M(n)= H_L(n) + H_N(n)$ so that $h_M(t)= h_L(t) + h_N(t)$. 
+
+
+Now assume that $f$ and $g$ are homogeneous of degrees $a$ and $b$, respectively, i.e. $f(L_n) \subseteq M_{n+a}$, $g(M_N) \subseteq N_{n+b}$. Then for each $n$, we get a short exact sequence 
+	\[
+	0 \ma{} L_n \ma{f_n} M_{n+a} \ma{g_{n+a}} N_{n+a+b} \ma{} 0
+	\]
+Then 
+	\[
+	H_L(n) - H_M(n+a) + H_N(n+a+b) = 0 
+	\]
+Now
+	\[
+	\sum_n H_M(n+a)t^n = t^{-a} \sum_n H_M(n+a) t^{n+a} = t^{-a} h_M(t)
+	\]
+So that
+	\[
+	h_L(t) - t^{-a} h_M(t) + t^{-a-b} h_N(t) = 0 
+	\]
+Long exact sequences give similar alternating sums. 
+
+
+Proof of Prop: We have the exact sequence
+	\[
+	0 \ma{} \ann(x) \ma{i} A \ma{x} A \ma{\pi} A/(x) \ma{} 0
+	\]
+where $\deg i=0$, $\deg x= e$, $\deg \pi = 0$. Then we get exact sequences
+	\[
+	0 \ma{} \ann(x)_n \ma{} A_n \ma{} A_{n+e} \ma{} (A/(x))_{n+e} \ma{} 0
+	\]
+of vector spaces. By above, we get
+	\[
+	h_{\ann x}(t) - h_A(t) + t^{-e} h_A(t) - t^{-e} h_{A/(x)}(t) = 0
+	\]
+Multiplying by $t^e$ and juggling, 
+	\[
+	(1-t^e) h_A(t) = h_{A/(x)}(t) - t^e h_{\ann x}(t)
+	\]
+\qed \\
+
+
+
+
+\begin{cor}
+Le t$A$ be as above and $x_1,\ldots,x_c$ be homogeneous elements of positive degrees $e_1,\ldots,e_c$. Then we have a coefficient-wise inequality of power series 
+	\[
+	h_A(t) \preccurlyeq \dfrac{h_{A/(x_1,\ldots,x_e)}(t)}{\prod_{i=1}^c (1-t^{e_i})}
+	\]
+with equality if and only if $x_1,\ldots,x_c$ is a regular sequence. 
+\end{cor}
+
+
+\begin{ex}
+We can compute the Hilbert series for any complete intersection: $A= k[x_1,\ldots,x_n]/(f_1,\ldots,f_c)$, where $\deg x_i = d_i$, $\deg f_i= e_i$, and $f_1,\ldots,f_c$ is a regular sequence. First, let $S= k[x_1,\ldots,x_n]$ with $\deg x_i= e_i$. Then $x_1,\ldots,x_n$ is an $S$-regular sequence with $S/(x_1,\ldots,x_n)= k$. So 
+	\[
+	h_S(t) = \dfrac{h_k(t)}{\prod_{i=1}^n (1-t^{d_i})}
+	\]
+Then $h_A(t) = h_{S/(f_1,\ldots,f_c)}= h_S(t) \prod_{j=1}^c (1-t^{e_j})= \dfrac{\prod_{j=1}^c (1-t^{e_j})}{\prod_{i=1}^n (1-t^{d_i})}$. 
+\end{ex}
+
+
+\begin{prop}
+Let $A$ be a Gorenstein graded ring of Krull dimension $d$. Then $h_A(1/t)= (-1)^d t^a h_A(t)$ for some integer $a$. 
+\end{prop}
+
+\pf Let $x_1,\ldots, x_d$ be a regular sequence so that $\overline{A}= A/(x_1,\ldots,x_d)= \overline{A}_0 \oplus \cdots \oplus \overline{A}_s$ is a finite dimensional Gorenstein algebra. Let $e_i = \deg x_i$. Then we know 
+
+\begin{enumerate}[(i)]
+\item $h_A(t) = \dfrac{h_{\overline{A}}(t)}{\prod_{i=1}^d (1-t^{e_i})}$
+\item $h_{\overline{A}}(1/t) = t^{-s} h_{\overline{A}}(t)$
+\end{enumerate}
+
+So $h_A(1/t)= \dfrac{h_{\ov{A}}(1/t)}{\prod_{i=1}^d (1- (1/t)^{e_i})}= \dfrac{t^{-s} h_{\ov{A}}(t)}{t^{-e_1-e_2-\cdots-e_d} \prod_{i=1}^d (t^{e_i}-1)}= (-1)^d t^{s+e_1+\cdots+e_d} h_A(t)$ \qed \\
+
+
+\begin{rem}
+We know that the formula $h_A(1/t) = (-1)^d t^a h_A(t)$ follows from the Gorenstein property, but is not equivalent (even when $d=0$). Stanley proved that the two are equivalent when $A$ is a CM domain. We will not prove this. 
+\end{rem}
+
+
+Back to invariant theory. So $S= k[x_1,\ldots,x_n]$, $G \subseteq \GL_n(k)$ finite with $|G| \in k^\times$ and $R= S^G$. We will assume $k$ is algebraically closed.
+
+\begin{dfn}
+The Hilbert series of $R$ is called the Molien series of $G$.
+	\[
+	M_G(t) = h_R(t)
+	\]
+\end{dfn}
+
+We will compute $M_G(t)$ in terms of $G$. More generally, the Molien series of a linear character $\chi: G \to k^\times$ is the Hilbert series of the semi-invariants
+	\[
+	R_\chi = S_\chi^G= \{ f \in S \colon gf= \chi(g)f \}
+	\]
+These are graded subsets of $S$. 
+	\[
+	M_\chi(t) = \sum_{i \in \Z} \dim_k(R_\chi)_i t^i
+	\]
+If $\chi$ is trivial, then $M_{\text{triv}}(t) = N_G(t)$. 
+
+\begin{rem}
+One can also do this for isotypic components but we will not. 
+\end{rem}
+
+
+So we want to compute $\dim_k(R_\chi)_i$. Recall that we have the fancy Reynold's operators $\rho_\chi: S \to S$ given by $f \mapsto \dfrac{1}{|G|} \sum_{g \in G} \chi(g)^{-1} gf$ with image $R_\chi$, and $(\rho_\chi)^2= \rho_\chi$. These properties preserve degrees, so we get linear maps $(\rho_\chi)_i: S_i \to S_i$ with image $(R_\chi)_i$. We can choose bases for $S_i$ so that $(\rho_\chi)_i$ is in rank normal form: $\two{I}{0}{0}{0}$. Then $\dim_k(R_\chi)_i = \dim_k(\im(\rho_\chi)_i)= \text{trace}((\rho_\chi)_i)$. PLug in the formula for $\rho_\chi$: $\dim(R_\chi)_i= \dfrac{1}{|G|} \sum_{g \in G} \chi(g)^{-1} \text{trace}(g|_{S_i})$.
+
+
+\begin{thm}[Molien]
+	\[
+	M_\chi(t) = \dfrac{1}{|G|} \sum_{g \in G} \dfrac{\chi(g)^{-1}}{\det(I-tg)}
+	\]
+In particular,
+	\[
+	M_G(t) = \dfrac{1}{|G|} \sum_{g \in G} \dfrac{1}{\det(I-tg)}
+	\]
+\end{thm}
+
+
+\begin{ex}
+$R= k[u,v]^{C_2}= k[u^2,uv,v^2] \cong k[x,y,z]/(xz-y^2)$, $C_2= \left\{ \two{1}{0}{0}{1}, \two{-1}{0}{0}{-1} \right\}$. 
+
+
+Then $M_G(t) = \dfrac{1}{2} \left( \dfrac{1}{\det(I-tI)} + \dfrac{1}{\det(I+tI)}\right)$ which is $\dfrac{1}{2} \left( \dfrac{1}{(1-t)^2} + \dfrac{1}{(1+t)^2} \right)$. which is
+	\[
+	\dfrac{1+t^2}{(1-t^2)^2}
+	\]
+which is also the Hilbert series of $k[x,y,z]/(f)$ with $\deg x= \deg y= \deg z=2$, $\deg f= 4$
+	\[
+	\dfrac{1-t^4}{(1-t^2)^3}= \dfrac{1+t^2}{(1-t^2)^2}
+	\]
+We had to use those degrees to get a graded isomorphism. 
+\end{ex}
 
 
 
