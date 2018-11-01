@@ -798,6 +798,130 @@ For the last sentence, we just need to show that $\sum_{g \in G} 1 = \sum_{g \in
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{cor}[Watanabe]
+If $G \subseteq \SL_n$, then $R$ is Gorenstein. Furthermore, if $G$ is small, then the converse holds.
+\end{cor}
+
+\pf If $G \subseteq \SL_n$, then $\det g=1$ for all $g \in G$. There are no pseudo-reflections in $\SL$. In particular, there are no pseudo-reflections in $G$. The last part was done above (all parts of $G$ are roots of unity). \qed \\
+
+
+% End of a long chapter
+
+When is $R= k[W]^G$ an isolated singularity? Postpone this until ramification theory. (Answer: when no $g \in G \setminus \{1\}$ has 1 for an eigenvalue, which is stronger than no pseudo-reflections.)
+
+
+Recall our goal is to understand the direct summands of $S= k[W]$ as an $R$-module (they are all MCM modules) and the structure of
+
+1) the maps between them
+2) the relationship with the rest of the $R$-modules.
+
+Main tool: the skew group algebra (twisted group ring, smash product, \dots)
+
+Let $S$ be a commutative ring (lose nothing by pretending $S= k[W]$) and $G$ be a group acting on $S$ by automorphisms. The skew group algebra $S\#G$ is an $S$-module, free on the elements of $G$, so the elements of $S\#G$ are formal sums $\sum_{g \in G} s_g \cdot g$, where $s_g \in S$ for all $g \in G$. The action is $(s \cdot g)(t\cdot h)= sg(t)gh$ for $s,t \in S$ and $g,h \in G$. So moving $g$ past $t$ twisted the ring element. Why? Patience. What are the $S\#G$ modules?
+
+
+Notice $S$ sits inside $S\#G$ as $\{s \cdot 1_G\}$ as a subring. So $S\#G$ is an $S$-algebra. In particular, any $S\#G$-module $M$ is an $S$-module by restriction of scalar. On the other hand, $G$ also sits inside $S\#G$ as $\{1_s \cdot g\}$. So $M$ comes with a $G$-action $g(x)= (1_s \cdot g)x$, $x \in M$, $g \in G$. So $S\#G$-module is an $S$-module with an action of $G$. That action is compatible with the $S$-module structure: 
+	\[
+	\begin{split}
+	g(sx)&= g((s1)x) \\
+	&= (1g)(s1)x \\
+	&= (g(s)g)x \\
+	&=(g(s)1)(1g)x \\
+	&= g(s)g(x)
+	\end{split}
+	\]
+Conversely, an $S$-module $M$ with an action of $G$ that satisfies $g(sx)=g(s)g(x)$ is an $S\#G$-module.
+
+\begin{rem}
+This allows us to talk about the invariants of an $S\#G$-module, namely $M^G:= \{ x \in M \colon gx=x \}$. Also notice that $S$ itself is an $S$-module with a compatible $G$-action. So we can consider $S^G$.
+\end{rem}
+
+Similarly, an $S\#G$-homomorphism between $S\#G$-modules $M,N$ is an $S$-module homomorphism that respects the group action. So $f: M \to N$ is $S\#G$-linear if and only if it is $S$-linear and $f(g(x))=g(f(x))$ for all $x \in M$, $g \in G$. 
+
+
+We can define an $S\#G$-module structure on $\Hom_S(M,N)$: given $f: M \to N$ and $g \in G$, $(gf)(x)= g(f(g^{-1}(x)))$. It is routine to check that the action is compatible with the $S$-module structure. 
+
+
+What is $\Hom_S(M,N)^G$? Well, $f$ is invariant if and only if $gf=f$ for all $g$ if and only if $(gf)(x)= f(x)$ for all $g$ if and only if $g(f(g^{-1}(x)))= f(x)$ for all $g$ if and only if $f(g^{-1}(x))= g^{-1}(f(x))$ for all $g$. So an $S$-linear map is invariant if and only if it is $S\#G$-linear. Another way of saying this is $\Hom_S(M,N)^G= \Hom_{S\#G}(M,N)$ (an actual equality). 
+
+
+Fact: If $|G|$ is invertible in $S$, then taking $G$-invariants is an exact functor, i.e. if $0 \ma{} L \ma{\alpha} M \ma{\beta} N \ma{} 0$ is an exact sequence of $S\#G$-modules, then
+	\[
+	0 \ma{} L^G \ma{\text{res }\alpha} M^G \ma{\text{res }\beta} N^G \ma{} 0
+	\]
+is an exact sequence. 
+
+Check: The restriction of an injective is clearly injective. Clearly the composition of the restrictions is also 0. We will only check surjectivity. Take $y \in N^G \subseteq N$. Then there is $x \in M$ with $\beta(x)=y$. Notice for any $g \in G$, $\beta(gx)=g(\beta x)=g(y)=y$. So 
+	\[
+	\beta \left(\dfrac{1}{|G|} \sum_{g \in G} g(x) \right)= y
+	\]
+and the sum is in $M^G$. The same trick works for exactness in the middle. 
+
+
+Consequently, $\Ext_{S\#G}^i(M,N)= \Ext_S^i(M,N)^G$. 
+
+\begin{cor}
+An $S\#G$-module is projective if and only if it is projective over $S$. 
+\end{cor}
+
+\pf We know $P$ is projective over a ring $T$ if and only if $\Ext_T^i(P,-)=0$ for $i>0$. Then $_{S\#G}M$ is projective if and only if $\Ext_{S\#G}^i(M,-)=0$ for $i>0$ if and only if $\Ext_S^i(M,-)^G=0$. We know $\Ext_S^i(M,-)=0$ if and only if $_SM$ is projective. It remains to show that $\Ext_S^i(M,-)^G=0$ if and only if $\Ext_S^i(M,-)=0$. 
+
+It is clear that if $\Ext_S^i(M,-)=0$ then $\Ext_S^i(M,-)^G=0$. Now if $M$ is projective, i.e. $\Ext_S^i(M,-)=0$, it is a direct summand of $(S\#G)^n$ for some $n$. But $S\#G$ is free as an $S$-module, so $M$ is also projective over $S$. \qed \\
+
+
+\begin{cor}
+If $S= k[x_1,\ldots,x_n]$, then $S\#G$ has global dimension $n$, i.e. $n= \max\{ \text{proj dim}_{S\#G} M \colon M \text{ f.g. over } S\#G\}$. 
+\end{cor}
+
+\pf Recall $\text{proj dim}_{S\#G} M= \max\{ i \colon \Ext_{S\#G}^i(M,-) \neq 0 \}$. But this is $\max \{ i \colon \Ext_S^i(M,-)^G \neq 0 \}$. But this is at most $\max \{ i \colon \Ext_S^i(M,-) \neq 0\}$, which is at most $n$ by Auslander-Buchsbaum-Serre, which says that the global dimension of a polynomial ring (or any regular ring) is $n$. So $\text{g, dim} S\#G \leq n$. To show equality, we must construct an $S\#G$-module of projective dimension $n$. The short version is that the Kozul Complex on $x_1,\ldots,x_n$ is an $S\#G$-linear free resolution of $S/(x_1,\ldots,x_n) \cong k$. 
+
+
+The longer version: Let $V= (x_1,\ldots,x_n)/(x_1,\ldots,x_n)^2$. This is a $k$-vector space of rank $n$ with basis $x_1,\ldots,x_n$ (really bars). And $K_p:= S \otimes_k \bigwedge^p V$, where $p \geq 0$ and $\bigwedge^p V$ is the $p$th exterior power of $V$. This means it has basis $\{ x_{i_1} \wedge x_{i_2} \wedge \cdots \wedge x_{i_p} \colon i_1<i_2<\cdots<i_p\}$. Then $S \otimes_k \bigwedge^p V$ is the free $S$-module on the same basis. Since $G$ acts on $S$ linearly, it acts on $V$. It therefore acts on $\bigwedge^p V$ for all $p$. The main thing about $\bigwedge^p V$ is $v \wedge w= -(w \wedge v)$ for all $v,w \in V$. With that, not only is each $\bigwedge^p$ a representation of $G$, the maps $\bigwedge^p V \to \bigwedge^{p+1} V$ given by $\omega \mapsto \omega \wedge (\sum x_i)= \sum (\omega \wedge x_i)$ and the maps are $G$-linear. The exact sequence 
+	\[
+	0 \ma{} S \otimes \bigwedge^0 V \ma{} S \otimes \bigwedge^1 V \ma{} S \otimes \bigwedge^2 V \ma{} \cdots \ma{} S \otimes \bigwedge^n V \ma{} 0
+	\]
+is an $S$-linear free resolution of $S/(x_1,\ldots,x_n)$. Note the last two above are congruent to $S^n \to S$ with map $e_i \mapsto \sum x_j$, $j \neq i$. Furthermore, each free module and each map (differential) is $G$-linear. So this is a free resolution of $k$ over $S\#G$. This can not be a shorter one since we know that $\text{proj dim}_S k= n$. So $\text{gl dim} S\#G= n$. \qed \\
+
+
+So in the case where $S= k[W]$, the ring $S\#G$ encodes all $S$-modules with $G$-action, and has global dimension $n= \dim W$ (like $S$). 
+
+The ``twist'' in the algebra structure is cooked up exactly to make a certain map a ring homomorphism. Let $S= k[W]$, $G$ a finite group with $|G| \in k^\times$, and $R= S^G$. Consider the endomorphism ring $\End_R(S)$ of $S$ as an $R$-module. Define
+	\[
+	\gamma: S\#G \ma{} \End_R(S)
+	\]
+by considering an $S$-linear combination of endomorphisms of $S$ as an endomorphism of $S$. 
+	\[
+	\sum s_g \cdot g \mapsto \sum s_g g.
+	\]
+Note: each $g \in G$, considered as an endomorphism of $S$, is $R$-linear
+	\[
+	g(rs)= g(r) g(s) = rg(s)
+	\]
+for $r \in R$, $s \in S$. Finally, $\gamma$ is a ring homomorphism. Moreover, $\gamma$ is not generally injective or surjective.
+
+\begin{thm}[Auslander, 62]
+If $G$ is small, then $\gamma$ is an isomorphism.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
