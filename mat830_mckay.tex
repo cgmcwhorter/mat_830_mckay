@@ -29,7 +29,6 @@
 	nicefrac,
 	relsize,
 	stmaryrd,			% For power series brackets
-  	tikz-cd,         		% better commutative diagrams
   	thmtools,        		% custom end to example environment
 	thm-restate,
 	%totcount,		% define counters
@@ -41,23 +40,27 @@
 
 \definecolor{SUOrange}{RGB}{212,69,0}
 
-\usepackage{pgfplots}
-\usepgfplotslibrary{fillbetween}
-\pgfplotsset{compat=1.10}
-\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing,patterns}
-\tikzset{snake it/.style={-stealth,
-decoration={snake, 
-    amplitude = .4mm,
-    segment length = 2mm,
-    post length=0.9mm},decorate}}
-\pgfqkeys{/tikz/commutative diagrams}{
-  Maps to/.style={
-    /tikz/commutative diagrams/Rightarrow,
-    /tikz/commutative diagrams/maps to},
-  Maps from/.style={
-    /tikz/commutative diagrams/Leftarrow,
-    /utils/exec=\pgfsetarrowsend{cm |}}
-}
+\usepackage{tikz-cd}
+
+
+%\usepackage{pgfplots}
+%\usepgfplotslibrary{fillbetween}
+%\pgfplotsset{compat=1.10}
+
+%\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing,patterns}
+%\tikzset{snake it/.style={-stealth,
+%decoration={snake, 
+%    amplitude = .4mm,
+%    segment length = 2mm,
+%    post length=0.9mm},decorate}}
+%\pgfqkeys{/tikz/commutative diagrams}{
+%  Maps to/.style={
+%    /tikz/commutative diagrams/Rightarrow,
+%    /tikz/commutative diagrams/maps to},
+%  Maps from/.style={
+%    /tikz/commutative diagrams/Leftarrow,
+%    /utils/exec=\pgfsetarrowsend{cm |}}
+%}
 
 \usetikzlibrary{hobby}
 
