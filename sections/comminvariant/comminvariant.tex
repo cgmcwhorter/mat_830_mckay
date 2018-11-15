@@ -1310,6 +1310,92 @@ Step 7: A bigger computation: Start with $f \in \End_R(S)$.
 since only term which survives is where $g=1$. Then the whole composition is multiplication by $1/|G|$. Rescale to get the identity so $\gamma$ is a split surjection. \qed \\
 
 
+%%%%%%%%%%%%%%%
+
+
+We saw if the extension $R=S^G \hookrightarrow S=k[x_1,\ldots,x_n]$ is unramified in codimension 1, then the ring map $\gamma: S\#G \to \End_R(S)$ is an isomorphism. 
+
+When is that extension unramified in codimension 1? Well, when $G$ is small! That is, contains no pseudo reflections. Intuitively, suppose $V \subseteq k$ is a codimension 1 subspace. Then $V+ \ker f$ for some linear form $f \in k[x_1,\ldots,x_n]$. The ideal $(f) \subseteq k[x_1,\ldots,x_n]$ is a height-one prime, and the extension is ramified at that prime if and only if $W$ is the fixed hyperplane of a pseudo-reflection. The theorem is
+
+
+\begin{thm}[Auslander, 1962]
+The extension $R= S^G \hookrightarrow S$ is unramified in codimension 1 if and only if $G$ is small. 
+\end{thm}
+
+\pfsk (Details in the notes) (There is a lot of classical background, i.e. before one went to graduate school). If $q \subseteq S$ is a height-one prime, $\fp=q \cap R$ is again a height 1 (going up/down) so $R_\fp \hookrightarrow S_q$ is a finite extension of 1-dimensional local rings. Both are regular so are discrete valuation rings (only ideals are $\fp^n$ and $q^n$). SO $\fp S_q= q^e S_q$ for some $e$, called the ramification index. On the other hand, $R_\fp/\fp R_\fp \hookrightarrow S_q/ qS_q$ is a field extension of degree, say $f$, called the inertia degree. [Unramified means $e=1$.] Define $D(q)=\{ g \in G \colon g(q)=q \}$ decomposition group of $q$. Define $T(q)= \{ g \in G \colon g(s)-s \in q \forall s \in S\}$ the inertia group of $q$. Then $T(q) \subseteq D(q)$. One then shows $T(q) \neq \{1\}$ then $q=(s)$ for some linear $s \in S$. Now if $W$ is the zero set of $s$, a codimension-1 subspace of $k^n$, every element of $T(q)$ fixes $W$, so is a pseudo-reflection. \qed \\
+
+
+Being the same paper as the result from above. By the way, the same techniques allow us to characterize when $R$ is an isolated singularity, i.e. $R_p$ is a regular local ring for every non-maximal prime $p$. For each $g \in G$, set $U_g:= (I_n-g)k^n \subseteq k^n$. By rank-nullity, $\dim U_g= \rank(I-g)= n - \dim \ker(I-g)= n- \text{mult. of 1 as eigenvalue of }g$.  Recall $g$ is diagonalizable since it has finite order so it is contained in a group of finite order its characteristic polynomial has distinct roots. So $g$ is a pseudo-reflection if and only if multiplicity of 1 is $n-1$ if and only if $\dim U_g = 1$. Set $I= \bigcap_{g \in G \setminus\{1\}} (U_gS \cap R)$. Then $T(q)= \{1\}$ ($T(q)= \{ g \colon g(s)-s \in q\}$) if and only if $q$ does not contain $\cap_{g \neq 1} U_gS$. If $g(s)-s \in q$ for all $s$, $(I-g)(s) \in q$, $U_g \subseteq q$, $U_gS \subseteq q$. So one can show $R_\fp$ is regular if and only if $T(q)=\{1\}$ if and only if $q \not\supseteq \cap_{g \neq 1} U_gS$ if and only if $\fp \not\subseteq I$. So $R$ is an isolated singularity if and only if the only prime ideal of $R$ that contains $I$ is its maximal ideal. So the following are equivalent:
+	\begin{itemize}
+	\item $R$ is an isolated singularity
+	\item $U_g= k^n$ for every $g \neq 1$
+	\item no $g \neq 1$ has 1 for an eigenvalue
+	\end{itemize}
+Note if $n= 2$, this is equivalent to being small. If $n \geq 3$, this is stronger. Back to $\gamma: S\#G \to \End_R(S)$. 
+
+
+What was the point of this result, i.e. the map being an isomorphism? Recall the direct summand of an $A$-module $M$ are in one-to-one correspondence with idempotents $e \in \End_A(M)$: $N/M$ corresponds to $(\text{proj}_N)^2= (\text{proj}N)$ while $e^2=e$ corresponds to $(\im e)$. 
+
+
+\begin{cor}
+Assume $G$ is small. Then we have ring isomorphisms 
+	\[
+	\begin{tikzcd}
+	S\#G \arrow{r}{\iota} \arrow[dotted,swap]{rrd}{\gamma} & (S\#G)^{\text{op}} \arrow{r}{\nu} & \End_{S\#R}(S\#G) \arrow{d}{\text{res}} \\
+	& & \End_R S
+	\end{tikzcd}
+	\]
+defined by $\iota(s \cdot g)= g^{-1}(s) \cdot g^{-1}$ (trivial), $\nu(s \cdot g)(t \cdot h)= (t \cdot h)(s \cdot g)$ (right multiplication) (general result), res is the restriction of $f: S\#G \to S\#G$ to the subring $S= (S\#G)^G= \hat{\rho}(S)$ (crux). The composition is the $\cong$ $\gamma$. So we get bijections between (simple chase):
+	\begin{itemize}
+	\item the $R$-direct summands of $S$
+	\item the $S\#G$-direct summand of $S\#G$
+	\item (the indecomposable projective $S\#G$)(don't know this yet)
+	\end{itemize}
+Explicitly, if $P_1,\ldots,P_r$ are the indecomposable direct summand of $S\#G$ as a module over itself, then $P_1^G, \ldots, P_r^G$ are the indecomposable $R$-direct summands of $S$. 
+\end{cor}
+
+
+So to understand $\add_R(S)$, we just have to understand $\add_{S\#G}(S\#G)$, and these are precisely the projective $S\#G$-modules (free $S$-modules with $G$-action by Serre's Theorem). To classify the projective $S\#G$-modules, we go back to the representations
+
+
+\begin{rem}
+Let $M$ be an $S\#G$-module, and $W$ a finite dimensional representation of $G$. Then $M \otimes_k W$ is an $S\#G$-module. Also, $M \otimes_k W \cong M \otimes_k k^r \cong M^r$ as $S$-modules, and $G$ acts diagonally $g(m \otimes \alpha)= g(m) \otimes g(\alpha)$. We have a functor $\mathcal{F}: \text{rep-}G \to S\#G\text{-module}, \text{ free over }S$, i.e. projective $S\#G$-modules, given by $W \mapsto S \otimes_k W$. Also, $\mathcal{G}: \text{proj }S\#G\text{-module} \to \text{rep-}G$ given by $P \mapsto P/(x_1,\ldots,x_n)P$. 
+\end{rem}
+
+
+\begin{ex}
+$G= B\mathbb{D}_2 \cong Q_8$, of order 8. 
+	\[
+	G= \left\{ \two{\pm 1}{}{}{\pm 1}, \two{}{\pm i}{\pm i}{}, \two{}{\mp 1}{\pm 1}{}, \two{\pm i}{}{}{\mp i} \right\} \subseteq \SL_2(\C)
+	\]
+generated by $B= \two{i}{}{}{-i}$, $A= \two{}{i}{i}{}$ ($B^2=A^2=ABAB= -I$). We know the representation theory of $G$. There are 4 1-dimensional representations, $\beta_{++}, \beta_{+-}, \beta_{-+}, \beta_{--}$, which take $(A,B)$ to $(\pm 1, \pm 1)$. Also, the given representation $G \subseteq \SL_2(\C)$ is 2-dimensional. Let's consider the $k[u,v]\#G$-module $k[u,v] \otimes_k \rho$. This is isomorphic as $k[u,v]$-module to $k[u,v] \oplus k[u,v]$, since $\rho$ is a 2-dimensional vector space. How does $A$ act on it? ($Au=iv$ and $Av=iu$)
+	\[
+	A \cdot \left( f(u,v) \otimes \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \right) = A \cdot f(u,v) \otimes A \begin{pmatrix} \alpha \\ \beta \end{pmatrix}= f(iv,iu) \otimes \begin{pmatrix} i\beta \\ i\alpha \end{pmatrix}
+	\]
+As $S$-modules, the isomorphism between $k[u,v] \otimes_k \rho \to k[u,v]^2$ is just $f \otimes \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \mapsto \begin{pmatrix} \alpha f  \\ \beta f \end{pmatrix}$. If we write elements of $k[u,v] \otimes \rho$ as vectors $\begin{pmatrix} f \\ g \end{pmatrix}$, how does $A$ act? 
+	\[
+	A \begin{pmatrix} f \\ g \end{pmatrix} = \begin{pmatrix} Aig \\ Aif \end{pmatrix}= \begin{pmatrix} ig(iv,iu) \\ if(iv,iu) \end{pmatrix}.
+	\]
+\end{ex}
+
+
+\begin{prop}
+These operations are inverse to each other on objects (see remark). In other words, $\mathcal{G} \mathcal{F}(W)= S\otimes_k W/(x_1,\ldots,x_n) S \otimes_k W \cong W$ and $\mathcal{F} \mathcal{G}(P)= S \otimes_k P/(x_1,\ldots,x_n)P \cong P$. In particular, these define a bijection between irreducible representations of $G$ and indecomposable projective $S\#G$-modules. 
+\end{prop}
+
+
+
+
+
+
+
+\begin{rem}
+$\mathcal{F}$ and $\mathcal{G}$ do not define an equivalence of categories or even an adjount pair, adjointness would be $\Hom_{kG}(\mathcal{G}(P),U) = \Hom_{S\#G}(P,\mathcal{F}(U))$ but the LHS is a finite dimensional vector space, while the RHS is a free $S$-module. 
+\end{rem}
+
+
+
+
 
 
 
