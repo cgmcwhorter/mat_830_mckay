@@ -78,6 +78,11 @@
 \newcommand{\sing}[1]{#1_{\text{sing}}}
 \newcommand{\smoo}[1]{#1_{\text{smooth}}}
 
+\makeatletter
+\newcommand{\extp}{\@ifnextchar^\@extp{\@extp^{\,}}}
+\def\@extp^#1{\mathop{\bigwedge\nolimits^{\!#1}}}
+\makeatother
+
 
 % Environments
 \newenvironment{nscenter}

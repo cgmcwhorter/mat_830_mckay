@@ -879,7 +879,7 @@ If $S= k[x_1,\ldots,x_n]$, then $S\#G$ has global dimension $n$, i.e. $n= \max\{
 \pf Recall $\text{proj dim}_{S\#G} M= \max\{ i \colon \Ext_{S\#G}^i(M,-) \neq 0 \}$. But this is $\max \{ i \colon \Ext_S^i(M,-)^G \neq 0 \}$. But this is at most $\max \{ i \colon \Ext_S^i(M,-) \neq 0\}$, which is at most $n$ by Auslander-Buchsbaum-Serre, which says that the global dimension of a polynomial ring (or any regular ring) is $n$. So $\text{g, dim} S\#G \leq n$. To show equality, we must construct an $S\#G$-module of projective dimension $n$. The short version is that the Kozul Complex on $x_1,\ldots,x_n$ is an $S\#G$-linear free resolution of $S/(x_1,\ldots,x_n) \cong k$. 
 
 
-The longer version: Let $V= (x_1,\ldots,x_n)/(x_1,\ldots,x_n)^2$. This is a $k$-vector space of rank $n$ with basis $x_1,\ldots,x_n$ (really bars). And $K_p:= S \otimes_k \bigwedge^p V$, where $p \geq 0$ and $\bigwedge^p V$ is the $p$th exterior power of $V$. This means it has basis $\{ x_{i_1} \wedge x_{i_2} \wedge \cdots \wedge x_{i_p} \colon i_1<i_2<\cdots<i_p\}$. Then $S \otimes_k \bigwedge^p V$ is the free $S$-module on the same basis. Since $G$ acts on $S$ linearly, it acts on $V$. It therefore acts on $\bigwedge^p V$ for all $p$. The main thing about $\bigwedge^p V$ is $v \wedge w= -(w \wedge v)$ for all $v,w \in V$. With that, not only is each $\bigwedge^p$ a representation of $G$, the maps $\bigwedge^p V \to \bigwedge^{p+1} V$ given by $\omega \mapsto \omega \wedge (\sum x_i)= \sum (\omega \wedge x_i)$ and the maps are $G$-linear. The exact sequence 
+The longer version: Let $V= (x_1,\ldots,x_n)/(x_1,\ldots,x_n)^2$. This is a $k$-vector space of rank $n$ with basis $x_1,\ldots,x_n$ (really bars). And $K_p:= S \otimes_k \bigwedge^p V$, where $p \geq 0$ and $\bigwedge^p V$ is the $p$th exterior power of $V$. This means it has basis $\{ x_{i_1} \extp x_{i_2} \extp \cdots \extp x_{i_p} \colon i_1<i_2<\cdots<i_p\}$. Then $S \otimes_k \bigwedge^p V$ is the free $S$-module on the same basis. Since $G$ acts on $S$ linearly, it acts on $V$. It therefore acts on $\bigwedge^p V$ for all $p$. The main thing about $\bigwedge^p V$ is $v \extp w= -(w \extp v)$ for all $v,w \in V$. With that, not only is each $\bigwedge^p$ a representation of $G$, the maps $\bigwedge^p V \to \bigwedge^{p+1} V$ given by $\omega \mapsto \omega \extp (\sum x_i)= \sum (\omega \extp x_i)$ and the maps are $G$-linear. The exact sequence 
 	\[
 	0 \ma{} S \otimes \bigwedge^0 V \ma{} S \otimes \bigwedge^1 V \ma{} S \otimes \bigwedge^2 V \ma{} \cdots \ma{} S \otimes \bigwedge^n V \ma{} 0
 	\]
@@ -1468,11 +1468,141 @@ So we need \emph{at least} one quadratic and one quartic (the ones of degree 6 \
 	B((u-v)^4)&= (iu+iv)^4= (u+v)^4
 	\end{split}
 	\]
-So $B((u+v)^4-(u-v)^4)= -((u+v)^4-(u-v)^4)$, and $(u+v)^4-(u-v)^4= 8(u^3v+uv^3)$. So $R_{\beta_{+-}}= R(u^2-v^2) + R(u^3v+uv^3)$. One has to check that $X(u^2-v^2)$ and $Y(u^2-v^2)$ are linearly independent elements of degree 6, so there are not any new generators in degree 6. The same thing holds in degree 8. By Noether's Theorem, we do not need any generators in degrees greater than $|G|= 8$. 
+So $B((u+v)^4-(u-v)^4)= -((u+v)^4-(u-v)^4)$, and $(u+v)^4-(u-v)^4= 8(u^3v+uv^3)$. So $R_{\beta_{+-}}= R(u^2-v^2) + R(u^3v+uv^3)$. One has to check that $X(u^2-v^2)$ and $Y(u^2-v^2)$ are linearly independent elements of degree 6, so there are not any new generators in degree 6. The same thing holds in degree 8. By Noether's Theorem, we do not need any generators in degrees greater than $|G|= 8$. Therefore, we have computed $R_{++}= R= k[u,v]^G= k[u^4+v^4, u^2v^2, uv(u^4-v^4)]$ and $R_{+-}= R(u^2-v^2)+R(u^3v+uv^3)$. For $\beta_{-+}$, we want to find $f \in S$ such that $-Af= f= Bf$. The Molien series is the same:
+	\[
+	\dfrac{t^2}{(t^2-1)^2(t^2+1)}= t^2 + t^4 + 2t^6 + \cdots,
+	\]
+so again we look in degrees 2 and 4. Since we want $f$ to be $B$ invariant, we use the fact that we know $k[u,v]^B= k[u^4,uv,v^4]$. Furthermore, $A\cdot uv= (iv)(iu)= -uv$. Then $Au^4= (iv)^4= v^4$, $Av^4= (iu)^4= u^4$. Therefore, $A(u^4-v^4)= -(u^4-v^4)$, showing that $R_{-+}= R(uv) + R(u^4-v^4)$. For $\beta_{--}$, we have the same Molien series and the same procedures show that $R_{--}= R(u^2+v^2) + R(u^3v-uv^3)$. 
+
+We now consider $\rho$, the given representation. We can again, since we know the matrices involved, compute the Molien series 
+	\[
+	M_\rho(t)= \dfrac{1}{8} \sum_{g \in G} \dfrac{\text{tr}(\overline{\rho(g)})}{\det(I-tg)}= \dfrac{t}{(1-t^2)^2}= t+ 2t^3 + 3t^5 + 4t^7 + \cdots.
+	\]
+Notice we have accounted for Hilbert series $M_G(t)+ 3M_{+-}(t) + M_\rho(t)$. The Hilbert series of $S= k[u,v]$ is $\dfrac{1}{(1-t)^2}$. But
+	\[
+	\dfrac{1}{(1-t)^2} - M_G(t) - 3 M_{+-}(t)= \dfrac{2t}{(1-t^2)^2}.
+	\]
+So there are 2 ($=\dim \rho$) copies of $(S \otimes_k \rho^*)^G$ in $S$. The action of $G$ on $S \otimes_k \rho^*$ is 
+	\[
+	A \left( f \otimes \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \right)= Af \otimes \overline{A} \begin{pmatrix} \alpha \\ \beta \end{pmatrix}= Af \otimes \two{}{-i}{-i}{} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = Af \otimes \begin{pmatrix} -i \beta \\ -i\alpha \end{pmatrix}.
+	\]
+So in terms of the identification of $S \otimes_k \rho^* \cong S^2$,
+	\[
+	A \begin{pmatrix} f \\ g \end{pmatrix}= \begin{pmatrix} -iAg \\ -iAf \end{pmatrix}.
+	\]
+Similarly, 
+	\[
+	B \begin{pmatrix} f \\ g \end{pmatrix}= \begin{pmatrix} -iBf \\ iBg \end{pmatrix}.
+	\]
+So we want $f,g \in S$ such that $\begin{pmatrix} -iAg \\ -iAf \end{pmatrix}= \begin{pmatrix} f \\ g \end{pmatrix}= \begin{pmatrix} -iBf \\ iBg \end{pmatrix}$. Equivalently,
+	\[
+	\begin{pmatrix} -ig(iv,iu) \\ if(iv,iu) \end{pmatrix}= \begin{pmatrix} f(u,v) \\ g(u,v) \end{pmatrix}= \begin{pmatrix} -if(iu,-iv) \\ ig(iu,-iv) \end{pmatrix}.
+	\] % *
+We know there is at least one such pair of degree one from the Molien series. Consider $\begin{pmatrix} au+bv \\ cu+dv \end{pmatrix}$. Setting the above equation equal to this and comparing coefficients gives $b=c=0$ and $a=d$. This shows that $\begin{pmatrix} u \\ v \end{pmatrix} \in R_\rho$. Notice $\begin{pmatrix} v \\ u \end{pmatrix} \notin (S \otimes \rho^*)^G$! Instead, $\begin{pmatrix} v \\ u \end{pmatrix}$ lives in the other copy. Repeating with generic cubics $\begin{pmatrix} au^3+\cdots+dv^3 \\ eu^3+\cdots+uv^3 \end{pmatrix}$ to get two linearly independent cubics, namely $\begin{pmatrix} u^2v \\ -uv^2 \end{pmatrix}$ and $\begin{pmatrix} v^3 \\ u^3 \end{pmatrix}$. There are supposed to be 3 elements in degree 5
+	\[
+	\begin{split}
+	u^2v^2 \begin{pmatrix} u \\ v \end{pmatrix}&= \begin{pmatrix} u^3v^2 \\ u^2v^3 \end{pmatrix} \\
+	(u^4+v^4) \begin{pmatrix} u \\ v \end{pmatrix}= \begin{pmatrix} u^5+uv^4 \\ u^4v+v^5 \end{pmatrix}= \begin{pmatrix} u^5 \\ v^5 \end{pmatrix} + \begin{pmatrix} uv^4 \\ u^4v \end{pmatrix}
+	\end{split}
+	\]
+and both $\begin{pmatrix} u^5 \\ v^5 \end{pmatrix}$ and $\begin{pmatrix} uv^4 \\ u^4v \end{pmatrix}$ are in $(S \otimes \rho^*)^G$. % By *
+
+So we have thus far
+	\[
+	R \begin{pmatrix} u \\ v \end{pmatrix} + R \begin{pmatrix} u^2v \\ -uv^2 \end{pmatrix} + R \begin{pmatrix}  v^3 \\ u^3 \end{pmatrix} + R \begin{pmatrix} uv^4 \\ u^4v \end{pmatrix}
+	\]
+One then checks that multiplying these by elements of $R$ gives 4 linearly independent objects in degree 7. By Noether's bound, we are done, as previously mentioned. It is not hard to compute the relations among these generators, e.g. $Za_1= Xa_3 - 2Y a_2$. Then one can show 
+	\[
+	(S \otimes \rho^*)^G \cong \text{coker } 
+	\begin{pmatrix}
+	z & 0 & 2y^2 & -xy \\
+	0 & -z & -x & 2y \\
+	2y & -xy & -z & 0 \\
+	-x & 2y^2 & 0 & z
+	\end{pmatrix}
+	\] \xqed
 \end{ex}
 
 
+\begin{rem}
+If $G$ is abelian, all irreducible representations of $G$ are 1-dimensional. Then we can compute the isotypic components as semi-invariants
+	\[
+	R_\chi= \{ f \in S \colon g\cdot f= \chi(g) f \;\forall g \}.
+	\]
+Therefore in order to obtain something `interesting', one has to take $G$ non-abelian. 
+\end{rem}
 
+
+Recall that the \mc quiver of $G \subseteq \GL(V)$, has
+	\begin{itemize}
+	\item vertices $V_0,\ldots,V_d$ the irreducible representations of $G$
+	\item $m_{ij}$ arrows $V_i \to V_j$ if $V_i$ appears with multiplicity $m_{ij}$ in $V \otimes V_j$
+	\end{itemize}
+
+
+\begin{dfn}[Gabriel/Auslander Quiver]
+The Gabriel quiver of $G \subseteq \GL(V)$ has 
+	\begin{itemize}
+	\item vertices $P_0,\ldots,P_d$ the indecomposable projective $S\#G$-modules
+	\item arrows as follows: take a minimal $S\#G$-projective resolution of $V_j= P_j/(\underline{x})P_j$
+		\[
+		0 \ma{} Q_{j,n} \ma{} \cdots \ma{} Q_{j,2} \ma{} Q_{j,1} \ma{} P_j \ma{} V_j \ma{} 0
+		\]
+	Decompose $Q_{j,1}$ into indecomposable projective $S\#G$-modules. Draw $m_{ij}$ arrows $P_i \to P_j$ if $P_i$ appears with multiplicity $m_{ij}$ in $Q_{j,1}$. 
+	\end{itemize}
+\end{dfn}
+
+
+We know that $P_i \cong S \otimes_k V_i$ and $V_i = P_i/(\underline{x}) P_i$. We know also that $P_j= Q_{j,0}$ and that the resolution is finite since the global dimension of $S\#G$ is the same as the global dimension of $S$, which is $n$. 
+
+
+\begin{thm}[Auslander]
+The \mc quiver and the Gabriel quiver are isomorphic. 
+\end{thm}
+
+\pf First, we compute the projective resolution of the trivial representation $V_0= k$. The $P_0= S \otimes_k V_0= S \otimes_k k= S$. The $S\#G$-resolution of $V_0$ is just the Koszul complex:
+	\[
+	0 \ma{} \extp^n S^n \ma{} \cdots \ma{} \extp^2S^n \ma{} \extp^1 S^n \ma{} S \ma{} k \ma{} 0.
+	\]
+But we also have a resolution
+	\[
+	0 \ma{} S \otimes \extp^n V \ma{} S \otimes \extp^{n-1} V \ma{} \cdots \ma{} S \otimes \extp^1V \ma{} S \otimes \extp^0 V \ma{} k \ma{} 0,
+	\]
+where all the maps are $G$-linear. In particular, $Q_{0,1}= S \otimes \extp^1V= S \otimes V$. To resolve the other irreducibles $V_j$, tensor the Koszul complex with $V_j$. Since $- \otimes_k V_j$ is exact, we obtain a $S\#G$-projective resolution of $k \otimes_k V_j= V_j$,
+	\[
+	0 \ma{} S \otimes \extp^nV \otimes V_j \ma{} S \otimes \extp^{n-1}V \otimes V_j \ma{} \cdots \ma{} S \otimes \extp^2V \otimes V_j \ma{} S \otimes \extp^1V \otimes V_j \ma{} S \otimes \extp^0V \otimes V_j \ma{} V_j \ma{} 0.
+	\]
+So $Q_{j,1}= S \otimes \extp^1V \otimes V_j = S \otimes (V \otimes V_j)$.
+
+
+\begin{ex}
+Let $G= C_2$ act on $k[x,y,z]$ by letting the generator negate each variable. Note that then $R= k[x^2,xy,xz,y^2,yz,z^2]$. We compute the Gabriel quiver. There are only two irreducible representations: the trivial representation, call this $V_0$, and the representation which sends the generator to $-1$, call this $V_1$. The given representation, $V$, of $G$ sends the generator to $\three{-1}{}{}{}{-1}{}{}{}{-1}$. So $V= V_1 \oplus V_1 \oplus V_1= V_1^3$. We will need the Koszul complex, so we need to compute $\extp^kV$. Recall two facts about exterior powers over a field:
+	\begin{itemize}
+	\item $\extp^kA= 0$ for $k> \dim_k A$
+	\item $\extp^k (A \oplus B)= \bigoplus_{i+j=k} (\extp^i A \otimes \extp^jB)$
+	\end{itemize}
+Since $\dim V= 3$, we only need $\extp^0V= k$, $\extp^1V= V$, and $\extp^2V= \extp^2( V_1 \oplus V_1 \oplus V_1)= (V_1 \otimes V_1) \oplus (V_1 \otimes V_1) \oplus (V_1 \otimes V_1)= (V_1 \otimes V_1)^3=(\text{triv})^3= V_0^3$, and $\extp^3V= \extp^3(V_1 \oplus V_1 \oplus V_1)= V_1 \otimes V_1 \otimes V_1 \cong V_1$. The Koszul complex is then 
+	\[
+	0  \ma{} S \otimes \extp^3V \ma{} S \otimes \extp^2V \ma{} S \otimes \extp^1V \ma{} S \otimes \extp^0V \ma{} 0.
+	\]
+This is the same as
+	\[
+	0 \ma{} S \otimes V_1 \ma{} S \otimes (V_0)^3 \ma{} S \otimes (V_1)^3 \ma{} S \otimes V_0 \ma{} 0
+	\]
+Here $Q_{0,1}= S \otimes V_1^3$, so we obtain three arrows 
+
+% P_1 triple right arrow P_0
+
+in the Gabriel quiver. Tensoring with $V_1$, 
+	\[
+	0 \ma{} S \otimes V_0 \ma{} S \otimes (V_1)^3 \ma{} S \otimes (V_0)^3 \ma{} S \otimes V_1 \ma{} 0
+	\]
+So the Gabriel quiver is 
+
+% P_0 three curved arrows up top going from P_0 to P_1, and same below with three arrows going right to left from P_1 to P_0. Note, this was done earlier. 
+\end{ex}
+
+We now have the \mc quiver for representations and the Gabriel quiver for the $S\#G$-projectives. But we have many bijections from earlier work so there should be an object for indecomposable $R$-summands of $S$. This will turn out to be the $G$-invariants of the Gabriel quiver. 
 
 
 
